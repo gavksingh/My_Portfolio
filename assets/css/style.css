@@ -1,10 +1,4 @@
-/**
-* Template Name: MyResume
-* Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 
 /*--------------------------------------------------------------
 # General
@@ -274,7 +268,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top right no-repeat;
+  background: url("../img/hero-bg.jpg") center no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -297,7 +291,7 @@ h6 {
 
 #hero h1 {
   margin: 0;
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 700;
   line-height: 56px;
   color: #45505b;
@@ -316,14 +310,15 @@ h6 {
 }
 
 #hero .social-links {
-  margin-top: 30px;
+  margin-top: 76px;
+  margin-left: 19px;
 }
 
 #hero .social-links a {
-  font-size: 24px;
+  font-size: 30px;
   display: inline-block;
   color: #45505b;
-  line-height: 1;
+  line-height: 3;
   margin-right: 20px;
   transition: 0.3s;
 }
@@ -338,7 +333,7 @@ h6 {
   }
 
   #hero h1 {
-    font-size: 32px;
+    font-size: 34px;
     line-height: 36px;
   }
 
