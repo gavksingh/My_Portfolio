@@ -611,12 +611,12 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: rgba(69, 80, 91, 0.8);
+  background: rgba(0, 0, 0, 0.21);
 }
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.21);
   position: absolute;
   left: 30px;
   right: 30px;
@@ -641,6 +641,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .portfolio .portfolio-wrap .portfolio-info::before {
@@ -675,6 +676,7 @@ section {
   font-size: 20px;
   color: #45505b;
   font-weight: 600;
+  margin: -20px 10px 15px 18px;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
@@ -683,6 +685,7 @@ section {
   text-transform: uppercase;
   padding: 0;
   margin: 0;
+  margin: -10px 10px 15px 18px;
 }
 
 .portfolio .portfolio-wrap .portfolio-links {
@@ -691,9 +694,9 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: #45505b;
-  margin: 0 2px;
-  font-size: 28px;
+  color: #3e87d1;
+  margin: 10px 10px 18px 18px;
+  font-size: 22px;
   display: inline-block;
   transition: 0.3s;
 }
