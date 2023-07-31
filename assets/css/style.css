@@ -673,15 +673,15 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 20px;
-  color: #45505b;
+  font-size: 22px;
+  color: #141516;
   font-weight: 600;
-  margin: -20px 10px 15px 18px;
+  margin: -30px 10px 15px 18px;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: #45505b;
-  font-size: 14px;
+  color: #070809;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 0;
   margin: 0;
@@ -694,8 +694,8 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: #3e87d1;
-  margin: 10px 10px 18px 18px;
+  color: #2b87e3;
+  margin: 11px 10px 25px 18px;
   font-size: 22px;
   display: inline-block;
   transition: 0.3s;
