@@ -674,12 +674,31 @@ section {
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
   font-size: 22px;
-  color: #141516;
+  color: #e2e8ec;
   font-weight: 600;
   margin: -30px 10px 15px 18px;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
+  color: #e7edf2;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  margin: -10px 10px 15px 18px;
+}
+
+
+/* ----------------------------------------- */
+
+.portfolio .portfolio-wrap .portfolio-info-light h4 {
+  font-size: 22px;
+  color: #e0e5ea;
+  font-weight: 600;
+  margin: -30px 10px 15px 18px;
+}
+
+.portfolio .portfolio-wrap .portfolio-info-light p {
   color: #070809;
   font-size: 16px;
   text-transform: uppercase;
@@ -687,6 +706,9 @@ section {
   margin: 0;
   margin: -10px 10px 15px 18px;
 }
+
+
+/* ----------------------------------------------- */
 
 .portfolio .portfolio-wrap .portfolio-links {
   text-align: center;
@@ -1205,3 +1227,24 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/* ------------------------------------------
+       carousel
+-----------------------------------------        */
+
+.carousel .carousel-inner{
+  height:500px;
+  max-width: 615px;
+  }
+  .carousel-inner .carousel-item img{
+  min-height:200px;
+  /* prevent it from stretch in screen size < than 768px */
+  object-fit:cover
+  }
+  
+  @media(max-width:768px){
+  .carousel .carousel-inner{
+  /* //prevent it from adding a white space between carousel and container elements */
+  height:auto
+   }
+  }
