@@ -1,10 +1,4 @@
-/**
-* Template Name: MyResume
-* Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
 
@@ -266,5 +260,8 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+  function viewResume() {
+    window.open('https://drive.google.com/file/d/1oojBKyiKY8ido-SXozclYdUt8sIXDzKe/view?usp=drive_link', '_blank');
+  }
 
 })()
