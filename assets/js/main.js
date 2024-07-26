@@ -52,6 +52,35 @@
       }
     })
   }
+
+  // Form submission handling
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);
+        xhr.onload = function() {
+            const responseMessage = document.querySelector('.sent-message');
+            const errorMessage = document.querySelector('.error-message');
+            if (xhr.status === 200) {
+                responseMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                form.reset();
+            } else {
+                responseMessage.style.display = 'none';
+                errorMessage.textContent = xhr.responseText;
+                errorMessage.style.display = 'block';
+            }
+        };
+        xhr.send(formData);
+    });
+});
+
+
+
   window.addEventListener('load', navbarlinksActive)
   onscroll(document, navbarlinksActive)
 
@@ -260,8 +289,5 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
-  function viewResume() {
-    window.open('https://drive.google.com/file/d/1oojBKyiKY8ido-SXozclYdUt8sIXDzKe/view?usp=drive_link', '_blank');
-  }
 
 })()
