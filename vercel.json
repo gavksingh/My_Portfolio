@@ -1,0 +1,40 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/**/*.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "assets/css/*",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "assets/js/*",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "assets/img/*",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "Resume/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/contact.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }
+  

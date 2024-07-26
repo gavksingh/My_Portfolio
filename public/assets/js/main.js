@@ -55,29 +55,30 @@
 
   // Form submission handling
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(form);
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', form.action, true);
-        xhr.onload = function() {
-            const responseMessage = document.querySelector('.sent-message');
-            const errorMessage = document.querySelector('.error-message');
-            if (xhr.status === 200) {
-                responseMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                form.reset();
-            } else {
-                responseMessage.style.display = 'none';
-                errorMessage.textContent = xhr.responseText;
-                errorMessage.style.display = 'block';
-            }
-        };
-        xhr.send(formData);
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    fetch('/api/contact', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(formData)),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.text()).then(data => {
+      const responseMessage = document.querySelector('.sent-message');
+      const errorMessage = document.querySelector('.error-message');
+      if (response.status === 200) {
+        responseMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+        this.reset();
+      } else {
+        responseMessage.style.display = 'none';
+        errorMessage.textContent = data;
+        errorMessage.style.display = 'block';
+      }
     });
-});
+  });
+  
 
 
 
