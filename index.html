@@ -14,6 +14,8 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Cyberpunk Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -26,7 +28,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script defer type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -1763,16 +1766,16 @@
             <span class="nav-text">ABOUT</span>
         </div>
         <div class="nav-item">
+            <i class="nav-icon bi bi-folder-fill"></i>
+            <span class="nav-text">PROJECTS</span>
+        </div>
+        <div class="nav-item">
             <i class="nav-icon bi bi-code-slash"></i>
             <span class="nav-text">SKILLS</span>
         </div>
         <div class="nav-item">
             <i class="nav-icon bi bi-file-earmark-text"></i>
             <span class="nav-text">RESUME</span>
-        </div>
-        <div class="nav-item">
-            <i class="nav-icon bi bi-folder-fill"></i>
-            <span class="nav-text">PROJECTS</span>
         </div>
         <div class="nav-item">
             <i class="nav-icon bi bi-play-circle-fill"></i>
@@ -1862,219 +1865,41 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="cyber-card text-center">
-                        <img src="assets/img/profile-img.png" class="img-fluid rounded" alt="Gaurav Singh"
-                            style="max-width: 250px; border: 2px solid var(--neon-cyan);">
+                        <img src="assets/img/profile-img.webp" class="img-fluid rounded" alt="Gaurav Singh"
+                            style="max-width: 250px; border: 2px solid var(--neon-cyan);" loading="lazy"
+                            decoding="async">
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="cyber-card">
-                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Developer & Content
-                            Creator</h3>
-                        <p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.7;">
-                            Greetings! I'm Gaurav Kumar Singh, a dedicated Software Development Engineer pursuing my
-                            Master's in Computer Science at University at Buffalo with a 3.9 GPA. I am passionate about
-                            creating innovative solutions that meet customer needs, leveraging my expertise in
-                            Artificial Intelligence, Machine Learning, and Cloud Computing.
-                        </p>
-                        <p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.7;">
-                            I specialize in:
-                            <span class="cyber-badge">Java</span>
-                            <span class="cyber-badge">Python</span>
-                            <span class="cyber-badge">AI/ML</span>
-                            <span class="cyber-badge">Cloud Computing</span>
-                            <span class="cyber-badge">Full Stack Development</span>
-                            I actively contribute to
-                            <span class="cyber-badge">Open Source</span>
-                            projects and collaborate with like-minded individuals.
-                        </p>
-                        <div class="row mt-4">
-                            <div class="col-12">
-                                <ul style="list-style: none; padding: 0;">
-                                    <li style="margin: 10px 0; color: var(--neon-cyan);">
-                                        <i class="bi bi-youtube" style="margin-right: 10px;"></i>
-                                        <strong>YouTube:</strong>
-                                        <a href="https://www.youtube.com/@workcodeandgaurav/featured"
-                                            style="color: var(--neon-pink);">WorkCode & Gaurav</a>
-                                    </li>
-                                    <li style="margin: 10px 0; color: var(--neon-cyan);">
-                                        <i class="bi bi-linkedin" style="margin-right: 10px;"></i>
-                                        <strong>LinkedIn:</strong>
-                                        <a href="https://www.linkedin.com/in/gavksingh/"
-                                            style="color: var(--neon-pink);">Gaurav Singh</a>
-                                    </li>
-                                    <li style="margin: 10px 0; color: var(--neon-cyan);">
-                                        <i class="bi bi-file-text" style="margin-right: 10px;"></i>
-                                        <strong>Blogs:</strong>
-                                        <a href="https://www.linkedin.com/in/gavksingh/recent-activity/articles/"
-                                            style="color: var(--neon-pink);">My Articles</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.7;">
-                            Outside my work, I enjoy sharing knowledge and empowering others. I run the YouTube channel
-                            <span class="cyber-badge">"WorkCode & Gaurav"</span>
-                            providing valuable insights on
-                            <strong style="color: var(--neon-yellow);">Data Structures & Algorithms</strong>,
-                            <strong style="color: var(--neon-yellow);">Cloud & DevOps practices</strong>,
-                            <strong style="color: var(--neon-yellow);">AI/ML concepts</strong>, and
-                            <strong style="color: var(--neon-yellow);">GRE & TOEFL</strong> preparation.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-        <div class="container fade-in">
-            <div class="section-title">
-                <h2 class="glitch" data-text="SKILLS">SKILLS</h2>
-                <p style="color: var(--text-secondary);">Technology stack and expertise</p>
-            </div>
-            <div class="skill-matrix">
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-cup-hot"></i>
-                    <div class="skill-name">Java</div>
-                    <div class="skill-level">Expert</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-code-slash"></i>
-                    <div class="skill-name">Python</div>
-                    <div class="skill-level">Expert</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-brain"></i>
-                    <div class="skill-name">AI/ML</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-cloud"></i>
-                    <div class="skill-name">AWS Cloud</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-bootstrap"></i>
-                    <div class="skill-name">React</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-gear"></i>
-                    <div class="skill-name">DevOps</div>
-                    <div class="skill-level">Intermediate</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-database"></i>
-                    <div class="skill-name">Database</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-laptop"></i>
-                    <div class="skill-name">Full Stack</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section class="section" id="resume">
-        <div class="container fade-in">
-            <div class="section-title">
-                <h2 class="glitch" data-text="RESUME">RESUME</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="cyber-card">
-                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Education</h3>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
-                            <h4 style="color: var(--neon-yellow);">Master of Science in Computer Science & Engineering
-                            </h4>
-                            <h5 style="color: var(--neon-cyan);">Expected Graduation: Dec 2025</h5>
-                            <p style="color: var(--text-secondary);"><em>University at Buffalo - SUNY, New York,
-                                    USA</em></p>
-                            <p style="color: var(--neon-green);">GPA: 3.9/4.0</p>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                                <strong>Coursework:</strong> Distributed Systems, Operating Systems, Deep Learning,
-                                AI/ML, Algorithms & Analysis, Cloud Computing
-                            </p>
-                        </div>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
-                            <h4 style="color: var(--neon-yellow);">Bachelor of Science</h4>
-                            <h5 style="color: var(--neon-cyan);">Aug 2017 - Jul 2021</h5>
-                            <p style="color: var(--text-secondary);"><em>Galgotias College of Engineering & Technology,
-                                    Greater Noida, India</em></p>
-                            <p style="color: var(--neon-green);">GPA: 4.0/4.0</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="cyber-card">
-                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Professional Experience
+                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">
+                            Software Engineer · AI Agents & Distributed Systems
                         </h3>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Research Assistant</h4>
-                            <h5 style="color: var(--neon-cyan);">Nov 2024 - Present</h5>
-                            <p style="color: var(--text-secondary);"><em>The Research Foundation for SUNY, United
-                                    States</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
-                                <li>Assisted in the AutoRSR project to early-detect speech disorders in children using
-                                    AI, determining whether a child requires Speech-Language Pathologist (SLP) attention
-                                </li>
-                                <li>Designed and trained machine-learning models to analyze vocal patterns and predict
-                                    speech-development concerns, achieving 85% accuracy in distinguishing cases needing
-                                    SLP intervention</li>
-                                <li>Built a scalable inference pipeline in Python that processes audio recordings in
-                                    real time, flagging at-risk children and generating actionable reports</li>
-                                <li>Deployed the AutoRSR service enabling remote screening for dozens of clinics and
-                                    reducing manual evaluation load by 70%</li>
-                            </ul> -->
-                        </div>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
-                            <h5 style="color: var(--neon-cyan);">May 2025 - Aug 2025</h5>
-                            <p style="color: var(--text-secondary);"><em>National AI Institute, University at Buffalo,
-                                    NY, USA</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
-                                <li>Designed scalable AI workflows using C++, Python, React.js, Node.js for LLM
-                                    applications</li>
-                                <li>Created AI-powered automation tool with Playwright for healthcare data extraction
-                                </li>
-                                <li>Developed AI agent using LangChain reducing manual intervention by 60%</li>
-                                <li>Engineered deep learning pipelines with pi-whisper for speech-based predictions</li>
-                            </ul> -->
-                        </div>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
-                            <h5 style="color: var(--neon-cyan);">Jun 2024 - Aug 2024</h5>
-                            <p style="color: var(--text-secondary);"><em>Muni Health, USA</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
-                                <li>Integrated RAG-based AI chatbot into HIPAA-compliant MERN stack messaging system
-                                </li>
-                                <li>Developed interactive Tableau dashboards reducing analysis time by 30%</li>
-                                <li>Built predictive ML models improving patient outcome predictions by 20%</li>
-                            </ul> -->
-                        </div>
-
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer</h4>
-                            <h5 style="color: var(--neon-cyan);">Jul 2021 - Jun 2024</h5>
-                            <p style="color: var(--text-secondary);"><em>TCS</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
-                                <li>Engineered enterprise e-Form systems using Java, Spring Boot, MySQL</li>
-                                <li>Optimized backend performance reducing response times by 35%</li>
-                                <li>Developed high-performance REST APIs with 93% test coverage</li>
-                                <li>Integrated Apache Kafka for microservices messaging</li>
-                            </ul> -->
-                        </div>
+                        <p style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Software Engineer</strong> with <strong>3+ years</strong> of experience building production <strong>AI agent systems</strong> and
+                            scalable <strong>distributed services</strong>. Currently working as an <strong>AI Software Engineer</strong> at the
+                            <strong>University at Buffalo</strong>, focusing on <strong>multi-agent orchestration</strong>, <strong>semantic search</strong>, and
+                            reliable distributed services.
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 1.0rem; line-height: 1.8; margin-bottom: 1rem;">
+                            I build <strong>end-to-end AI systems</strong>: <strong>MCP-based agents</strong> with <strong>LangGraph/LangChain</strong>, <strong>RAG pipelines</strong>,
+                            and full-stack platforms like <strong>AutoRSR</strong> and <strong>X-Voice</strong> that combine <strong>low-latency</strong> user
+                            experiences with <strong>production-grade reliability</strong>.
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
+                            My experience spans <strong>event-driven microservices</strong>, <strong>Kafka-based data pipelines</strong> processing
+                            hundreds of thousands of daily events, and <strong>cloud-native deployments</strong> on <strong>AWS</strong> and <strong>Azure</strong>
+                            with strong <strong>observability</strong> and <strong>CI/CD</strong>.
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
+                            <strong>Core stack: Python, TypeScript, Java, C#, LangGraph, LangChain, RAG, React, Next.js,
+                            Spring Boot, .NET, Kafka, PostgreSQL, Redis, Docker, Kubernetes.</strong>
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8;">
+                            <strong>MS in Computer Science</strong> from the University at Buffalo (<strong>3.9 GPA</strong>), with certifications across
+                            <strong>AWS</strong>, <strong>Azure AI</strong>, and <strong>GCP</strong>. Open to <strong>Software Engineer</strong>, <strong>AI/ML Engineer</strong>, and <strong>Applied AI Engineer</strong>
+                            roles.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -2089,6 +1914,59 @@
                 <p style="color: var(--text-secondary);">Innovative solutions and cutting-edge implementations</p>
             </div>
             <div class="projects-grid">
+
+                <!-- Agentic MCP Hub -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="bi bi-diagram-3"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Agentic MCP Hub</h3>
+                        <p style="color: var(--text-secondary);">
+                            Enterprise-grade MCP server that gives AI agents a unified interface to Jira, Slack,
+                            and SQL databases. Designed for secure, multi-step agentic workflows across enterprise
+                            systems.
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MCP</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">Pydantic</span>
+                            <span class="tech-tag">Enterprise</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://github.com/gavksingh/agentic-mcp-hub" class="cyber-btn" target="_blank">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AutoFlow MCP -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>AutoFlow MCP</h3>
+                        <p style="color: var(--text-secondary);">
+                            Browser automation and content extraction MCP server that lets AI agents navigate,
+                            click, and extract structured data from the web using Playwright-powered workflows.
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">MCP</span>
+                            <span class="tech-tag">Playwright</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Web Agents</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://github.com/gavksingh/AutoFlow-MCP" class="cyber-btn" target="_blank">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- AutoRSR Project -->
                 <div class="project-card">
@@ -2189,8 +2067,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- SmokeFreeTeen Project -->
                 <div class="project-card">
                     <div class="project-img">
@@ -2288,6 +2164,167 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container fade-in">
+            <div class="section-title">
+                <h2 class="glitch" data-text="SKILLS">SKILLS</h2>
+                <p style="color: var(--text-secondary);">Technology stack and expertise</p>
+            </div>
+            <div class="skill-matrix">
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-cup-hot"></i>
+                    <div class="skill-name">Java</div>
+                    <div class="skill-level">Expert</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-code-slash"></i>
+                    <div class="skill-name">Python</div>
+                    <div class="skill-level">Expert</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-brain"></i>
+                    <div class="skill-name">AI/ML</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-cloud"></i>
+                    <div class="skill-name">AWS Cloud</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-bootstrap"></i>
+                    <div class="skill-name">React</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-gear"></i>
+                    <div class="skill-name">DevOps</div>
+                    <div class="skill-level">Intermediate</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-database"></i>
+                    <div class="skill-name">Database</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item">
+                    <i class="skill-icon bi bi-laptop"></i>
+                    <div class="skill-name">Full Stack</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="section" id="resume">
+        <div class="container fade-in">
+            <div class="section-title">
+                <h2 class="glitch" data-text="RESUME">RESUME</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="cyber-card">
+                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Education</h3>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
+                            <h4 style="color: var(--neon-yellow);">Master of Science in Computer Science & Engineering
+                            </h4>
+                            <h5 style="color: var(--neon-cyan);">Expected Graduation: Dec 2025</h5>
+                            <p style="color: var(--text-secondary);"><em>University at Buffalo - SUNY, New York,
+                                    USA</em></p>
+                            <p style="color: var(--neon-green);">GPA: 3.9/4.0</p>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                                <strong>Coursework:</strong> Distributed Systems, Operating Systems, Deep Learning,
+                                AI/ML, Algorithms & Analysis, Cloud Computing
+                            </p>
+                        </div>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
+                            <h4 style="color: var(--neon-yellow);">Bachelor of Science</h4>
+                            <h5 style="color: var(--neon-cyan);">Aug 2017 - Jul 2021</h5>
+                            <p style="color: var(--text-secondary);"><em>Galgotias College of Engineering & Technology,
+                                    Greater Noida, India</em></p>
+                            <p style="color: var(--neon-green);">GPA: 4.0/4.0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="cyber-card">
+                        <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Professional Experience
+                        </h3>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
+                            <h4 style="color: var(--neon-yellow);">AI Software Engineer</h4>
+                            <h5 style="color: var(--neon-cyan);">Jan 2026 - Present</h5>
+                            <p style="color: var(--text-secondary);"><em>University at Buffalo, United States</em></p>
+                        </div>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
+                            <h4 style="color: var(--neon-yellow);">Research Assistant</h4>
+                            <h5 style="color: var(--neon-cyan);">Nov 2024 - Dec 2025</h5>
+                            <p style="color: var(--text-secondary);"><em>The Research Foundation for SUNY, United
+                                    States</em></p>
+                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                                <li>Assisted in the AutoRSR project to early-detect speech disorders in children using
+                                    AI, determining whether a child requires Speech-Language Pathologist (SLP) attention
+                                </li>
+                                <li>Designed and trained machine-learning models to analyze vocal patterns and predict
+                                    speech-development concerns, achieving 85% accuracy in distinguishing cases needing
+                                    SLP intervention</li>
+                                <li>Built a scalable inference pipeline in Python that processes audio recordings in
+                                    real time, flagging at-risk children and generating actionable reports</li>
+                                <li>Deployed the AutoRSR service enabling remote screening for dozens of clinics and
+                                    reducing manual evaluation load by 70%</li>
+                            </ul> -->
+                        </div>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
+                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
+                            <h5 style="color: var(--neon-cyan);">May 2025 - Aug 2025</h5>
+                            <p style="color: var(--text-secondary);"><em>National AI Institute, University at Buffalo,
+                                    NY, USA</em></p>
+                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                                <li>Designed scalable AI workflows using C++, Python, React.js, Node.js for LLM
+                                    applications</li>
+                                <li>Created AI-powered automation tool with Playwright for healthcare data extraction
+                                </li>
+                                <li>Developed AI agent using LangChain reducing manual intervention by 60%</li>
+                                <li>Engineered deep learning pipelines with pi-whisper for speech-based predictions</li>
+                            </ul> -->
+                        </div>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
+                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
+                            <h5 style="color: var(--neon-cyan);">Jun 2024 - Aug 2024</h5>
+                            <p style="color: var(--text-secondary);"><em>Muni Health, USA</em></p>
+                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                                <li>Integrated RAG-based AI chatbot into HIPAA-compliant MERN stack messaging system
+                                </li>
+                                <li>Developed interactive Tableau dashboards reducing analysis time by 30%</li>
+                                <li>Built predictive ML models improving patient outcome predictions by 20%</li>
+                            </ul> -->
+                        </div>
+
+                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
+                            <h4 style="color: var(--neon-yellow);">Software Engineer</h4>
+                            <h5 style="color: var(--neon-cyan);">Jul 2021 - Jun 2024</h5>
+                            <p style="color: var(--text-secondary);"><em>TCS</em></p>
+                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                                <li>Engineered enterprise e-Form systems using Java, Spring Boot, MySQL</li>
+                                <li>Optimized backend performance reducing response times by 35%</li>
+                                <li>Developed high-performance REST APIs with 93% test coverage</li>
+                                <li>Integrated Apache Kafka for microservices messaging</li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tutorials Section -->
     <section class="section tutorials-section" id="tutorials">
         <div class="container fade-in">
@@ -2300,7 +2337,7 @@
                     <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial1.png" alt="Data Structure Tutorial"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -2319,7 +2356,7 @@
                         style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -2337,7 +2374,7 @@
                     <a href="https://youtu.be/phdImo3Wa-k" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -2355,7 +2392,7 @@
                     <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -2391,7 +2428,7 @@
                         target="_blank" style="text-decoration: none;">
                         <div class="blog-img">
                             <img src="assets/img/blog2.png" alt="Cloud Computing Blog"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="blog-info">
                             <div class="blog-meta">
@@ -2414,7 +2451,7 @@
                         target="_blank" style="text-decoration: none;">
                         <div class="blog-img">
                             <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial"
-                                onerror="this.style.display='none'">
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="blog-info">
                             <div class="blog-meta">
@@ -2573,9 +2610,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
+    <script defer>
         // Initialize EmailJS
         if (typeof emailjs !== 'undefined') {
             // Replace with your actual EmailJS public key
