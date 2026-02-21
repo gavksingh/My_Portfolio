@@ -11,7 +11,7 @@
 
     <!-- Favicons -->
     <link href="assets/img/favicon6.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/img/apple-touch-icon2.png" rel="apple-touch-icon">
 
     <!-- Cyberpunk Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,6 @@
         rel="stylesheet">
 
     <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Bootstrap -->
@@ -355,7 +354,13 @@
             text-shadow:
                 0 0 15px rgba(255, 0, 128, 0.8),
                 0 0 25px rgba(255, 0, 128, 0.4);
-            transform: scale(1.1);
+            animation: nav-icon-pulse 0.4s ease-out 1 forwards;
+        }
+
+        @keyframes nav-icon-pulse {
+            0%   { transform: scale(1.1); }
+            50%  { transform: scale(1.4); }
+            100% { transform: scale(1.1); }
         }
 
         .nav-item:hover .nav-icon {
@@ -507,10 +512,32 @@
             overflow: hidden;
         }
 
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent, transparent 3px,
+                rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px
+            );
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        @keyframes glitch-intro {
+            0%   { letter-spacing: 0.5em; opacity: 0; }
+            40%  { letter-spacing: 0.12em; opacity: 1; filter: hue-rotate(180deg); }
+            60%  { filter: hue-rotate(0deg); }
+            80%  { letter-spacing: 0.13em; }
+            100% { letter-spacing: 0.12em; opacity: 1; filter: none; }
+        }
+
         .hero-title {
             font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: glitch-intro 1s ease-out 1 both;
         }
 
         .hero-subtitle {
@@ -604,6 +631,7 @@
         }
 
         .cyber-btn.secondary:hover {
+            color: var(--dark-bg);
             box-shadow: var(--glow-shadow) var(--neon-pink);
         }
 
@@ -665,6 +693,44 @@
             75% {
                 transform: translateY(-10px) rotate(0.5deg);
             }
+        }
+
+        /* Floating hub: central glowing anchor node */
+        .floating-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hub-core {
+            width: 36px;
+            height: 36px;
+            background: radial-gradient(circle, var(--neon-cyan) 0%, rgba(0, 255, 255, 0.2) 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 16px var(--neon-cyan), 0 0 32px rgba(0, 255, 255, 0.4);
+            position: absolute;
+        }
+
+        .hub-ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 255, 255, 0.5);
+            position: absolute;
+            animation: hub-spin 20s linear infinite;
+        }
+
+        @keyframes hub-spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
         }
 
         .floating-card:hover {
@@ -743,8 +809,15 @@
         .social-links-cyber {
             display: flex;
             gap: 15px;
-            justify-content: center;
+            justify-content: flex-start;
             margin-top: 2rem;
+        }
+
+        /* On mobile the hero is text-center, so center the icons too */
+        @media (max-width: 991px) {
+            .social-links-cyber {
+                justify-content: center;
+            }
         }
 
         .social-links-cyber a {
@@ -1231,7 +1304,7 @@
 
         .tutorial-card {
             background: var(--dark-surface);
-            border: 2px solid var(--neon-yellow);
+            border: 2px solid var(--neon-cyan);
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -1246,26 +1319,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, var(--neon-yellow), var(--neon-cyan));
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
         .tutorial-card:hover::before {
-            opacity: 0.1;
+            opacity: 0.08;
         }
 
         .tutorial-card:hover {
             border-color: var(--neon-cyan);
             transform: translateY(-10px);
-            box-shadow: var(--glow-shadow) rgba(255, 255, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
         }
 
         .tutorial-img {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, rgba(255, 255, 0, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(255, 0, 128, 0.1) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1289,24 +1362,24 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: var(--neon-yellow);
-            background: rgba(0, 0, 0, 0.7);
-            width: 80px;
-            height: 80px;
+            transform: translate(-50%, -50%) scale(0.8);
+            font-size: 2.5rem;
+            color: var(--neon-cyan);
+            background: rgba(0, 0, 0, 0.75);
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid var(--neon-yellow);
-            transition: all 0.3s ease;
+            border: 2px solid var(--neon-cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .tutorial-card:hover .tutorial-img::after {
-            background: var(--neon-yellow);
-            color: var(--dark-bg);
-            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .tutorial-info {
@@ -1315,7 +1388,7 @@
 
         .tutorial-info h3 {
             font-family: 'Orbitron', monospace;
-            color: var(--neon-yellow);
+            color: var(--neon-cyan);
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
@@ -1342,8 +1415,8 @@
 
         .blogs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
 
@@ -1375,9 +1448,9 @@
         }
 
         .blog-card:hover {
-            border-color: var(--neon-pink);
+            border-color: var(--neon-cyan);
             transform: translateY(-10px);
-            box-shadow: var(--glow-shadow) rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
         }
 
         .blog-img {
@@ -1403,14 +1476,87 @@
         }
 
         .blog-info {
-            padding: 2rem;
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .blog-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 6px 14px;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            border-radius: 3px;
+            background: rgba(0, 255, 255, 0.05);
+            transition: background 0.2s ease, color 0.2s ease;
+            pointer-events: none;
+        }
+
+        .blog-card:hover .blog-cta-btn {
+            background: rgba(0, 255, 255, 0.15);
+        }
+
+        /* LinkedIn post card (no featured image) */
+        .post-card-header {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0.4) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+        }
+
+        .post-card-icon {
+            font-size: 3rem;
+            color: var(--neon-cyan);
+            opacity: 0.8;
+        }
+
+        .blog-card.post-card:hover .post-card-icon {
+            opacity: 1;
+            filter: drop-shadow(0 0 8px var(--neon-cyan));
+        }
+
+        .blog-tags {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .blog-tag {
+            font-size: 0.7rem;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 2px 8px;
+            border-radius: 3px;
+            background: rgba(0, 255, 255, 0.06);
+        }
+
+        .blog-read-time {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .blog-info h3 {
             font-family: 'Orbitron', monospace;
             color: var(--neon-green);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
             line-height: 1.4;
         }
 
@@ -1511,7 +1657,6 @@
             }
 
             .social-links-cyber {
-                justify-content: center;
                 flex-wrap: wrap;
                 gap: 10px;
             }
@@ -1526,8 +1671,8 @@
         /* Animation for scroll-triggered elements */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in.visible {
@@ -1581,10 +1726,41 @@
 
         .footer-main {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 3rem;
             align-items: start;
+        }
+
+        .footer-nav-section h4 {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-cyan);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+        }
+
+        .footer-nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav-links a:hover {
+            color: var(--neon-cyan);
         }
 
         .footer-contact h4,
@@ -1635,14 +1811,13 @@
 
         .footer-status::before {
             content: '●';
-            animation: pulse 2s infinite;
+            animation: heartbeat 2s ease-in-out infinite;
         }
 
         .footer-social {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 300px;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 12px;
         }
 
         .footer-social a {
@@ -1702,6 +1877,14 @@
             letter-spacing: 0.1em;
         }
 
+        @keyframes heartbeat {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            14%       { transform: scale(1.3); }
+            28%       { transform: scale(1); }
+            42%       { transform: scale(1.2); }
+            70%       { opacity: 1; }
+        }
+
         @keyframes pulse {
 
             0%,
@@ -1737,10 +1920,386 @@
                 align-items: center;
             }
         }
+
+        /* ===== MOBILE HAMBURGER NAV ===== */
+        .mobile-nav-btn {
+            display: none;
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 2001;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 10px;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-btn:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+        }
+
+        .mobile-nav-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--neon-cyan);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-btn.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background: var(--neon-pink);
+        }
+
+        .mobile-nav-btn.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .mobile-nav-btn.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background: var(--neon-pink);
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.open {
+            opacity: 1;
+        }
+
+        .mobile-nav-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.97) 0%, rgba(26, 26, 26, 0.97) 100%);
+            border-right: 2px solid rgba(0, 255, 255, 0.3);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 0 30px;
+            transform: translateX(-100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 4px 0 30px rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .mobile-nav-drawer.open {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-drawer .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border-left: 3px solid transparent;
+            text-decoration: none;
+        }
+
+        .mobile-nav-drawer .mobile-nav-item:hover,
+        .mobile-nav-drawer .mobile-nav-item.active {
+            background: rgba(0, 255, 255, 0.06);
+            border-left-color: var(--neon-cyan);
+        }
+
+        .mobile-nav-drawer .mobile-nav-item i {
+            font-size: 1.2rem;
+            color: rgba(0, 255, 255, 0.7);
+            min-width: 22px;
+            transition: color 0.25s ease;
+        }
+
+        .mobile-nav-drawer .mobile-nav-item:hover i,
+        .mobile-nav-drawer .mobile-nav-item.active i {
+            color: var(--neon-pink);
+        }
+
+        .mobile-nav-drawer .mobile-nav-item span {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
+        }
+
+        .mobile-nav-drawer .mobile-nav-item:hover span,
+        .mobile-nav-drawer .mobile-nav-item.active span {
+            color: var(--neon-cyan);
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            padding: 10px 20px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 0 0 8px 8px;
+            z-index: 9999;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid var(--neon-pink);
+            outline-offset: 2px;
+        }
+
+        /* Scroll progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 8px var(--neon-cyan);
+            z-index: 9999;
+            transition: width 0.1s linear;
+            pointer-events: none;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            width: 46px;
+            height: 46px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+            background: rgba(255, 0, 128, 0.08);
+        }
+
+        /* will-change hints for animated elements */
+        .cyber-grid,
+        .floating-card,
+        .cursor-dot,
+        .cursor-outline {
+            will-change: transform;
+        }
+
+        /* Staggered card animation base state */
+        .card-reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .card-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scanline / CRT overlay on terminal body */
+        .terminal-body {
+            position: relative;
+        }
+
+        .terminal-body::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.08) 2px,
+                rgba(0, 0, 0, 0.08) 4px
+            );
+            pointer-events: none;
+            z-index: 2;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* Neon corner accents on cards */
+        .project-card::after,
+        .cyber-card::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 18px;
+            height: 18px;
+            border-bottom: 2px solid var(--neon-pink);
+            border-right: 2px solid var(--neon-pink);
+            opacity: 0;
+            transition: opacity 0.3s ease, box-shadow 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::after,
+        .cyber-card:hover::after {
+            opacity: 1;
+            box-shadow: 4px 4px 8px rgba(255, 0, 128, 0.3);
+        }
+
+        /* SVG skill ring */
+        .skill-ring-wrap {
+            position: relative;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+        }
+
+        .skill-ring-wrap svg {
+            transform: rotate(-90deg);
+            width: 64px;
+            height: 64px;
+        }
+
+        .skill-ring-wrap .ring-bg {
+            fill: none;
+            stroke: rgba(0, 255, 255, 0.12);
+            stroke-width: 4;
+        }
+
+        .skill-ring-wrap .ring-fill {
+            fill: none;
+            stroke: var(--neon-cyan);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 163;
+            stroke-dashoffset: 163;
+            transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s ease;
+        }
+
+        .skill-item:hover .ring-fill {
+            stroke: var(--neon-pink);
+        }
+
+        .skill-item.rings-animated .ring-fill {
+            stroke-dashoffset: var(--ring-offset, 0);
+        }
+
+        .skill-ring-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.4rem;
+            color: var(--neon-cyan);
+            transition: color 0.3s ease;
+        }
+
+        .skill-item:hover .skill-ring-icon {
+            color: var(--neon-pink);
+            text-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        /* Remove old .skill-icon margin since ring replaces it */
+        .skill-icon {
+            display: none;
+        }
+
+        /* Neon glow section dividers */
+        .section + .section {
+            border-top: 1px solid rgba(0, 255, 255, 0.12);
+            box-shadow: inset 0 1px 0 rgba(0, 255, 255, 0.06);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-btn {
+                display: flex;
+            }
+
+            .blogs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Skip to content -->
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="mobile-nav-btn" id="mobile-nav-btn" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+        <a class="mobile-nav-item active" href="#home"><i class="bi bi-house-fill"></i><span>Home</span></a>
+        <a class="mobile-nav-item" href="#about"><i class="bi bi-person-fill"></i><span>About</span></a>
+        <a class="mobile-nav-item" href="#projects"><i class="bi bi-folder-fill"></i><span>Projects</span></a>
+        <a class="mobile-nav-item" href="#skills"><i class="bi bi-code-slash"></i><span>Skills</span></a>
+        <a class="mobile-nav-item" href="#resume"><i class="bi bi-file-earmark-text"></i><span>Resume</span></a>
+        <a class="mobile-nav-item" href="#tutorials"><i class="bi bi-play-circle-fill"></i><span>Tutorials</span></a>
+        <a class="mobile-nav-item" href="#blogs"><i class="bi bi-journal-text"></i><span>Blogs</span></a>
+        <a class="mobile-nav-item" href="#terminal"><i class="bi bi-terminal-fill"></i><span>Terminal</span></a>
+        <a class="mobile-nav-item" href="#contact"><i class="bi bi-envelope-fill"></i><span>Contact</span></a>
+    </nav>
+
+    <!-- Back to top -->
+    <a class="back-to-top" id="back-to-top" href="#home" aria-label="Back to top">
+        <i class="bi bi-chevron-up"></i>
+    </a>
+
     <!-- Loading Screen -->
     <div class="loader-wrapper">
         <div class="cyber-loader">
@@ -1783,7 +2342,7 @@
         </div>
         <div class="nav-item">
             <i class="nav-icon bi bi-journal-text"></i>
-            <span class="nav-text">BLOGS</span>
+            <span class="nav-text">BLOGS & POSTS</span>
         </div>
         <div class="nav-item">
             <i class="nav-icon bi bi-terminal-fill"></i>
@@ -1811,21 +2370,20 @@
                             <a href="#contact" class="cyber-btn secondary">INITIALIZE CONTACT</a>
                         </div>
                         <div class="social-links-cyber">
-                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn"><i
-                                    class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" title="GitHub"><i class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube"><i
-                                    class="bi bi-youtube"></i></a>
-                            <a href="https://twitter.com/gaurav_ksingh4" title="Twitter"><i
-                                    class="bi bi-twitter"></i></a>
-                            <a href="https://www.instagram.com/_gaurav_rajpoot/" title="Instagram"><i
-                                    class="bi bi-instagram"></i></a>
-                            <a href="mailto:ksingh.gav@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="floating-elements d-none d-lg-block">
+                        <!-- Central hub node -->
+                        <div class="floating-hub">
+                            <div class="hub-ring"></div>
+                            <div class="hub-core"></div>
+                        </div>
                         <div class="floating-card">
                             <i class="bi bi-cup-hot"></i>
                             <span>Java</span>
@@ -1866,16 +2424,12 @@
                 <div class="col-lg-4 mb-4">
                     <div class="cyber-card text-center">
                         <img src="assets/img/profile-img.png" class="img-fluid rounded" alt="Gaurav Singh"
-                            style="max-width: 250px; border: 2px solid var(--neon-cyan);">
+                            loading="lazy" decoding="async" style="max-width: 250px; border: 2px solid var(--neon-cyan);">
                         <div class="social-links-cyber" style="margin-top: 20px; justify-content: center;">
-                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" target="_blank"><i
-                                    class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" title="GitHub" target="_blank"><i class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube" target="_blank"><i
-                                    class="bi bi-youtube"></i></a>
-                            <a href="https://twitter.com/gaurav_ksingh4" title="Twitter" target="_blank"><i
-                                    class="bi bi-twitter"></i></a>
-                            <a href="mailto:ksingh.gauravk@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1925,7 +2479,7 @@
             <div class="projects-grid">
 
                 <!-- X-Voice Project -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-mic"></i>
                     </div>
@@ -1948,7 +2502,7 @@
                 </div>
 
                 <!-- AutoRSR Project -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-heart-pulse-fill"></i>
                     </div>
@@ -1972,7 +2526,7 @@
                 </div>
 
                 <!-- Agentic MCP Hub -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-diagram-3"></i>
                     </div>
@@ -1999,7 +2553,7 @@
                 </div>
 
                 <!-- AutoFlow MCP -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-arrow-repeat"></i>
                     </div>
@@ -2025,7 +2579,7 @@
                 </div>
 
                 <!-- WebAutoDash Project -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-robot"></i>
                     </div>
@@ -2049,7 +2603,7 @@
                 </div>
 
                 <!-- Migrate Mate Project -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-arrow-left-right"></i>
                     </div>
@@ -2076,32 +2630,8 @@
                     </div>
                 </div>
 
-                <!-- SmokeFreeTeen Project -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="bi bi-heart-pulse"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>SmokeFreeTeen - Health Chatbot</h3>
-                        <p style="color: var(--text-secondary);">Cross-platform chatbot for adolescent e-cigarette
-                            cessation support with OpenAI API integration and multi-language support. Winner at UB
-                            Hacking hackathon.</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://github.com/gavksingh/SmokeFreeTeen" class="cyber-btn" target="_blank">View
-                                Project</a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- AI ChatBot Project -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-chat-dots"></i>
                     </div>
@@ -2123,8 +2653,31 @@
                     </div>
                 </div>
 
+                <!-- SmokeFreeTeen Project -->
+                <div class="project-card card-reveal">
+                    <div class="project-img">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>SmokeFreeTeen - Health Chatbot</h3>
+                        <p style="color: var(--text-secondary);">Cross-platform chatbot for adolescent e-cigarette
+                            cessation support with OpenAI API integration and multi-language support.</p>
+                        <div class="mt-3">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://github.com/gavksingh/SmokeFreeTeen" class="cyber-btn" target="_blank">View
+                                Project</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Face Recognition System -->
-                <div class="project-card">
+                <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-person-check"></i>
                     </div>
@@ -2146,29 +2699,6 @@
                     </div>
                 </div>
 
-                <!-- Java Web Application -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="bi bi-globe"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Java CRUD Web Application</h3>
-                        <p style="color: var(--text-secondary);">Full-stack web application with secure authentication
-                            and complete database operations</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://github.com/gavksingh/Java-Web-Application" class="cyber-btn"
-                                target="_blank">View Project</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -2181,43 +2711,100 @@
                 <p style="color: var(--text-secondary);">Technology stack and expertise</p>
             </div>
             <div class="skill-matrix">
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-cup-hot"></i>
+                <!-- AI/ML first -->
+                <div class="skill-item card-reveal" data-ring="90">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-cpu"></i>
+                    </div>
+                    <div class="skill-name">AI / ML</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item card-reveal" data-ring="95">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-cup-hot"></i>
+                    </div>
                     <div class="skill-name">Java</div>
                     <div class="skill-level">Expert</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-code-slash"></i>
+                <div class="skill-item card-reveal" data-ring="95">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-filetype-py"></i>
+                    </div>
                     <div class="skill-name">Python</div>
                     <div class="skill-level">Expert</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-brain"></i>
-                    <div class="skill-name">AI/ML</div>
+                <div class="skill-item card-reveal" data-ring="85">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-diagram-3-fill"></i>
+                    </div>
+                    <div class="skill-name">LangChain / Agents</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-cloud"></i>
+                <div class="skill-item card-reveal" data-ring="85">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-cloud-fill"></i>
+                    </div>
                     <div class="skill-name">AWS Cloud</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-bootstrap"></i>
+                <div class="skill-item card-reveal" data-ring="82">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-box-seam"></i>
+                    </div>
+                    <div class="skill-name">Docker / K8s</div>
+                    <div class="skill-level">Intermediate</div>
+                </div>
+                <div class="skill-item card-reveal" data-ring="88">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-braces"></i>
+                    </div>
+                    <div class="skill-name">Spring Boot</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item card-reveal" data-ring="85">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-filetype-tsx"></i>
+                    </div>
+                    <div class="skill-name">TypeScript</div>
+                    <div class="skill-level">Advanced</div>
+                </div>
+                <div class="skill-item card-reveal" data-ring="85">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-window"></i>
+                    </div>
                     <div class="skill-name">React</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-gear"></i>
+                <div class="skill-item card-reveal" data-ring="80">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-gear-wide-connected"></i>
+                    </div>
                     <div class="skill-name">DevOps</div>
                     <div class="skill-level">Intermediate</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-database"></i>
+                <div class="skill-item card-reveal" data-ring="85">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-database-fill"></i>
+                    </div>
                     <div class="skill-name">Database</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item">
-                    <i class="skill-icon bi bi-laptop"></i>
+                <div class="skill-item card-reveal" data-ring="88">
+                    <div class="skill-ring-wrap">
+                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <i class="skill-ring-icon bi bi-layers-fill"></i>
+                    </div>
                     <div class="skill-name">Full Stack</div>
                     <div class="skill-level">Advanced</div>
                 </div>
@@ -2238,9 +2825,9 @@
                         <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Education</h3>
 
                         <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
-                            <h4 style="color: var(--neon-yellow);">Master of Science in Computer Science & Engineering
+                            <h4 style="color: var(--neon-yellow);">MS in Computer Science & Engineering
                             </h4>
-                            <h5 style="color: var(--neon-cyan);">Expected Graduation: Dec 2025</h5>
+                            <h5 style="color: var(--neon-cyan);">Dec 2025</h5>
                             <p style="color: var(--text-secondary);"><em>University at Buffalo - SUNY, New York,
                                     USA</em></p>
                             <p style="color: var(--neon-green);">GPA: 3.9/4.0</p>
@@ -2250,13 +2837,6 @@
                             </p>
                         </div>
 
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
-                            <h4 style="color: var(--neon-yellow);">Bachelor of Science</h4>
-                            <h5 style="color: var(--neon-cyan);">Aug 2017 - Jul 2021</h5>
-                            <p style="color: var(--text-secondary);"><em>Galgotias College of Engineering & Technology,
-                                    Greater Noida, India</em></p>
-                            <p style="color: var(--neon-green);">GPA: 4.0/4.0</p>
-                        </div>
                     </div>
                 </div>
 
@@ -2290,20 +2870,22 @@
                             </ul> -->
                         </div>
 
+                        <!-- National AI Institute internship — temporarily hidden
                         <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
                             <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
                             <h5 style="color: var(--neon-cyan);">May 2025 - Aug 2025</h5>
                             <p style="color: var(--text-secondary);"><em>National AI Institute, University at Buffalo,
                                     NY, USA</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                            <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
                                 <li>Designed scalable AI workflows using C++, Python, React.js, Node.js for LLM
                                     applications</li>
                                 <li>Created AI-powered automation tool with Playwright for healthcare data extraction
                                 </li>
                                 <li>Developed AI agent using LangChain reducing manual intervention by 60%</li>
                                 <li>Engineered deep learning pipelines with pi-whisper for speech-based predictions</li>
-                            </ul> -->
+                            </ul>
                         </div>
+                        -->
 
                         <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
                             <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
@@ -2319,7 +2901,7 @@
 
                         <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
                             <h4 style="color: var(--neon-yellow);">Software Engineer</h4>
-                            <h5 style="color: var(--neon-cyan);">Jul 2021 - Jun 2024</h5>
+                            <h5 style="color: var(--neon-cyan);">Feb 2022 - Jun 2024</h5>
                             <p style="color: var(--text-secondary);"><em>TCS</em></p>
                             <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
                                 <li>Engineered enterprise e-Form systems using Java, Spring Boot, MySQL</li>
@@ -2334,6 +2916,172 @@
         </div>
     </section>
 
+    <!-- Blogs Section -->
+    <section class="section blogs-section" id="blogs">
+        <div class="container fade-in">
+            <div class="section-title">
+                <h2 class="glitch" data-text="BLOGS &amp; POSTS">BLOGS &amp; POSTS</h2>
+                <p style="color: var(--text-secondary);">Technical insights and knowledge sharing</p>
+            </div>
+            <div class="blogs-grid">
+                <!-- LinkedIn Posts (no featured image) -->
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="post-card-header">
+                            <i class="bi bi-robot post-card-icon"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">MCP</span>
+                                <span class="blog-tag">AI Agents</span>
+                                <span class="blog-tag">TypeScript</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>Build in Public</span>
+                            </div>
+                            <h3>AutoFlow MCP: Giving Your AI Browser Superpowers</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                            <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Observability</span>
+                                <span class="blog-tag">Open Source</span>
+                                <span class="blog-tag">MCP</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>AI Agents</span>
+                            </div>
+                            <h3>Observability Tools for AI Agents: Debugging the Black Box</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
+                            <i class="bi bi-graph-up-arrow post-card-icon" style="color: var(--neon-green);"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">AI Agents</span>
+                                <span class="blog-tag">LLMOps</span>
+                                <span class="blog-tag">PostgreSQL</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>Lessons Learned</span>
+                            </div>
+                            <h3>Building Observability for AI Agents: 3 Hurdles &amp; Fixes</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
+                            <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Backend</span>
+                                <span class="blog-tag">MCP</span>
+                                <span class="blog-tag">Architecture</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>System Design</span>
+                            </div>
+                            <h3>I Stopped Writing Glue Code &amp; Started Building Infrastructure</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- LinkedIn Articles -->
+                <div class="blog-card card-reveal">
+                    <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="blog-img">
+                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog"
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Cloud</span>
+                                <span class="blog-tag">Technology</span>
+                                <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Article</span>
+                                <span>•</span>
+                                <span>Technology</span>
+                            </div>
+                            <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card card-reveal">
+                    <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
+                        target="_blank" style="text-decoration: none;">
+                        <div class="blog-img">
+                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial"
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">DevOps</span>
+                                <span class="blog-tag">Kubernetes</span>
+                                <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Article</span>
+                                <span>•</span>
+                                <span>DevOps</span>
+                            </div>
+                            <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="https://www.linkedin.com/in/gavksingh/recent-activity/all/" target="_blank"
+                    rel="noopener noreferrer" class="cyber-btn">
+                    <i class="bi bi-linkedin"></i> View All on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Tutorials Section -->
     <section class="section tutorials-section" id="tutorials">
         <div class="container fade-in">
@@ -2342,7 +3090,7 @@
                 <p style="color: var(--text-secondary);">Educational content from WorkCode & Gaurav YouTube channel</p>
             </div>
             <div class="tutorials-grid">
-                <div class="tutorial-card">
+                <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial1.png" alt="Data Structure Tutorial"
@@ -2360,7 +3108,7 @@
                     </a>
                 </div>
 
-                <div class="tutorial-card">
+                <div class="tutorial-card card-reveal">
                     <a href="https://www.youtube.com/watch?v=1LVRUNSEWGk" target="_blank"
                         style="text-decoration: none;">
                         <div class="tutorial-img">
@@ -2379,7 +3127,7 @@
                     </a>
                 </div>
 
-                <div class="tutorial-card">
+                <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/phdImo3Wa-k" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
@@ -2397,7 +3145,7 @@
                     </a>
                 </div>
 
-                <div class="tutorial-card">
+                <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial"
@@ -2419,70 +3167,6 @@
             <div class="text-center mt-4">
                 <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank" class="cyber-btn">
                     <i class="bi bi-youtube"></i> Visit Channel
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blogs Section -->
-    <section class="section blogs-section" id="blogs">
-        <div class="container fade-in">
-            <div class="section-title">
-                <h2 class="glitch" data-text="BLOGS">BLOGS</h2>
-                <p style="color: var(--text-secondary);">Technical insights and knowledge sharing</p>
-            </div>
-            <div class="blogs-grid">
-                <div class="blog-card">
-                    <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
-                        target="_blank" style="text-decoration: none;">
-                        <div class="blog-img">
-                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>Technology</span>
-                            </div>
-                            <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
-                            <p style="color: var(--text-secondary);">In today's fast-paced digital era, the term "cloud
-                                computing" has become ubiquitous, transforming how businesses and individuals interact
-                                with technology. This comprehensive guide explores the fundamentals and impact of cloud
-                                computing.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card">
-                    <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
-                        target="_blank" style="text-decoration: none;">
-                        <div class="blog-img">
-                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>DevOps</span>
-                            </div>
-                            <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
-                            <p style="color: var(--text-secondary);">Welcome to a comprehensive guide on how to
-                                externalize your microservice's configuration using Kubernetes ConfigMaps & Secrets.
-                                Learn best practices for managing application configuration in cloud-native
-                                environments.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="text-center mt-4">
-                <a href="https://www.linkedin.com/in/gavksingh/recent-activity/articles/" target="_blank"
-                    class="cyber-btn">
-                    <i class="bi bi-file-text"></i> View All Articles
                 </a>
             </div>
         </div>
@@ -2519,17 +3203,17 @@
 
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon"><i class="bi bi-geo-alt-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Location</h3>
                     <p style="color: var(--text-secondary);">Buffalo, New York, USA</p>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon">📧</div>
+                    <div class="contact-icon"><i class="bi bi-envelope-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Email</h3>
                     <p style="color: var(--text-secondary);">ksingh.gav@gmail.com</p>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon">⏱️</div>
+                    <div class="contact-icon"><i class="bi bi-clock-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Response</h3>
                     <p style="color: var(--text-secondary);">Within 24 hours</p>
                 </div>
@@ -2591,22 +3275,27 @@
                         </div>
                     </div>
 
-                    <!-- Social Media (RIGHT) -->
+                    <!-- Social Media (CENTER) -->
                     <div class="footer-social-section">
                         <h4>Connect</h4>
                         <div class="footer-social">
-                            <a href="https://www.linkedin.com/in/gavksingh/" target="_blank" title="LinkedIn"><i
-                                    class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" target="_blank" title="GitHub"><i
-                                    class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank"
-                                title="YouTube"><i class="bi bi-youtube"></i></a>
-                            <a href="https://twitter.com/gaurav_ksingh4" target="_blank" title="Twitter"><i
-                                    class="bi bi-twitter"></i></a>
-                            <a href="https://www.instagram.com/_gaurav_rajpoot/" target="_blank" title="Instagram"><i
-                                    class="bi bi-instagram"></i></a>
-                            <a href="mailto:ksingh.gav@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" target="_blank" title="LinkedIn" aria-label="LinkedIn" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" target="_blank" title="GitHub" aria-label="GitHub" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank" title="YouTube" aria-label="YouTube" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
                         </div>
+                    </div>
+
+                    <!-- Quick Navigation (RIGHT) -->
+                    <div class="footer-nav-section">
+                        <h4>Navigate</h4>
+                        <ul class="footer-nav-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#resume">Resume</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -2618,304 +3307,353 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <script defer>
-        // Initialize EmailJS
+    (function () {
+        // ── EmailJS ──────────────────────────────────────────────────────────
         if (typeof emailjs !== 'undefined') {
-            // Replace with your actual EmailJS public key
             emailjs.init('10QOFeB7QIOcQhFyJ');
         }
 
-        // Loading Screen
+        // ── Loading screen: dismiss immediately on load, CSS handles the fade ─
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelector('.loader-wrapper').style.opacity = '0';
-                setTimeout(() => {
-                    document.querySelector('.loader-wrapper').style.display = 'none';
-                }, 500);
-            }, 2000);
+            const loader = document.querySelector('.loader-wrapper');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 500);
+            }
         });
 
-        // Custom Cursor
+        // ── RAF-throttled custom cursor ───────────────────────────────────────
         const cursor = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
+        let mouseX = 0, mouseY = 0, cursorRAF = false;
 
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 4 + 'px';
-            cursor.style.top = e.clientY - 4 + 'px';
-
-            cursorOutline.style.left = e.clientX - 15 + 'px';
-            cursorOutline.style.top = e.clientY - 15 + 'px';
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!cursorRAF) {
+                cursorRAF = true;
+                requestAnimationFrame(() => {
+                    cursor.style.left = (mouseX - 4) + 'px';
+                    cursor.style.top  = (mouseY - 4) + 'px';
+                    cursorOutline.style.left = (mouseX - 15) + 'px';
+                    cursorOutline.style.top  = (mouseY - 15) + 'px';
+                    cursorRAF = false;
+                });
+            }
         });
 
-        // Cursor hover effects
-        const hoverElements = document.querySelectorAll('a, button, .nav-item, .nav-icon, .skill-item, .project-card, .contact-card, .cyber-btn');
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
+        document.querySelectorAll('a, button, .nav-item, .mobile-nav-item, .skill-item, .project-card, .contact-card, .cyber-btn').forEach(el => {
+            el.addEventListener('mouseenter', () => {
                 cursorOutline.style.transform = 'scale(1.5)';
                 cursorOutline.style.borderColor = 'var(--neon-pink)';
             });
-            element.addEventListener('mouseleave', () => {
+            el.addEventListener('mouseleave', () => {
                 cursorOutline.style.transform = 'scale(1)';
                 cursorOutline.style.borderColor = 'var(--neon-cyan)';
             });
         });
 
-        // Typing Animation
+        // ── Typing animation ─────────────────────────────────────────────────
         const typedTexts = [
             "AI/ML Engineer",
             "Software Developer",
             "Cloud Architect",
             "Full Stack Developer",
             "Open Source Contributor",
-            "Content Creator",
             "Problem Solver"
         ];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingSpeed = 100;
-        const deletingSpeed = 50;
-        const pauseEnd = 2000;
+        let textIndex = 0, charIndex = 0, isDeleting = false;
 
         function typeText() {
-            const currentText = typedTexts[textIndex];
-            const typedOutput = document.getElementById('typed-output');
-
-            if (!isDeleting && charIndex < currentText.length) {
-                typedOutput.textContent += currentText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeText, typingSpeed);
+            const out = document.getElementById('typed-output');
+            if (!out) return;
+            const cur = typedTexts[textIndex];
+            if (!isDeleting && charIndex < cur.length) {
+                out.textContent += cur.charAt(charIndex++);
+                setTimeout(typeText, 100);
             } else if (isDeleting && charIndex > 0) {
-                typedOutput.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(typeText, deletingSpeed);
+                out.textContent = cur.substring(0, --charIndex);
+                setTimeout(typeText, 50);
             } else {
                 isDeleting = !isDeleting;
-                if (!isDeleting) {
-                    textIndex = (textIndex + 1) % typedTexts.length;
-                }
-                setTimeout(typeText, isDeleting ? pauseEnd : 500);
+                if (!isDeleting) textIndex = (textIndex + 1) % typedTexts.length;
+                setTimeout(typeText, isDeleting ? 2000 : 500);
             }
         }
-
         typeText();
 
-        // Terminal Animation
+        // ── Terminal animation ────────────────────────────────────────────────
         const terminalLines = [
-            { text: "$ whoami", delay: 500 },
-            { text: "gaurav_singh", delay: 1000 },
-            { text: "$ cat education.txt", delay: 1500 },
-            { text: "MS Computer Science @ University at Buffalo (GPA: 3.9/4.0)", delay: 2000 },
-            { text: "Expected Graduation: December 2025", delay: 2200 },
-            { text: "$ cat skills.txt", delay: 2500 },
-            { text: "• Java | Spring Boot | Microservices", delay: 2700 },
-            { text: "• Python | AI/ML | TensorFlow | PyTorch", delay: 2900 },
-            { text: "• AWS | Docker | Kubernetes | DevOps", delay: 3100 },
-            { text: "• React.js | Node.js | Full Stack Development", delay: 3300 },
-            { text: "• LLMs | RAG | LangChain | Deep Learning", delay: 3500 },
-            { text: "$ git status", delay: 3800 },
-            { text: "On branch: masters-program", delay: 4000 },
-            { text: "Location: Buffalo, NY", delay: 4200 },
-            { text: "Status: Available for internships & opportunities", delay: 4400 },
-            { text: "$ echo $PASSION", delay: 4700 },
-            { text: "Building innovative AI solutions at the intersection of technology and creativity", delay: 5000 }
+            { text: "$ whoami", delay: 400 },
+            { text: "gaurav_singh", delay: 800 },
+            { text: "$ cat education.txt", delay: 1200 },
+            { text: "MS Computer Science @ University at Buffalo (GPA: 3.9/4.0)", delay: 1700 },
+            { text: "Graduated: December 2025", delay: 1900 },
+            { text: "$ cat skills.txt", delay: 2200 },
+            { text: "• Python | AI/ML | LLMs | RAG | LangChain", delay: 2400 },
+            { text: "• Java | Spring Boot | Microservices", delay: 2600 },
+            { text: "• TypeScript | React.js | Next.js", delay: 2800 },
+            { text: "• AWS | Docker | Kubernetes | DevOps", delay: 3000 },
+            { text: "$ git status", delay: 3300 },
+            { text: "On branch: ai-engineer", delay: 3500 },
+            { text: "Location: Buffalo, NY", delay: 3700 },
+            { text: "Status: Open to new opportunities", delay: 3900 },
+            { text: "$ echo $PASSION", delay: 4200 },
+            { text: "Building AI systems at the intersection of code and creativity", delay: 4500 }
         ];
 
+        let terminalPlayed = false;
         function animateTerminal() {
-            const terminalContent = document.getElementById('terminal-content');
-            terminalContent.innerHTML = '';
-
-            terminalLines.forEach((line, index) => {
+            if (terminalPlayed) return;
+            terminalPlayed = true;
+            const tc = document.getElementById('terminal-content');
+            if (!tc) return;
+            tc.innerHTML = '';
+            terminalLines.forEach(line => {
                 setTimeout(() => {
-                    const lineElement = document.createElement('div');
-                    lineElement.className = 'terminal-line';
-                    lineElement.style.animationDelay = '0s';
-
+                    const el = document.createElement('div');
+                    el.className = 'terminal-line';
+                    el.style.animationDelay = '0s';
                     if (line.text.startsWith('$')) {
-                        lineElement.innerHTML = `<span class="terminal-prompt">guest@portfolio</span>:~$ ${line.text.substring(2)}`;
+                        el.innerHTML = `<span class="terminal-prompt">gaurav@portfolio</span>:~$ ${line.text.substring(2)}`;
                     } else {
-                        lineElement.textContent = line.text;
+                        el.textContent = line.text;
                     }
-
-                    terminalContent.appendChild(lineElement);
-                    terminalContent.scrollTop = terminalContent.scrollHeight;
+                    tc.appendChild(el);
+                    tc.scrollTop = tc.scrollHeight;
                 }, line.delay);
             });
         }
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ── RAF-throttled scroll handler ──────────────────────────────────────
+        const sections   = document.querySelectorAll('.section');
+        const navItems   = document.querySelectorAll('.nav-item');
+        const navIcons   = document.querySelectorAll('.nav-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-item');
+        const backToTop  = document.getElementById('back-to-top');
+        const scrollProgress = document.getElementById('scroll-progress');
+        let scrollRAF = false;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        function onScroll() {
+            // Scroll progress bar
+            if (scrollProgress) {
+                const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+                scrollProgress.style.width = pct + '%';
+            }
 
-                    // Trigger terminal animation when terminal section is visible
-                    if (entry.target.id === 'terminal') {
-                        animateTerminal();
-                    }
-                }
-            });
-        }, observerOptions);
+            // Back-to-top visibility
+            if (backToTop) {
+                backToTop.classList.toggle('visible', window.scrollY > 300);
+            }
 
-        // Observe elements
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelector('#terminal').addEventListener('mouseenter', animateTerminal);
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Navigation functionality
-        const sections = document.querySelectorAll('.section');
-        const navItems = document.querySelectorAll('.nav-item');
-        const navIcons = document.querySelectorAll('.nav-icon');
-
-        // Smooth scrolling
-        navItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                sections[index].scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Active section tracking
-        window.addEventListener('scroll', () => {
+            // Active section tracking for desktop nav
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
+                if (window.scrollY >= section.offsetTop - 250) {
                     current = section.getAttribute('id') || '';
                 }
             });
 
-            navItems.forEach((item, index) => {
+            navItems.forEach((item, i) => {
                 item.classList.remove('active');
-                navIcons[index].classList.remove('active');
-
-                if (current && sections[index] && sections[index].id === current) {
+                if (navIcons[i]) navIcons[i].classList.remove('active');
+                const match = (current && sections[i] && sections[i].id === current) ||
+                              (current === '' && i === 0);
+                if (match) {
                     item.classList.add('active');
-                    navIcons[index].classList.add('active');
-                } else if (current === '' && index === 0) {
-                    item.classList.add('active');
-                    navIcons[index].classList.add('active');
+                    if (navIcons[i]) navIcons[i].classList.add('active');
                 }
             });
-        });
 
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+            // Active state for mobile nav
+            mobileLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        }
 
-        // FIXED Form submission with proper EmailJS integration
-        document.getElementById('contact-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const submitBtn = document.getElementById('submit-btn');
-            const formStatus = document.getElementById('form-status');
-
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            // Show loading state
-            submitBtn.textContent = 'SENDING...';
-            submitBtn.disabled = true;
-            formStatus.className = 'form-status loading';
-            formStatus.style.display = 'block';
-            formStatus.textContent = 'Transmitting message...';
-
-            try {
-                // Check if EmailJS is loaded
-                if (typeof emailjs !== 'undefined') {
-                    // Replace these with your actual EmailJS service details
-                    const result = await emailjs.send(
-                        'service_b1yittf', // Replace with your service ID
-                        'template_cjmva2v', // Replace with your template ID
-                        {
-                            from_name: name,
-                            from_email: email,
-                            subject: subject,
-                            message: message,
-                            to_email: 'ksingh.gav@gmail.com'
-                        }
-                    );
-
-                    // Success
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = `Transmission successful, ${name}! Message received and will be processed within 24 hours.`;
-                    this.reset();
-
-                } else {
-                    // Fallback if EmailJS is not loaded - simulate sending
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-
-                    // Show success message
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = `Message received, ${name}! I'll get back to you at ${email} within 24 hours.`;
-                    this.reset();
-                }
-
-                // Auto-hide success message after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
-
-            } catch (error) {
-                console.error('Error sending message:', error);
-
-                // Show error message
-                formStatus.className = 'form-status error';
-                formStatus.textContent = 'Transmission failed. Please try again or contact me directly at ksingh.gav@gmail.com';
-
-                // Auto-hide error message after 8 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 8000);
-            } finally {
-                // Reset button
-                submitBtn.textContent = 'SEND TRANSMISSION';
-                submitBtn.disabled = false;
+        window.addEventListener('scroll', () => {
+            if (!scrollRAF) {
+                scrollRAF = true;
+                requestAnimationFrame(() => { onScroll(); scrollRAF = false; });
             }
-        });
+        }, { passive: true });
 
-        // Add glitch effect to headings on hover
-        document.querySelectorAll('.glitch').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                element.style.animation = 'none';
-                setTimeout(() => {
-                    element.style.animation = '';
-                }, 10);
+        // ── IntersectionObserver: fade-in sections + terminal + card reveal ───
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.id === 'terminal') animateTerminal();
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+        const terminalSection = document.querySelector('#terminal');
+        if (terminalSection) fadeObserver.observe(terminalSection);
+
+        // Staggered card reveal
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Find siblings in same parent and stagger
+                    const siblings = Array.from(entry.target.parentElement.querySelectorAll('.card-reveal'));
+                    const idx = siblings.indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                        // Animate skill rings when skill card is revealed
+                        if (entry.target.classList.contains('skill-item')) {
+                            animateSkillRing(entry.target);
+                        }
+                    }, idx * 90);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.card-reveal').forEach(el => cardObserver.observe(el));
+
+        // ── Skill ring animation ──────────────────────────────────────────────
+        const CIRCUMFERENCE = 2 * Math.PI * 26; // r=26 → ~163.4
+
+        function animateSkillRing(skillItem) {
+            const pct = parseInt(skillItem.dataset.ring || '80', 10);
+            const offset = CIRCUMFERENCE * (1 - pct / 100);
+            skillItem.style.setProperty('--ring-offset', offset);
+            skillItem.classList.add('rings-animated');
+        }
+
+        // ── Smooth scrolling for all anchor links ─────────────────────────────
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile nav if open
+                    closeMobileNav();
+                }
             });
         });
 
-        // Ensure form inputs maintain white text color
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.addEventListener('input', function () {
-                this.style.color = 'var(--text-primary)';
-            });
-
-            input.addEventListener('focus', function () {
-                this.style.color = 'var(--text-primary)';
+        // Desktop nav clicks
+        navItems.forEach((item, i) => {
+            item.addEventListener('click', () => {
+                if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // ── Mobile navigation ─────────────────────────────────────────────────
+        const mobileBtn     = document.getElementById('mobile-nav-btn');
+        const mobileOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileDrawer  = document.getElementById('mobile-nav-drawer');
+
+        function openMobileNav() {
+            mobileBtn.classList.add('open');
+            mobileBtn.setAttribute('aria-expanded', 'true');
+            mobileOverlay.style.display = 'block';
+            mobileDrawer.classList.add('open');
+            requestAnimationFrame(() => mobileOverlay.classList.add('open'));
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            if (!mobileDrawer.classList.contains('open')) return;
+            mobileBtn.classList.remove('open');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            mobileOverlay.classList.remove('open');
+            mobileDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => { mobileOverlay.style.display = 'none'; }, 300);
+        }
+
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                mobileDrawer.classList.contains('open') ? closeMobileNav() : openMobileNav();
+            });
+        }
+
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeMobileNav();
+        });
+
+        // ── Back to top ───────────────────────────────────────────────────────
+        if (backToTop) {
+            backToTop.addEventListener('click', e => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ── Footer: current year ──────────────────────────────────────────────
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // ── Glitch hover reset ────────────────────────────────────────────────
+        document.querySelectorAll('.glitch').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.animation = 'none';
+                requestAnimationFrame(() => { el.style.animation = ''; });
+            });
+        });
+
+        // ── Contact form ──────────────────────────────────────────────────────
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const submitBtn  = document.getElementById('submit-btn');
+                const formStatus = document.getElementById('form-status');
+                const fd         = new FormData(this);
+
+                submitBtn.textContent = 'SENDING...';
+                submitBtn.disabled = true;
+                formStatus.className = 'form-status loading';
+                formStatus.style.display = 'block';
+                formStatus.textContent = 'Transmitting message...';
+
+                try {
+                    if (typeof emailjs !== 'undefined') {
+                        await emailjs.send('service_b1yittf', 'template_cjmva2v', {
+                            from_name:  fd.get('name'),
+                            from_email: fd.get('email'),
+                            subject:    fd.get('subject'),
+                            message:    fd.get('message'),
+                            to_email:   'ksingh.gav@gmail.com'
+                        });
+                    } else {
+                        await new Promise(r => setTimeout(r, 1500));
+                    }
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = `Transmission successful, ${fd.get('name')}! I'll respond within 24 hours.`;
+                    this.reset();
+                    setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
+                } catch (err) {
+                    console.error('EmailJS error:', err);
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Transmission failed. Email me directly at ksingh.gav@gmail.com';
+                    setTimeout(() => { formStatus.style.display = 'none'; }, 8000);
+                } finally {
+                    submitBtn.textContent = 'SEND TRANSMISSION';
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Keep form inputs white while typing
+            contactForm.querySelectorAll('.form-control').forEach(input => {
+                input.addEventListener('input', function () { this.style.color = 'var(--text-primary)'; });
+                input.addEventListener('focus', function () { this.style.color = 'var(--text-primary)'; });
+            });
+        }
+
+    })();
     </script>
 </body>
 
