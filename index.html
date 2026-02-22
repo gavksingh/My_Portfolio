@@ -27,7 +27,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- EmailJS -->
-    <script defer type="text/javascript"
+    <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
@@ -358,9 +358,17 @@
         }
 
         @keyframes nav-icon-pulse {
-            0%   { transform: scale(1.1); }
-            50%  { transform: scale(1.4); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
         }
 
         .nav-item:hover .nav-icon {
@@ -516,21 +524,38 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(
-                to bottom,
-                transparent, transparent 3px,
-                rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px
-            );
+            background: repeating-linear-gradient(to bottom,
+                    transparent, transparent 3px,
+                    rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px);
             pointer-events: none;
             z-index: 3;
         }
 
         @keyframes glitch-intro {
-            0%   { letter-spacing: 0.5em; opacity: 0; }
-            40%  { letter-spacing: 0.12em; opacity: 1; filter: hue-rotate(180deg); }
-            60%  { filter: hue-rotate(0deg); }
-            80%  { letter-spacing: 0.13em; }
-            100% { letter-spacing: 0.12em; opacity: 1; filter: none; }
+            0% {
+                letter-spacing: 0.5em;
+                opacity: 0;
+            }
+
+            40% {
+                letter-spacing: 0.12em;
+                opacity: 1;
+                filter: hue-rotate(180deg);
+            }
+
+            60% {
+                filter: hue-rotate(0deg);
+            }
+
+            80% {
+                letter-spacing: 0.13em;
+            }
+
+            100% {
+                letter-spacing: 0.12em;
+                opacity: 1;
+                filter: none;
+            }
         }
 
         .hero-title {
@@ -646,8 +671,16 @@
             position: relative;
             z-index: 1;
         }
-        .blue-pill { background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
-        .red-pill  { background: #ff2244; box-shadow: 0 0 8px #ff2244; }
+
+        .blue-pill {
+            background: var(--neon-cyan);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        .red-pill {
+            background: #ff2244;
+            box-shadow: 0 0 8px #ff2244;
+        }
 
         /* UPDATED Floating Tech Cards - Smaller Size */
         .floating-elements {
@@ -743,8 +776,13 @@
         }
 
         @keyframes hub-spin {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .floating-card:hover {
@@ -1644,17 +1682,28 @@
 
         /* Tablet + desktop: side nav visible, push content past it */
         @media (min-width: 768px) and (max-width: 1199px) {
+
             /* Tablet: balance left nav offset with centering */
-            .section { padding-left: 90px; padding-right: 90px; }
+            .section {
+                padding-left: 90px;
+                padding-right: 90px;
+            }
         }
+
         @media (min-width: 1200px) {
+
             /* Desktop: standard left push */
-            .section { padding-left: 90px; padding-right: 20px; }
+            .section {
+                padding-left: 90px;
+                padding-right: 20px;
+            }
         }
 
         /* Mobile only: hide side nav */
         @media (max-width: 767px) {
-            .nav-menu { display: none; }
+            .nav-menu {
+                display: none;
+            }
         }
 
         /* Responsive Design */
@@ -1706,6 +1755,7 @@
             .terminal {
                 border-radius: 6px;
             }
+
             .terminal-body {
                 font-size: 0.8rem;
                 padding: 1rem;
@@ -1720,9 +1770,11 @@
             .section {
                 padding: 60px 0;
             }
+
             .section-title {
                 margin-bottom: 2rem;
             }
+
             .section-title h2 {
                 font-size: clamp(2rem, 8vw, 3rem);
             }
@@ -1959,11 +2011,28 @@
         }
 
         @keyframes heartbeat {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            14%       { transform: scale(1.3); }
-            28%       { transform: scale(1); }
-            42%       { transform: scale(1.2); }
-            70%       { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.3);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.2);
+            }
+
+            70% {
+                opacity: 1;
+            }
         }
 
         @keyframes pulse {
@@ -2236,13 +2305,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(
-                to bottom,
-                transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.08) 2px,
-                rgba(0, 0, 0, 0.08) 4px
-            );
+            background: repeating-linear-gradient(to bottom,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.08) 2px,
+                    rgba(0, 0, 0, 0.08) 4px);
             pointer-events: none;
             z-index: 2;
             border-radius: 0 0 8px 8px;
@@ -2329,7 +2396,7 @@
         }
 
         /* Neon glow section dividers */
-        .section + .section {
+        .section+.section {
             border-top: 1px solid rgba(0, 255, 255, 0.12);
             box-shadow: inset 0 1px 0 rgba(0, 255, 255, 0.06);
         }
@@ -2338,128 +2405,229 @@
             .blogs-grid {
                 grid-template-columns: 1fr;
             }
+
             /* Mobile: show hamburger (must be after base display:none rule) */
-            .mobile-nav-btn { display: flex; }
+            .mobile-nav-btn {
+                display: flex;
+            }
         }
 
         /* ── Matrix Pill Overlay ───────────────────────────────────────────── */
         #pill-choose-overlay {
-            position: fixed; inset: 0; z-index: 9998;
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
             background: rgba(0, 0, 0, 0.88);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
             animation: pco-in 0.7s ease 0.5s forwards,
-                       pco-out 0.6s ease 7s forwards;
+                pco-out 0.6s ease 7s forwards;
         }
-        #pill-choose-overlay.active { pointer-events: all; }
-        @keyframes pco-in  { to { opacity: 1; } }
-        @keyframes pco-out { to { opacity: 0; pointer-events: none; } }
+
+        #pill-choose-overlay.active {
+            pointer-events: all;
+        }
+
+        @keyframes pco-in {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pco-out {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
 
         #pill-rain-canvas {
-            position: absolute; inset: 0; opacity: 0.18; pointer-events: none;
+            position: absolute;
+            inset: 0;
+            opacity: 0.18;
+            pointer-events: none;
         }
 
         .pco-inner {
-            text-align: center; max-width: 580px; padding: 2rem;
-            position: relative; z-index: 1;
+            text-align: center;
+            max-width: 580px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .pco-line {
             font-family: 'Orbitron', monospace;
-            color: var(--neon-green); letter-spacing: 0.1em;
+            color: var(--neon-green);
+            letter-spacing: 0.1em;
             font-size: clamp(0.9rem, 2.5vw, 1.15rem);
-            opacity: 0; margin-bottom: 0.4rem;
+            opacity: 0;
+            margin-bottom: 0.4rem;
         }
-        #pco-l1 { animation: pco-in 0.5s ease 1.2s forwards; }
-        #pco-l2 { animation: pco-in 0.5s ease 2.0s forwards; }
+
+        #pco-l1 {
+            animation: pco-in 0.5s ease 1.2s forwards;
+        }
+
+        #pco-l2 {
+            animation: pco-in 0.5s ease 2.0s forwards;
+        }
 
         .pco-pills {
-            display: flex; align-items: center; justify-content: center;
-            gap: 2.5rem; margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2rem 0;
             opacity: 0;
             animation: pco-in 0.5s ease 2.8s forwards;
         }
-        .pco-pill-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+
+        .pco-pill-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
 
         .pco-pill {
-            width: 64px; height: 28px; border-radius: 28px;
-            position: relative; cursor: pointer;
+            width: 64px;
+            height: 28px;
+            border-radius: 28px;
+            position: relative;
+            cursor: pointer;
             transition: transform 0.2s ease;
         }
-        .pco-pill:hover { transform: scale(1.12); }
+
+        .pco-pill:hover {
+            transform: scale(1.12);
+        }
 
         .blue-3d {
             background: linear-gradient(135deg,
-                rgba(0,255,255,0.9) 0%, rgba(0,180,200,0.7) 50%, rgba(0,100,140,0.9) 100%);
-            box-shadow: 0 0 12px rgba(0,255,255,0.6),
-                        inset 0 3px 6px rgba(255,255,255,0.35),
-                        inset 0 -3px 4px rgba(0,0,0,0.4);
+                    rgba(0, 255, 255, 0.9) 0%, rgba(0, 180, 200, 0.7) 50%, rgba(0, 100, 140, 0.9) 100%);
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.6),
+                inset 0 3px 6px rgba(255, 255, 255, 0.35),
+                inset 0 -3px 4px rgba(0, 0, 0, 0.4);
             /* pulses 2× first, starts 3.2s, ends 5.2s */
             animation: pill-pulse-blue 1.0s ease-in-out 3.2s 2 both;
         }
+
         .red-3d {
             background: linear-gradient(135deg,
-                rgba(255,50,80,0.9) 0%, rgba(200,20,50,0.75) 50%, rgba(120,0,30,0.9) 100%);
-            box-shadow: 0 0 12px rgba(255,34,68,0.6),
-                        inset 0 3px 6px rgba(255,255,255,0.3),
-                        inset 0 -3px 4px rgba(0,0,0,0.4);
+                    rgba(255, 50, 80, 0.9) 0%, rgba(200, 20, 50, 0.75) 50%, rgba(120, 0, 30, 0.9) 100%);
+            box-shadow: 0 0 12px rgba(255, 34, 68, 0.6),
+                inset 0 3px 6px rgba(255, 255, 255, 0.3),
+                inset 0 -3px 4px rgba(0, 0, 0, 0.4);
             /* pulses 1× after blue, starts 5.2s, ends 6.2s */
             animation: pill-pulse-red 1.0s ease-in-out 5.2s 1 both;
         }
 
         @keyframes pill-pulse-blue {
-            0%,100% { transform: scale(1);    box-shadow: 0 0 12px rgba(0,255,255,0.5); }
-            50%      { transform: scale(1.18); box-shadow: 0 0 30px rgba(0,255,255,0.9), 0 0 60px rgba(0,255,255,0.3); }
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+            }
+
+            50% {
+                transform: scale(1.18);
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 0 0 60px rgba(0, 255, 255, 0.3);
+            }
         }
+
         @keyframes pill-pulse-red {
-            0%,100% { transform: scale(1);    box-shadow: 0 0 12px rgba(255,34,68,0.5); }
-            50%      { transform: scale(1.18); box-shadow: 0 0 30px rgba(255,34,68,0.9), 0 0 60px rgba(255,34,68,0.3); }
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 12px rgba(255, 34, 68, 0.5);
+            }
+
+            50% {
+                transform: scale(1.18);
+                box-shadow: 0 0 30px rgba(255, 34, 68, 0.9), 0 0 60px rgba(255, 34, 68, 0.3);
+            }
         }
 
         .pco-pill-label {
             font-family: 'Bebas Neue', cursive;
-            letter-spacing: 0.12em; font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
+
         .pco-or {
             font-family: 'Orbitron', monospace;
-            color: var(--neon-pink); font-size: 0.9rem;
+            color: var(--neon-pink);
+            font-size: 0.9rem;
         }
 
         .pco-sub {
             font-family: 'Orbitron', monospace;
-            color: rgba(255,255,255,0.45); font-size: 0.78rem; line-height: 1.9;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.78rem;
+            line-height: 1.9;
             opacity: 0;
             animation: pco-in 0.5s ease 3.4s forwards;
         }
+
         .pco-skip {
-            margin-top: 1.5rem; background: transparent;
-            border: 1px solid rgba(255,255,255,0.18);
-            color: rgba(255,255,255,0.35);
-            font-family: 'Bebas Neue', cursive; letter-spacing: 0.15em;
-            font-size: 0.85rem; padding: 6px 18px; cursor: pointer;
+            margin-top: 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.35);
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            padding: 6px 18px;
+            cursor: pointer;
             opacity: 0;
             animation: pco-in 0.4s ease 3.2s forwards;
             transition: color 0.2s, border-color 0.2s;
         }
-        .pco-skip:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+
+        .pco-skip:hover {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+        }
 
         /* ── CTA button periodic hint pulses ──────────────────────────────── */
         .cta-hint-blue {
             animation: cta-pulse-blue 0.9s ease-in-out 1 !important;
         }
+
         .cta-hint-red {
             animation: cta-pulse-red 0.9s ease-in-out 1 !important;
         }
+
         @keyframes cta-pulse-blue {
-            0%,100% { box-shadow: 0 0 8px rgba(0,255,255,0.25); }
-            50%      { box-shadow: 0 0 22px rgba(0,255,255,0.75), 0 0 40px rgba(0,255,255,0.2); }
-        }
-        @keyframes cta-pulse-red {
-            0%,100% { box-shadow: 0 0 8px rgba(255,0,128,0.25); }
-            50%      { box-shadow: 0 0 22px rgba(255,0,128,0.75), 0 0 40px rgba(255,0,128,0.2); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(0, 255, 255, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 0 22px rgba(0, 255, 255, 0.75), 0 0 40px rgba(0, 255, 255, 0.2);
+            }
         }
 
+        @keyframes cta-pulse-red {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(255, 0, 128, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 0 22px rgba(255, 0, 128, 0.75), 0 0 40px rgba(255, 0, 128, 0.2);
+            }
+        }
     </style>
 </head>
 
@@ -2589,14 +2757,21 @@
                             <span id="typed-output"></span><span class="terminal-cursor"></span>
                         </div>
                         <div class="cta-container">
-                            <a href="#projects" class="cyber-btn"><span class="pill-icon blue-pill"></span>VIEW PROJECTS</a>
-                            <a href="#contact" class="cyber-btn secondary"><span class="pill-icon red-pill"></span>INITIALIZE CONTACT</a>
+                            <a href="#projects" class="cyber-btn"><span class="pill-icon blue-pill"></span>VIEW
+                                PROJECTS</a>
+                            <a href="#contact" class="cyber-btn secondary"><span
+                                    class="pill-icon red-pill"></span>INITIALIZE CONTACT</a>
                         </div>
                         <div class="social-links-cyber">
-                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
-                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn"
+                                target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank"
+                                rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube"
+                                aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i
+                                    class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i
+                                    class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -2647,12 +2822,18 @@
                 <div class="col-lg-4 mb-4">
                     <div class="cyber-card text-center">
                         <img src="assets/img/profile-img.png" class="img-fluid rounded" alt="Gaurav Singh"
-                            loading="lazy" decoding="async" style="max-width: 250px; border: 2px solid var(--neon-cyan);">
+                            loading="lazy" decoding="async"
+                            style="max-width: 250px; border: 2px solid var(--neon-cyan);">
                         <div class="social-links-cyber" style="margin-top: 20px; justify-content: center;">
-                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
-                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" title="LinkedIn" aria-label="LinkedIn"
+                                target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank"
+                                rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube"
+                                aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i
+                                    class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i
+                                    class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -2661,29 +2842,58 @@
                         <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">
                             Software Engineer · AI Agents & Distributed Systems
                         </h3>
-                        <p style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Software Engineer</strong> with <strong>3+ years</strong> of experience building production <strong style="color: var(--neon-cyan);">AI Agent Systems</strong> and
-                            scalable <strong>Distributed Services</strong>. Currently working as an <strong style="color: var(--neon-cyan);">AI Software Engineer</strong> at
-                            <strong>University at Buffalo</strong>, focusing on <strong style="color: var(--neon-cyan);">Multi-Agent Orchestration</strong>, <strong style="color: var(--neon-cyan);">Semantic Search</strong>, and
+                        <p
+                            style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                            <strong>Software Engineer</strong> with <strong>3+ years</strong> of experience building
+                            production <strong style="color: var(--neon-cyan);">AI Agent Systems</strong> and
+                            scalable <strong>Distributed Services</strong>. Currently working as an <strong
+                                style="color: var(--neon-cyan);">AI Software Engineer</strong> at
+                            <strong>University at Buffalo</strong>, focusing on <strong
+                                style="color: var(--neon-cyan);">Multi-Agent Orchestration</strong>, <strong
+                                style="color: var(--neon-cyan);">Semantic Search</strong>, and
                             reliable distributed services.
                         </p>
-                        <p style="color: var(--text-primary); font-size: 1.0rem; line-height: 1.8; margin-bottom: 1rem;">
-                            I build <strong>end-to-end AI systems</strong>: <strong style="color: var(--neon-cyan);">MCP-based Agents</strong> with <strong style="color: var(--neon-cyan);">LangGraph/LangChain</strong>, <strong style="color: var(--neon-cyan);">RAG Pipelines</strong>,
-                            and full-stack platforms like <strong>AutoRSR</strong> and <strong>X-Voice</strong> that combine <strong>low-latency</strong> user
+                        <p
+                            style="color: var(--text-primary); font-size: 1.0rem; line-height: 1.8; margin-bottom: 1rem;">
+                            I build <strong>end-to-end AI systems</strong>: <strong
+                                style="color: var(--neon-cyan);">MCP-based Agents</strong> with <strong
+                                style="color: var(--neon-cyan);">LangGraph/LangChain</strong>, <strong
+                                style="color: var(--neon-cyan);">RAG Pipelines</strong>,
+                            and full-stack platforms like <strong>AutoRSR</strong> and <strong>X-Voice</strong> that
+                            combine <strong>low-latency</strong> user
                             experiences with <strong>production-grade reliability</strong>.
                         </p>
-                        <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
-                            My experience spans <strong>event-driven microservices</strong>, <strong style="color: var(--neon-cyan);">Kafka-based Data Pipelines</strong> processing
-                            hundreds of thousands of daily events, and <strong>cloud-native deployments</strong> on <strong style="color: var(--neon-cyan);">AWS</strong> and <strong style="color: var(--neon-cyan);">Azure</strong>
-                            with strong <strong>observability</strong> and <strong style="color: var(--neon-cyan);">CI/CD</strong>.
+                        <p
+                            style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
+                            My experience spans <strong>event-driven microservices</strong>, <strong
+                                style="color: var(--neon-cyan);">Kafka-based Data Pipelines</strong> processing
+                            hundreds of thousands of daily events, and <strong>cloud-native deployments</strong> on
+                            <strong style="color: var(--neon-cyan);">AWS</strong> and <strong
+                                style="color: var(--neon-cyan);">Azure</strong>
+                            with strong <strong>observability</strong> and <strong
+                                style="color: var(--neon-cyan);">CI/CD</strong>.
                         </p>
-                        <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
-                            <strong style="color: var(--neon-yellow);">Core Stack:</strong> <strong>Python</strong>, <strong>TypeScript</strong>, <strong>Java</strong>, <strong>C#</strong>, <strong style="color: var(--neon-cyan);">LangGraph</strong>, <strong style="color: var(--neon-cyan);">LangChain</strong>, <strong style="color: var(--neon-cyan);">RAG</strong>, <strong>React</strong>, <strong>Next.js</strong>,
-                            <strong>Spring Boot</strong>, <strong>.NET</strong>, <strong style="color: var(--neon-cyan);">Kafka</strong>, <strong>PostgreSQL</strong>, <strong>Redis</strong>, <strong style="color: var(--neon-cyan);">Docker</strong>, <strong style="color: var(--neon-cyan);">Kubernetes</strong>.
+                        <p
+                            style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
+                            <strong style="color: var(--neon-yellow);">Core Stack:</strong> <strong>Python</strong>,
+                            <strong>TypeScript</strong>, <strong>Java</strong>, <strong>C#</strong>, <strong
+                                style="color: var(--neon-cyan);">LangGraph</strong>, <strong
+                                style="color: var(--neon-cyan);">LangChain</strong>, <strong
+                                style="color: var(--neon-cyan);">RAG</strong>, <strong>React</strong>,
+                            <strong>Next.js</strong>,
+                            <strong>Spring Boot</strong>, <strong>.NET</strong>, <strong
+                                style="color: var(--neon-cyan);">Kafka</strong>, <strong>PostgreSQL</strong>,
+                            <strong>Redis</strong>, <strong style="color: var(--neon-cyan);">Docker</strong>, <strong
+                                style="color: var(--neon-cyan);">Kubernetes</strong>.
                         </p>
                         <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8;">
-                            <strong style="color: var(--neon-yellow);">MS in Computer Science</strong> from University at Buffalo (<strong>3.9 GPA</strong>), with certifications across
-                            <strong style="color: var(--neon-cyan);">AWS</strong>, <strong style="color: var(--neon-cyan);">Azure AI</strong>, and <strong style="color: var(--neon-cyan);">GCP</strong>. Open to <strong>Software Engineer</strong>, <strong style="color: var(--neon-cyan);">AI/ML Engineer</strong>, and <strong style="color: var(--neon-cyan);">Applied AI Engineer</strong>
+                            <strong style="color: var(--neon-yellow);">MS in Computer Science</strong> from University
+                            at Buffalo (<strong>3.9 GPA</strong>), with certifications across
+                            <strong style="color: var(--neon-cyan);">AWS</strong>, <strong
+                                style="color: var(--neon-cyan);">Azure AI</strong>, and <strong
+                                style="color: var(--neon-cyan);">GCP</strong>. Open to <strong>Software
+                                Engineer</strong>, <strong style="color: var(--neon-cyan);">AI/ML Engineer</strong>, and
+                            <strong style="color: var(--neon-cyan);">Applied AI Engineer</strong>
                             roles.
                         </p>
                     </div>
@@ -2937,7 +3147,10 @@
                 <!-- AI/ML first -->
                 <div class="skill-item card-reveal" data-ring="90">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-cpu"></i>
                     </div>
                     <div class="skill-name">AI / ML</div>
@@ -2945,7 +3158,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="95">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-cup-hot"></i>
                     </div>
                     <div class="skill-name">Java</div>
@@ -2953,7 +3169,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="95">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-filetype-py"></i>
                     </div>
                     <div class="skill-name">Python</div>
@@ -2961,7 +3180,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-diagram-3-fill"></i>
                     </div>
                     <div class="skill-name">LangChain / Agents</div>
@@ -2969,7 +3191,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-cloud-fill"></i>
                     </div>
                     <div class="skill-name">AWS Cloud</div>
@@ -2977,7 +3202,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="82">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-box-seam"></i>
                     </div>
                     <div class="skill-name">Docker / K8s</div>
@@ -2985,7 +3213,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="88">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-braces"></i>
                     </div>
                     <div class="skill-name">Spring Boot</div>
@@ -2993,7 +3224,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-filetype-tsx"></i>
                     </div>
                     <div class="skill-name">TypeScript</div>
@@ -3001,7 +3235,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-window"></i>
                     </div>
                     <div class="skill-name">React</div>
@@ -3009,7 +3246,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="80">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-gear-wide-connected"></i>
                     </div>
                     <div class="skill-name">DevOps</div>
@@ -3017,7 +3257,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-database-fill"></i>
                     </div>
                     <div class="skill-name">Database</div>
@@ -3025,7 +3268,10 @@
                 </div>
                 <div class="skill-item card-reveal" data-ring="88">
                     <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26"/><circle class="ring-fill" cx="32" cy="32" r="26"/></svg>
+                        <svg viewBox="0 0 64 64">
+                            <circle class="ring-bg" cx="32" cy="32" r="26" />
+                            <circle class="ring-fill" cx="32" cy="32" r="26" />
+                        </svg>
                         <i class="skill-ring-icon bi bi-layers-fill"></i>
                     </div>
                     <div class="skill-name">Full Stack</div>
@@ -3149,8 +3395,8 @@
             <div class="blogs-grid">
                 <!-- LinkedIn Posts (no featured image) -->
                 <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/"
-                        target="_blank" style="text-decoration: none;">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
+                        style="text-decoration: none;">
                         <div class="post-card-header">
                             <i class="bi bi-robot post-card-icon"></i>
                         </div>
@@ -3175,7 +3421,8 @@
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
                         target="_blank" style="text-decoration: none;">
-                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
                             <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
                         </div>
                         <div class="blog-info">
@@ -3199,7 +3446,8 @@
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
                         target="_blank" style="text-decoration: none;">
-                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
                             <i class="bi bi-graph-up-arrow post-card-icon" style="color: var(--neon-green);"></i>
                         </div>
                         <div class="blog-info">
@@ -3223,7 +3471,8 @@
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
                         target="_blank" style="text-decoration: none;">
-                        <div class="post-card-header" style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
                             <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
                         </div>
                         <div class="blog-info">
@@ -3249,8 +3498,8 @@
                     <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
                         target="_blank" style="text-decoration: none;">
                         <div class="blog-img">
-                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy" decoding="async"
+                                onerror="this.style.display='none'">
                         </div>
                         <div class="blog-info">
                             <div class="blog-tags">
@@ -3274,8 +3523,8 @@
                     <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
                         target="_blank" style="text-decoration: none;">
                         <div class="blog-img">
-                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy" decoding="async"
+                                onerror="this.style.display='none'">
                         </div>
                         <div class="blog-info">
                             <div class="blog-tags">
@@ -3335,8 +3584,8 @@
                     <a href="https://www.youtube.com/watch?v=1LVRUNSEWGk" target="_blank"
                         style="text-decoration: none;">
                         <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                            <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm" loading="lazy"
+                                decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -3371,8 +3620,8 @@
                 <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                            <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial" loading="lazy"
+                                decoding="async" onerror="this.style.display='none'">
                         </div>
                         <div class="tutorial-info">
                             <div class="channel-info">
@@ -3426,17 +3675,20 @@
 
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="bi bi-geo-alt-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                    <div class="contact-icon"><i class="bi bi-geo-alt-fill"
+                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Location</h3>
                     <p style="color: var(--text-secondary);">Buffalo, New York, USA</p>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="bi bi-envelope-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                    <div class="contact-icon"><i class="bi bi-envelope-fill"
+                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Email</h3>
                     <p style="color: var(--text-secondary);">ksingh.gav@gmail.com</p>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="bi bi-clock-fill" style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                    <div class="contact-icon"><i class="bi bi-clock-fill"
+                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Response</h3>
                     <p style="color: var(--text-secondary);">Within 24 hours</p>
                 </div>
@@ -3502,10 +3754,15 @@
                     <div class="footer-social-section">
                         <h4>Connect</h4>
                         <div class="footer-social">
-                            <a href="https://www.linkedin.com/in/gavksingh/" target="_blank" title="LinkedIn" aria-label="LinkedIn" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/gavksingh" target="_blank" title="GitHub" aria-label="GitHub" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank" title="YouTube" aria-label="YouTube" rel="noopener noreferrer"><i class="bi bi-youtube"></i></a>
-                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i class="bi bi-envelope-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/gavksingh/" target="_blank" title="LinkedIn"
+                                aria-label="LinkedIn" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/gavksingh" target="_blank" title="GitHub" aria-label="GitHub"
+                                rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank"
+                                title="YouTube" aria-label="YouTube" rel="noopener noreferrer"><i
+                                    class="bi bi-youtube"></i></a>
+                            <a href="mailto:ksingh.gav@gmail.com" title="Email" aria-label="Send email"><i
+                                    class="bi bi-envelope-fill"></i></a>
                         </div>
                     </div>
 
@@ -3531,422 +3788,435 @@
     </footer>
 
     <script defer>
-    (function () {
-        // ── EmailJS ──────────────────────────────────────────────────────────
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init('10QOFeB7QiOcQhFyj');
-        }
-
-        // ── Loading screen: dismiss immediately on load, CSS handles the fade ─
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.loader-wrapper');
-            if (loader) {
-                loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; }, 500);
+        (function () {
+            // ── EmailJS ──────────────────────────────────────────────────────────
+            // Wait for EmailJS to be fully loaded
+            function initEmailJS() {
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.init('cy47dXIj2lpFBKO-9');
+                    console.log('EmailJS initialized successfully');
+                } else {
+                    console.error('EmailJS library not loaded');
+                }
             }
-        });
-
-        // ── CTA periodic hint pulse (blue → red, repeats every 14s) ─────────
-        function startCTAHint() {
-            const blueBtn = document.querySelector('.cta-container .cyber-btn:not(.secondary)');
-            const redBtn  = document.querySelector('.cta-container .cyber-btn.secondary');
-            if (!blueBtn || !redBtn) return;
-
-            function runCycle() {
-                // Blue pulses first (1× 0.9s = 0.9s)
-                blueBtn.classList.add('cta-hint-blue');
-                setTimeout(() => {
-                    blueBtn.classList.remove('cta-hint-blue');
-                    // Red pulses after a short gap (1× 0.9s = 0.9s)
-                    setTimeout(() => {
-                        redBtn.classList.add('cta-hint-red');
-                        setTimeout(() => redBtn.classList.remove('cta-hint-red'), 900);
-                    }, 300);
-                }, 900);
-            }
-
-            // First cycle fires 1s after overlay gone
-            setTimeout(runCycle, 1000);
-            // Then repeat every 14s (non-distracting interval)
-            setInterval(runCycle, 14000);
-        }
-
-        // ── Matrix rain canvas on pill overlay ───────────────────────────────
-        let rainRAF;
-        const rainCanvas = document.getElementById('pill-rain-canvas');
-        if (rainCanvas) {
-            const rc = rainCanvas.getContext('2d');
-            rainCanvas.width  = window.innerWidth;
-            rainCanvas.height = window.innerHeight;
-            const cols  = Math.floor(rainCanvas.width / 16);
-            const drops = Array(cols).fill(1);
-            function drawRain() {
-                rc.fillStyle = 'rgba(0,0,0,0.05)';
-                rc.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
-                rc.fillStyle = '#00ff41';
-                rc.font = '13px monospace';
-                drops.forEach((y, i) => {
-                    rc.fillText(String.fromCharCode(0x30A0 + Math.random() * 96), i * 16, y * 16);
-                    if (y * 16 > rainCanvas.height && Math.random() > 0.975) drops[i] = 0;
-                    drops[i]++;
-                });
-                rainRAF = requestAnimationFrame(drawRain);
-            }
-            drawRain();
-        }
-
-        // ── Pill overlay lifecycle ────────────────────────────────────────────
-        const pillOverlay2 = document.getElementById('pill-choose-overlay');
-        const pcoSkip      = document.getElementById('pco-skip');
-        function dismissPCO() {
-            if (!pillOverlay2) return;
-            pillOverlay2.style.animation = 'pco-out 0.4s ease forwards';
-            setTimeout(() => {
-                pillOverlay2.remove();
-                if (rainRAF) cancelAnimationFrame(rainRAF);
-                startCTAHint();
-            }, 400); // 7.6 + 0.4 = 8.0s total
-        }
-        if (pillOverlay2) {
-            pillOverlay2.classList.add('active');
-            setTimeout(dismissPCO, 7000);
-            pcoSkip.addEventListener('click', dismissPCO);
-            pillOverlay2.addEventListener('click', e => {
-                if (e.target === pillOverlay2) dismissPCO();
-            });
-        }
-
-        // ── RAF-throttled custom cursor ───────────────────────────────────────
-        const cursor = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        let mouseX = 0, mouseY = 0, cursorRAF = false;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if (!cursorRAF) {
-                cursorRAF = true;
-                requestAnimationFrame(() => {
-                    cursor.style.left = (mouseX - 4) + 'px';
-                    cursor.style.top  = (mouseY - 4) + 'px';
-                    cursorOutline.style.left = (mouseX - 15) + 'px';
-                    cursorOutline.style.top  = (mouseY - 15) + 'px';
-                    cursorRAF = false;
-                });
-            }
-        });
-
-        document.querySelectorAll('a, button, .nav-item, .mobile-nav-item, .skill-item, .project-card, .contact-card, .cyber-btn').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform = 'scale(1.5)';
-                cursorOutline.style.borderColor = 'var(--neon-pink)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.transform = 'scale(1)';
-                cursorOutline.style.borderColor = 'var(--neon-cyan)';
-            });
-        });
-
-        // ── Typing animation ─────────────────────────────────────────────────
-        const typedTexts = [
-            "AI/ML Engineer",
-            "Software Developer",
-            "Cloud Architect",
-            "Full Stack Developer",
-            "Open Source Contributor",
-            "Problem Solver"
-        ];
-        let textIndex = 0, charIndex = 0, isDeleting = false;
-
-        function typeText() {
-            const out = document.getElementById('typed-output');
-            if (!out) return;
-            const cur = typedTexts[textIndex];
-            if (!isDeleting && charIndex < cur.length) {
-                out.textContent += cur.charAt(charIndex++);
-                setTimeout(typeText, 100);
-            } else if (isDeleting && charIndex > 0) {
-                out.textContent = cur.substring(0, --charIndex);
-                setTimeout(typeText, 50);
+            
+            // Try to initialize immediately if already loaded, otherwise wait
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initEmailJS);
             } else {
-                isDeleting = !isDeleting;
-                if (!isDeleting) textIndex = (textIndex + 1) % typedTexts.length;
-                setTimeout(typeText, isDeleting ? 2000 : 500);
-            }
-        }
-        typeText();
-
-        // ── Terminal animation ────────────────────────────────────────────────
-        const terminalLines = [
-            { text: "$ whoami", delay: 400 },
-            { text: "gaurav_singh", delay: 800 },
-            { text: "$ cat education.txt", delay: 1200 },
-            { text: "MS Computer Science @ University at Buffalo (GPA: 3.9/4.0)", delay: 1700 },
-            { text: "Graduated: December 2025", delay: 1900 },
-            { text: "$ cat skills.txt", delay: 2200 },
-            { text: "• Python | AI/ML | LLMs | RAG | LangChain", delay: 2400 },
-            { text: "• Java | Spring Boot | Microservices", delay: 2600 },
-            { text: "• TypeScript | React.js | Next.js", delay: 2800 },
-            { text: "• AWS | Docker | Kubernetes | DevOps", delay: 3000 },
-            { text: "$ git status", delay: 3300 },
-            { text: "On branch: ai-engineer", delay: 3500 },
-            { text: "Location: Buffalo, NY", delay: 3700 },
-            { text: "Status: Open to new opportunities", delay: 3900 },
-            { text: "$ echo $PASSION", delay: 4200 },
-            { text: "Building AI systems at the intersection of code and creativity", delay: 4500 }
-        ];
-
-        let terminalPlayed = false;
-        function animateTerminal() {
-            if (terminalPlayed) return;
-            terminalPlayed = true;
-            const tc = document.getElementById('terminal-content');
-            if (!tc) return;
-            tc.innerHTML = '';
-            terminalLines.forEach(line => {
-                setTimeout(() => {
-                    const el = document.createElement('div');
-                    el.className = 'terminal-line';
-                    el.style.animationDelay = '0s';
-                    if (line.text.startsWith('$')) {
-                        el.innerHTML = `<span class="terminal-prompt">gaurav@portfolio</span>:~$ ${line.text.substring(2)}`;
-                    } else {
-                        el.textContent = line.text;
-                    }
-                    tc.appendChild(el);
-                    tc.scrollTop = tc.scrollHeight;
-                }, line.delay);
-            });
-        }
-
-        // ── RAF-throttled scroll handler ──────────────────────────────────────
-        const sections   = document.querySelectorAll('.section');
-        const navItems   = document.querySelectorAll('.nav-item');
-        const navIcons   = document.querySelectorAll('.nav-icon');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-item');
-        const backToTop  = document.getElementById('back-to-top');
-        const scrollProgress = document.getElementById('scroll-progress');
-        let scrollRAF = false;
-
-        function onScroll() {
-            // Scroll progress bar
-            if (scrollProgress) {
-                const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
-                scrollProgress.style.width = pct + '%';
+                initEmailJS();
             }
 
-            // Back-to-top visibility
-            if (backToTop) {
-                backToTop.classList.toggle('visible', window.scrollY > 300);
-            }
-
-            // Active section tracking for desktop nav
-            let current = '';
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 250) {
-                    current = section.getAttribute('id') || '';
+            // ── Loading screen: dismiss immediately on load, CSS handles the fade ─
+            window.addEventListener('load', () => {
+                const loader = document.querySelector('.loader-wrapper');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 500);
                 }
             });
 
-            navItems.forEach((item, i) => {
-                item.classList.remove('active');
-                if (navIcons[i]) navIcons[i].classList.remove('active');
-                const match = (current && sections[i] && sections[i].id === current) ||
-                              (current === '' && i === 0);
-                if (match) {
-                    item.classList.add('active');
-                    if (navIcons[i]) navIcons[i].classList.add('active');
-                }
-            });
+            // ── CTA periodic hint pulse (blue → red, repeats every 14s) ─────────
+            function startCTAHint() {
+                const blueBtn = document.querySelector('.cta-container .cyber-btn:not(.secondary)');
+                const redBtn = document.querySelector('.cta-container .cyber-btn.secondary');
+                if (!blueBtn || !redBtn) return;
 
-            // Active state for mobile nav
-            mobileLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-            });
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!scrollRAF) {
-                scrollRAF = true;
-                requestAnimationFrame(() => { onScroll(); scrollRAF = false; });
-            }
-        }, { passive: true });
-
-        // ── IntersectionObserver: fade-in sections + terminal + card reveal ───
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.id === 'terminal') animateTerminal();
-                }
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-
-        const terminalSection = document.querySelector('#terminal');
-        if (terminalSection) fadeObserver.observe(terminalSection);
-
-        // Staggered card reveal
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Find siblings in same parent and stagger
-                    const siblings = Array.from(entry.target.parentElement.querySelectorAll('.card-reveal'));
-                    const idx = siblings.indexOf(entry.target);
+                function runCycle() {
+                    // Blue pulses first (1× 0.9s = 0.9s)
+                    blueBtn.classList.add('cta-hint-blue');
                     setTimeout(() => {
-                        entry.target.classList.add('revealed');
-                        // Animate skill rings when skill card is revealed
-                        if (entry.target.classList.contains('skill-item')) {
-                            animateSkillRing(entry.target);
+                        blueBtn.classList.remove('cta-hint-blue');
+                        // Red pulses after a short gap (1× 0.9s = 0.9s)
+                        setTimeout(() => {
+                            redBtn.classList.add('cta-hint-red');
+                            setTimeout(() => redBtn.classList.remove('cta-hint-red'), 900);
+                        }, 300);
+                    }, 900);
+                }
+
+                // First cycle fires 1s after overlay gone
+                setTimeout(runCycle, 1000);
+                // Then repeat every 14s (non-distracting interval)
+                setInterval(runCycle, 14000);
+            }
+
+            // ── Matrix rain canvas on pill overlay ───────────────────────────────
+            let rainRAF;
+            const rainCanvas = document.getElementById('pill-rain-canvas');
+            if (rainCanvas) {
+                const rc = rainCanvas.getContext('2d');
+                rainCanvas.width = window.innerWidth;
+                rainCanvas.height = window.innerHeight;
+                const cols = Math.floor(rainCanvas.width / 16);
+                const drops = Array(cols).fill(1);
+                function drawRain() {
+                    rc.fillStyle = 'rgba(0,0,0,0.05)';
+                    rc.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
+                    rc.fillStyle = '#00ff41';
+                    rc.font = '13px monospace';
+                    drops.forEach((y, i) => {
+                        rc.fillText(String.fromCharCode(0x30A0 + Math.random() * 96), i * 16, y * 16);
+                        if (y * 16 > rainCanvas.height && Math.random() > 0.975) drops[i] = 0;
+                        drops[i]++;
+                    });
+                    rainRAF = requestAnimationFrame(drawRain);
+                }
+                drawRain();
+            }
+
+            // ── Pill overlay lifecycle ────────────────────────────────────────────
+            const pillOverlay2 = document.getElementById('pill-choose-overlay');
+            const pcoSkip = document.getElementById('pco-skip');
+            function dismissPCO() {
+                if (!pillOverlay2) return;
+                pillOverlay2.style.animation = 'pco-out 0.4s ease forwards';
+                setTimeout(() => {
+                    pillOverlay2.remove();
+                    if (rainRAF) cancelAnimationFrame(rainRAF);
+                    startCTAHint();
+                }, 400); // 7.6 + 0.4 = 8.0s total
+            }
+            if (pillOverlay2) {
+                pillOverlay2.classList.add('active');
+                setTimeout(dismissPCO, 7000);
+                pcoSkip.addEventListener('click', dismissPCO);
+                pillOverlay2.addEventListener('click', e => {
+                    if (e.target === pillOverlay2) dismissPCO();
+                });
+            }
+
+            // ── RAF-throttled custom cursor ───────────────────────────────────────
+            const cursor = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            let mouseX = 0, mouseY = 0, cursorRAF = false;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (!cursorRAF) {
+                    cursorRAF = true;
+                    requestAnimationFrame(() => {
+                        cursor.style.left = (mouseX - 4) + 'px';
+                        cursor.style.top = (mouseY - 4) + 'px';
+                        cursorOutline.style.left = (mouseX - 15) + 'px';
+                        cursorOutline.style.top = (mouseY - 15) + 'px';
+                        cursorRAF = false;
+                    });
+                }
+            });
+
+            document.querySelectorAll('a, button, .nav-item, .mobile-nav-item, .skill-item, .project-card, .contact-card, .cyber-btn').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = 'scale(1.5)';
+                    cursorOutline.style.borderColor = 'var(--neon-pink)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = 'scale(1)';
+                    cursorOutline.style.borderColor = 'var(--neon-cyan)';
+                });
+            });
+
+            // ── Typing animation ─────────────────────────────────────────────────
+            const typedTexts = [
+                "AI/ML Engineer",
+                "Software Developer",
+                "Cloud Architect",
+                "Full Stack Developer",
+                "Open Source Contributor",
+                "Problem Solver"
+            ];
+            let textIndex = 0, charIndex = 0, isDeleting = false;
+
+            function typeText() {
+                const out = document.getElementById('typed-output');
+                if (!out) return;
+                const cur = typedTexts[textIndex];
+                if (!isDeleting && charIndex < cur.length) {
+                    out.textContent += cur.charAt(charIndex++);
+                    setTimeout(typeText, 100);
+                } else if (isDeleting && charIndex > 0) {
+                    out.textContent = cur.substring(0, --charIndex);
+                    setTimeout(typeText, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) textIndex = (textIndex + 1) % typedTexts.length;
+                    setTimeout(typeText, isDeleting ? 2000 : 500);
+                }
+            }
+            typeText();
+
+            // ── Terminal animation ────────────────────────────────────────────────
+            const terminalLines = [
+                { text: "$ whoami", delay: 400 },
+                { text: "gaurav_singh", delay: 800 },
+                { text: "$ cat education.txt", delay: 1200 },
+                { text: "MS Computer Science @ University at Buffalo (GPA: 3.9/4.0)", delay: 1700 },
+                { text: "Graduated: December 2025", delay: 1900 },
+                { text: "$ cat skills.txt", delay: 2200 },
+                { text: "• Python | AI/ML | LLMs | RAG | LangChain", delay: 2400 },
+                { text: "• Java | Spring Boot | Microservices", delay: 2600 },
+                { text: "• TypeScript | React.js | Next.js", delay: 2800 },
+                { text: "• AWS | Docker | Kubernetes | DevOps", delay: 3000 },
+                { text: "$ git status", delay: 3300 },
+                { text: "On branch: ai-engineer", delay: 3500 },
+                { text: "Location: Buffalo, NY", delay: 3700 },
+                { text: "Status: Open to new opportunities", delay: 3900 },
+                { text: "$ echo $PASSION", delay: 4200 },
+                { text: "Building AI systems at the intersection of code and creativity", delay: 4500 }
+            ];
+
+            let terminalPlayed = false;
+            function animateTerminal() {
+                if (terminalPlayed) return;
+                terminalPlayed = true;
+                const tc = document.getElementById('terminal-content');
+                if (!tc) return;
+                tc.innerHTML = '';
+                terminalLines.forEach(line => {
+                    setTimeout(() => {
+                        const el = document.createElement('div');
+                        el.className = 'terminal-line';
+                        el.style.animationDelay = '0s';
+                        if (line.text.startsWith('$')) {
+                            el.innerHTML = `<span class="terminal-prompt">gaurav@portfolio</span>:~$ ${line.text.substring(2)}`;
+                        } else {
+                            el.textContent = line.text;
                         }
-                    }, idx * 90);
-                    cardObserver.unobserve(entry.target);
+                        tc.appendChild(el);
+                        tc.scrollTop = tc.scrollHeight;
+                    }, line.delay);
+                });
+            }
+
+            // ── RAF-throttled scroll handler ──────────────────────────────────────
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-item');
+            const navIcons = document.querySelectorAll('.nav-icon');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-item');
+            const backToTop = document.getElementById('back-to-top');
+            const scrollProgress = document.getElementById('scroll-progress');
+            let scrollRAF = false;
+
+            function onScroll() {
+                // Scroll progress bar
+                if (scrollProgress) {
+                    const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+                    scrollProgress.style.width = pct + '%';
                 }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.card-reveal').forEach(el => cardObserver.observe(el));
-
-        // ── Skill ring animation ──────────────────────────────────────────────
-        const CIRCUMFERENCE = 2 * Math.PI * 26; // r=26 → ~163.4
-
-        function animateSkillRing(skillItem) {
-            const pct = parseInt(skillItem.dataset.ring || '80', 10);
-            const offset = CIRCUMFERENCE * (1 - pct / 100);
-            skillItem.style.setProperty('--ring-offset', offset);
-            skillItem.classList.add('rings-animated');
-        }
-
-        // ── Smooth scrolling for all anchor links ─────────────────────────────
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    // Close mobile nav if open
-                    closeMobileNav();
+                // Back-to-top visibility
+                if (backToTop) {
+                    backToTop.classList.toggle('visible', window.scrollY > 300);
                 }
-            });
-        });
 
-        // Desktop nav clicks
-        navItems.forEach((item, i) => {
-            item.addEventListener('click', () => {
-                if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // ── Mobile navigation ─────────────────────────────────────────────────
-        const mobileBtn     = document.getElementById('mobile-nav-btn');
-        const mobileOverlay = document.getElementById('mobile-nav-overlay');
-        const mobileDrawer  = document.getElementById('mobile-nav-drawer');
-
-        function openMobileNav() {
-            mobileBtn.classList.add('open');
-            mobileBtn.setAttribute('aria-expanded', 'true');
-            mobileOverlay.style.display = 'block';
-            mobileDrawer.classList.add('open');
-            requestAnimationFrame(() => mobileOverlay.classList.add('open'));
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileNav() {
-            if (!mobileDrawer.classList.contains('open')) return;
-            mobileBtn.classList.remove('open');
-            mobileBtn.setAttribute('aria-expanded', 'false');
-            mobileOverlay.classList.remove('open');
-            mobileDrawer.classList.remove('open');
-            document.body.style.overflow = '';
-            setTimeout(() => { mobileOverlay.style.display = 'none'; }, 300);
-        }
-
-        if (mobileBtn) {
-            mobileBtn.addEventListener('click', () => {
-                mobileDrawer.classList.contains('open') ? closeMobileNav() : openMobileNav();
-            });
-        }
-
-        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeMobileNav();
-        });
-
-        // ── Back to top ───────────────────────────────────────────────────────
-        if (backToTop) {
-            backToTop.addEventListener('click', e => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // ── Footer: current year ──────────────────────────────────────────────
-        const yearEl = document.getElementById('current-year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        // ── Glitch hover reset ────────────────────────────────────────────────
-        document.querySelectorAll('.glitch').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.animation = 'none';
-                requestAnimationFrame(() => { el.style.animation = ''; });
-            });
-        });
-
-        // ── Contact form ──────────────────────────────────────────────────────
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function (e) {
-                e.preventDefault();
-                const submitBtn  = document.getElementById('submit-btn');
-                const formStatus = document.getElementById('form-status');
-                const fd         = new FormData(this);
-
-                submitBtn.textContent = 'SENDING...';
-                submitBtn.disabled = true;
-                formStatus.className = 'form-status loading';
-                formStatus.style.display = 'block';
-                formStatus.textContent = 'Transmitting message...';
-
-                try {
-                    if (typeof emailjs !== 'undefined') {
-                        await emailjs.send('service_b1yittf', 'template_cjmva2v', {
-                            from_name:  fd.get('name'),
-                            from_email: fd.get('email'),
-                            subject:    fd.get('subject'),
-                            message:    fd.get('message'),
-                            to_email:   'ksingh.gav@gmail.com'
-                        });
-                    } else {
-                        await new Promise(r => setTimeout(r, 1500));
+                // Active section tracking for desktop nav
+                let current = '';
+                sections.forEach(section => {
+                    if (window.scrollY >= section.offsetTop - 250) {
+                        current = section.getAttribute('id') || '';
                     }
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = `Transmission successful, ${fd.get('name')}! I'll respond within 24 hours.`;
-                    this.reset();
-                    setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-                } catch (err) {
-                    console.error('EmailJS error:', err);
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = 'Transmission failed. Email me directly at ksingh.gav@gmail.com';
-                    setTimeout(() => { formStatus.style.display = 'none'; }, 8000);
-                } finally {
-                    submitBtn.textContent = 'SEND TRANSMISSION';
-                    submitBtn.disabled = false;
+                });
+
+                navItems.forEach((item, i) => {
+                    item.classList.remove('active');
+                    if (navIcons[i]) navIcons[i].classList.remove('active');
+                    const match = (current && sections[i] && sections[i].id === current) ||
+                        (current === '' && i === 0);
+                    if (match) {
+                        item.classList.add('active');
+                        if (navIcons[i]) navIcons[i].classList.add('active');
+                    }
+                });
+
+                // Active state for mobile nav
+                mobileLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!scrollRAF) {
+                    scrollRAF = true;
+                    requestAnimationFrame(() => { onScroll(); scrollRAF = false; });
                 }
+            }, { passive: true });
+
+            // ── IntersectionObserver: fade-in sections + terminal + card reveal ───
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        if (entry.target.id === 'terminal') animateTerminal();
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+            const terminalSection = document.querySelector('#terminal');
+            if (terminalSection) fadeObserver.observe(terminalSection);
+
+            // Staggered card reveal
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Find siblings in same parent and stagger
+                        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.card-reveal'));
+                        const idx = siblings.indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                            // Animate skill rings when skill card is revealed
+                            if (entry.target.classList.contains('skill-item')) {
+                                animateSkillRing(entry.target);
+                            }
+                        }, idx * 90);
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.card-reveal').forEach(el => cardObserver.observe(el));
+
+            // ── Skill ring animation ──────────────────────────────────────────────
+            const CIRCUMFERENCE = 2 * Math.PI * 26; // r=26 → ~163.4
+
+            function animateSkillRing(skillItem) {
+                const pct = parseInt(skillItem.dataset.ring || '80', 10);
+                const offset = CIRCUMFERENCE * (1 - pct / 100);
+                skillItem.style.setProperty('--ring-offset', offset);
+                skillItem.classList.add('rings-animated');
+            }
+
+            // ── Smooth scrolling for all anchor links ─────────────────────────────
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        // Close mobile nav if open
+                        closeMobileNav();
+                    }
+                });
             });
 
-            // Keep form inputs white while typing
-            contactForm.querySelectorAll('.form-control').forEach(input => {
-                input.addEventListener('input', function () { this.style.color = 'var(--text-primary)'; });
-                input.addEventListener('focus', function () { this.style.color = 'var(--text-primary)'; });
+            // Desktop nav clicks
+            navItems.forEach((item, i) => {
+                item.addEventListener('click', () => {
+                    if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth' });
+                });
             });
-        }
 
-    })();
+            // ── Mobile navigation ─────────────────────────────────────────────────
+            const mobileBtn = document.getElementById('mobile-nav-btn');
+            const mobileOverlay = document.getElementById('mobile-nav-overlay');
+            const mobileDrawer = document.getElementById('mobile-nav-drawer');
+
+            function openMobileNav() {
+                mobileBtn.classList.add('open');
+                mobileBtn.setAttribute('aria-expanded', 'true');
+                mobileOverlay.style.display = 'block';
+                mobileDrawer.classList.add('open');
+                requestAnimationFrame(() => mobileOverlay.classList.add('open'));
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileNav() {
+                if (!mobileDrawer.classList.contains('open')) return;
+                mobileBtn.classList.remove('open');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileOverlay.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+                setTimeout(() => { mobileOverlay.style.display = 'none'; }, 300);
+            }
+
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileDrawer.classList.contains('open') ? closeMobileNav() : openMobileNav();
+                });
+            }
+
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeMobileNav();
+            });
+
+            // ── Back to top ───────────────────────────────────────────────────────
+            if (backToTop) {
+                backToTop.addEventListener('click', e => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // ── Footer: current year ──────────────────────────────────────────────
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // ── Glitch hover reset ────────────────────────────────────────────────
+            document.querySelectorAll('.glitch').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    el.style.animation = 'none';
+                    requestAnimationFrame(() => { el.style.animation = ''; });
+                });
+            });
+
+            // ── Contact form ──────────────────────────────────────────────────────
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const submitBtn = document.getElementById('submit-btn');
+                    const formStatus = document.getElementById('form-status');
+                    const fd = new FormData(this);
+
+                    submitBtn.textContent = 'SENDING...';
+                    submitBtn.disabled = true;
+                    formStatus.className = 'form-status loading';
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = 'Transmitting message...';
+
+                    try {
+                        if (typeof emailjs !== 'undefined') {
+                            await emailjs.send('service_b1yittf', 'template_cjmva2v', {
+                                from_name: fd.get('name'),
+                                from_email: fd.get('email'),
+                                subject: fd.get('subject'),
+                                message: fd.get('message'),
+                                to_email: 'ksingh.gav@gmail.com'
+                            });
+                        } else {
+                            await new Promise(r => setTimeout(r, 1500));
+                        }
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = `Transmission successful, ${fd.get('name')}! I'll respond within 24 hours.`;
+                        this.reset();
+                        setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
+                    } catch (err) {
+                        console.error('EmailJS error:', err);
+                        formStatus.className = 'form-status error';
+                        formStatus.textContent = 'Transmission failed. Email me directly at ksingh.gav@gmail.com';
+                        setTimeout(() => { formStatus.style.display = 'none'; }, 8000);
+                    } finally {
+                        submitBtn.textContent = 'SEND TRANSMISSION';
+                        submitBtn.disabled = false;
+                    }
+                });
+
+                // Keep form inputs white while typing
+                contactForm.querySelectorAll('.form-control').forEach(input => {
+                    input.addEventListener('input', function () { this.style.color = 'var(--text-primary)'; });
+                    input.addEventListener('focus', function () { this.style.color = 'var(--text-primary)'; });
+                });
+            }
+
+        })();
     </script>
 </body>
 
