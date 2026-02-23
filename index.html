@@ -558,8 +558,17 @@
             }
         }
 
+        .hero-intro {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.1rem;
+        }
+
         .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.2rem, 5.5vw, 4.2rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             animation: glitch-intro 1s ease-out 1 both;
@@ -2423,8 +2432,7 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            animation: pco-in 0.7s ease 0.5s forwards,
-                pco-out 0.6s ease 7s forwards;
+            animation: pco-in 0.7s ease 0.5s forwards;
         }
 
         #pill-choose-overlay.active {
@@ -2596,6 +2604,31 @@
             border-color: var(--neon-cyan);
         }
 
+        /* ── Overlay exit reveal text ─────────────────────────────── */
+        .pco-reveal-text {
+            position: fixed;
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin: 0; padding: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+            white-space: nowrap;
+        }
+        .pco-reveal-cursor {
+            display: inline-block;
+            width: 2px; height: 1em;
+            background: var(--neon-cyan);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
         /* ── CTA button periodic hint pulses ──────────────────────────────── */
         .cta-hint-blue {
             animation: cta-pulse-blue 0.9s ease-in-out 1 !important;
@@ -2752,6 +2785,7 @@
                 <div class="col-lg-6">
                     <div class="hero-content text-center text-lg-start">
                         <p class="hero-subtitle">Welcome to the Matrix</p>
+                        <p class="hero-intro">I'm</p>
                         <h1 class="hero-title glitch" data-text="GAURAV SINGH">GAURAV SINGH</h1>
                         <div class="typing-text">
                             <span id="typed-output"></span><span class="terminal-cursor"></span>
@@ -3843,13 +3877,15 @@
 
             // ── Matrix rain canvas on pill overlay ───────────────────────────────
             let rainRAF;
+            let drops = [];
             const rainCanvas = document.getElementById('pill-rain-canvas');
+            let rc;
             if (rainCanvas) {
-                const rc = rainCanvas.getContext('2d');
+                rc = rainCanvas.getContext('2d');
                 rainCanvas.width = window.innerWidth;
                 rainCanvas.height = window.innerHeight;
                 const cols = Math.floor(rainCanvas.width / 16);
-                const drops = Array(cols).fill(1);
+                drops = Array(cols).fill(1);
                 function drawRain() {
                     rc.fillStyle = 'rgba(0,0,0,0.05)';
                     rc.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
@@ -3868,14 +3904,64 @@
             // ── Pill overlay lifecycle ────────────────────────────────────────────
             const pillOverlay2 = document.getElementById('pill-choose-overlay');
             const pcoSkip = document.getElementById('pco-skip');
+            let dismissed = false;
+
             function dismissPCO() {
-                if (!pillOverlay2) return;
-                pillOverlay2.style.animation = 'pco-out 0.4s ease forwards';
+                if (!pillOverlay2 || dismissed) return;
+                dismissed = true;
+
+                // Phase 1: pills/content fade out, rain keeps running
+                const pcoInner = pillOverlay2.querySelector('.pco-inner');
+                if (pcoInner) {
+                    pcoInner.style.transition = 'opacity 0.3s ease';
+                    pcoInner.style.opacity = '0';
+                }
+
+                // Phase 2: DOM typewriter at hero-subtitle position
                 setTimeout(() => {
-                    pillOverlay2.remove();
-                    if (rainRAF) cancelAnimationFrame(rainRAF);
-                    startCTAHint();
-                }, 400); // 7.6 + 0.4 = 8.0s total
+                    const subtitle = document.querySelector('.hero-subtitle');
+                    const rect = subtitle ? subtitle.getBoundingClientRect() : null;
+
+                    const revealEl = document.createElement('p');
+                    revealEl.className = 'pco-reveal-text';
+                    if (rect) {
+                        revealEl.style.top = rect.top + 'px';
+                        revealEl.style.left = rect.left + 'px';
+                    }
+                    pillOverlay2.appendChild(revealEl);
+
+                    // blinking cursor
+                    const cur = document.createElement('span');
+                    cur.className = 'pco-reveal-cursor';
+                    revealEl.appendChild(cur);
+
+                    // fade text element in
+                    requestAnimationFrame(() => { revealEl.style.opacity = '1'; });
+
+                    // type character by character
+                    const text = 'WELCOME TO THE MATRIX';
+                    let idx = 0;
+                    const typeInt = setInterval(() => {
+                        revealEl.insertBefore(document.createTextNode(text[idx]), cur);
+                        idx++;
+                        if (idx >= text.length) {
+                            clearInterval(typeInt);
+                            cur.remove();
+
+                            // Phase 3: pause then fade overlay
+                            setTimeout(() => {
+                                pillOverlay2.style.transition = 'opacity 1.2s ease-in-out';
+                                pillOverlay2.style.opacity = '0';
+
+                                // Phase 4: remove overlay, start CTA hints
+                                setTimeout(() => {
+                                    pillOverlay2.remove();
+                                    startCTAHint();
+                                }, 1300);
+                            }, 450);
+                        }
+                    }, 75);
+                }, 400);
             }
             if (pillOverlay2) {
                 pillOverlay2.classList.add('active');
