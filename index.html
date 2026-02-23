@@ -2620,6 +2620,15 @@
             text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
             white-space: nowrap;
         }
+        @media (max-width: 767px) {
+            .pco-reveal-text {
+                font-size: clamp(0.9rem, 4vw, 1.2rem);
+                letter-spacing: 0.2em;
+                text-align: center;
+                left: 50% !important;
+                transform: translateX(-50%);
+            }
+        }
         .pco-reveal-cursor {
             display: inline-block;
             width: 2px; height: 1em;
@@ -3926,7 +3935,10 @@
                     revealEl.className = 'pco-reveal-text';
                     if (rect) {
                         revealEl.style.top = rect.top + 'px';
-                        revealEl.style.left = rect.left + 'px';
+                        // On mobile/tablet, CSS will center it; on desktop use subtitle position
+                        if (window.innerWidth >= 768) {
+                            revealEl.style.left = rect.left + 'px';
+                        }
                     }
                     pillOverlay2.appendChild(revealEl);
 
