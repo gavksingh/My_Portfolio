@@ -3948,13 +3948,20 @@
                             clearInterval(typeInt);
                             cur.remove();
 
-                            // Phase 3: pause then fade overlay
+                            // Phase 3: pause then fade rain and overlay together
                             setTimeout(() => {
+                                // Fade rain canvas to 0 smoothly
+                                if (rainCanvas) {
+                                    rainCanvas.style.transition = 'opacity 1.2s ease-in-out';
+                                    rainCanvas.style.opacity = '0';
+                                }
+                                // Fade overlay to 0
                                 pillOverlay2.style.transition = 'opacity 1.2s ease-in-out';
                                 pillOverlay2.style.opacity = '0';
 
                                 // Phase 4: remove overlay, start CTA hints
                                 setTimeout(() => {
+                                    if (rainRAF) cancelAnimationFrame(rainRAF);
                                     pillOverlay2.remove();
                                     startCTAHint();
                                 }, 1300);
