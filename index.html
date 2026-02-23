@@ -3978,10 +3978,12 @@
                                 pillOverlay2.style.transition = 'opacity 1.2s ease-in-out';
                                 pillOverlay2.style.opacity = '0';
 
-                                // Phase 4: remove overlay, start CTA hints
+                                // Phase 4: remove overlay, start typing animation and CTA hints
                                 setTimeout(() => {
                                     if (rainRAF) cancelAnimationFrame(rainRAF);
                                     pillOverlay2.remove();
+                                    // Start the role typing animation
+                                    setTimeout(startTypingAnimation, 300);
                                     startCTAHint();
                                 }, 1300);
                             }, 450);
@@ -4031,16 +4033,16 @@
 
             // ── Typing animation ─────────────────────────────────────────────────
             const typedTexts = [
-                "AI/ML Engineer",
-                "Software Developer",
-                "Cloud Architect",
                 "Full Stack Developer",
+                "AI/ML Engineer",
                 "Open Source Contributor",
-                "Problem Solver"
+                "Cloud Architect"
             ];
             let textIndex = 0, charIndex = 0, isDeleting = false;
+            let typingStarted = false;
 
             function typeText() {
+                if (!typingStarted) return; // Wait for overlay to complete
                 const out = document.getElementById('typed-output');
                 if (!out) return;
                 const cur = typedTexts[textIndex];
@@ -4056,7 +4058,12 @@
                     setTimeout(typeText, isDeleting ? 2000 : 500);
                 }
             }
-            typeText();
+
+            // Start typing animation (called after overlay completes)
+            function startTypingAnimation() {
+                typingStarted = true;
+                typeText();
+            }
 
             // ── Terminal animation ────────────────────────────────────────────────
             const terminalLines = [
