@@ -2620,13 +2620,19 @@
             text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
             white-space: nowrap;
         }
+        /* Mobile & Tablet: center horizontally to match hero-content text-center */
+        @media (max-width: 991px) {
+            .pco-reveal-text {
+                left: 50% !important;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+        }
+        /* Mobile only: smaller font */
         @media (max-width: 767px) {
             .pco-reveal-text {
                 font-size: clamp(0.9rem, 4vw, 1.2rem);
                 letter-spacing: 0.2em;
-                text-align: center;
-                left: 50% !important;
-                transform: translateX(-50%);
             }
         }
         .pco-reveal-cursor {
@@ -3935,8 +3941,9 @@
                     revealEl.className = 'pco-reveal-text';
                     if (rect) {
                         revealEl.style.top = rect.top + 'px';
-                        // On mobile/tablet, CSS will center it; on desktop use subtitle position
-                        if (window.innerWidth >= 768) {
+                        // Only set left position on large screens (≥992px) to match Bootstrap's text-lg-start
+                        // On mobile/tablet (≤991px), CSS centers it to match text-center
+                        if (window.innerWidth >= 992) {
                             revealEl.style.left = rect.left + 'px';
                         }
                     }
