@@ -44,6 +44,10 @@
             --glow-shadow: 0 0 20px;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -517,6 +521,15 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 50%, rgba(255, 0, 128, 0.06) 0%, transparent 50%);
+            background-size: 200% 200%;
+            animation: hero-gradient-shift 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes hero-gradient-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .hero-section::before {
@@ -972,7 +985,7 @@
         /* Skills Section */
         .skill-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin: 2rem 0;
         }
@@ -1064,7 +1077,9 @@
             border: 2px solid var(--neon-cyan);
             border-radius: 10px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
             position: relative;
             cursor: none;
         }
@@ -1129,6 +1144,112 @@
         .tech-tag:hover {
             background: var(--neon-yellow);
             color: var(--dark-bg);
+        }
+
+        /* Project category tag */
+        .project-tag {
+            display: inline-block;
+            width: fit-content;
+            padding: 3px 10px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            border-radius: 3px;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .project-tag.featured {
+            background: var(--neon-pink);
+            border-color: var(--neon-pink);
+            color: var(--dark-bg);
+            box-shadow: 0 0 12px rgba(255, 0, 128, 0.4);
+        }
+
+        /* Project highlights */
+        .project-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0.6rem 0;
+        }
+
+        .highlight-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 3px;
+            color: var(--neon-cyan);
+            font-size: 0.7rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .highlight-item i {
+            font-size: 0.65rem;
+        }
+
+        /* Blog scroll arrows */
+        .scroll-row-wrapper {
+            position: relative;
+            overflow: visible;
+        }
+
+        .scroll-row-wrapper > .blogs-grid,
+        .scroll-row-wrapper > .tutorials-grid {
+            overflow: hidden;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 50%;
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.25s ease;
+            font-size: 1rem;
+        }
+
+        .scroll-arrow:hover {
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .scroll-arrow.scroll-left {
+            left: -18px;
+        }
+
+        .scroll-arrow.scroll-right {
+            right: -18px;
+        }
+
+        /* Scroll-triggered section animations */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .section-animate.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Terminal Section */
@@ -1317,6 +1438,18 @@
             -webkit-text-fill-color: var(--text-primary) !important;
         }
 
+        /* Fix Chrome/Safari autofill white background */
+        input.form-control:-webkit-autofill,
+        input.form-control:-webkit-autofill:hover,
+        input.form-control:-webkit-autofill:focus,
+        input.form-control:-webkit-autofill:active,
+        textarea.form-control:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px rgba(26, 26, 26, 0.95) inset !important;
+            -webkit-text-fill-color: var(--text-primary) !important;
+            caret-color: var(--text-primary) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
@@ -1356,10 +1489,11 @@
         }
 
         .tutorials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            display: flex;
+            gap: 1.5rem;
             margin: 2rem 0;
+            overflow: hidden;
+            padding-bottom: 1rem;
         }
 
         .tutorial-card {
@@ -1370,6 +1504,10 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: none;
+            min-width: 300px;
+            max-width: 340px;
+            flex-shrink: 0;
+
         }
 
         .tutorial-card::before {
@@ -1391,7 +1529,8 @@
 
         .tutorial-card:hover {
             border-color: var(--neon-cyan);
-            transform: translateY(-10px);
+            margin-top: -5px;
+            margin-bottom: 5px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
         }
 
@@ -1474,10 +1613,16 @@
         }
 
         .blogs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            display: flex;
+            gap: 1.5rem;
             margin: 2rem 0;
+            overflow: hidden;
+            padding-bottom: 1rem;
+        }
+
+        .blogs-grid .blog-card,
+        .tutorials-grid .tutorial-card {
+            transition: transform 0.4s ease;
         }
 
         .blog-card {
@@ -1485,6 +1630,10 @@
             border: 2px solid var(--neon-green);
             border-radius: 10px;
             overflow: hidden;
+            min-width: 300px;
+            max-width: 340px;
+            flex-shrink: 0;
+
             transition: all 0.3s ease;
             position: relative;
             cursor: none;
@@ -1509,7 +1658,8 @@
 
         .blog-card:hover {
             border-color: var(--neon-cyan);
-            transform: translateY(-10px);
+            margin-top: -5px;
+            margin-bottom: 5px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
         }
 
@@ -1754,9 +1904,45 @@
                 font-size: 1.2rem;
             }
 
-            /* Tutorials — collapse to 1 column */
+            /* Tutorials — tighter gap on mobile */
             .tutorials-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Blog/tutorial cards — fit smaller screens */
+            .blog-card {
+                min-width: 260px;
+                max-width: 300px;
+            }
+
+            .tutorial-card {
+                min-width: 260px;
+                max-width: 300px;
+            }
+
+            /* Scroll arrows — smaller on mobile */
+            .scroll-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.85rem;
+            }
+
+            .scroll-arrow.scroll-left {
+                left: -10px;
+            }
+
+            .scroll-arrow.scroll-right {
+                right: -10px;
+            }
+
+            /* Project highlights — smaller text on mobile */
+            .project-highlights {
+                gap: 4px;
+            }
+
+            .highlight-item {
+                font-size: 0.65rem;
+                padding: 2px 6px;
             }
 
             /* Terminal — prevent edge overflow */
@@ -1794,6 +1980,11 @@
                 padding: 1rem 0.5rem;
             }
 
+            .skill-matrix {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
             .cta-container {
                 display: flex;
                 flex-direction: column;
@@ -1806,6 +1997,51 @@
                 text-align: center;
                 margin: 6px 0;
                 max-width: none;
+            }
+
+            /* Blog/tutorial cards — fit very small screens */
+            .blog-card {
+                min-width: 230px;
+                max-width: 270px;
+            }
+
+            .tutorial-card {
+                min-width: 230px;
+                max-width: 270px;
+            }
+
+            /* Scroll arrows — tighter */
+            .scroll-arrow.scroll-left {
+                left: -6px;
+            }
+
+            .scroll-arrow.scroll-right {
+                right: -6px;
+            }
+
+            /* Project card buttons stack */
+            .project-info .mt-3:last-child {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .project-info .cyber-btn.secondary {
+                margin-left: 0 !important;
+            }
+
+            .project-highlights {
+                gap: 3px;
+            }
+
+            .highlight-item {
+                font-size: 0.6rem;
+                padding: 2px 5px;
+                gap: 3px;
+            }
+
+            .project-tag {
+                font-size: 0.55rem;
             }
         }
 
@@ -2411,7 +2647,7 @@
 
         @media (max-width: 768px) {
             .blogs-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             /* Mobile: show hamburger (must be after base display:none rule) */
@@ -3134,7 +3370,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="section about-section" id="about">
+    <section class="section about-section section-animate" id="about">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="ABOUT_ME">ABOUT_ME</h2>
@@ -3224,7 +3460,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="section" id="projects">
+    <section class="section section-animate" id="projects">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="PROJECTS">PROJECTS</h2>
@@ -3232,16 +3468,60 @@
             </div>
             <div class="projects-grid">
 
+                <!-- Campaign Intelligence Assistant -->
+                <div class="project-card card-reveal">
+                    <div class="project-img">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag featured">FEATURED</div>
+                        <h3>Campaign Intelligence Assistant</h3>
+                        <p style="color: var(--text-secondary);">AI-powered campaign analytics tool for adtech teams.
+                            Natural language chat interface that queries campaign databases, generates LCI attribution
+                            reports, compares campaigns, and recommends audience segments.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-diagram-3"></i> LangGraph agent w/ 5 tools</span>
+                            <span class="highlight-item"><i class="bi bi-broadcast"></i> Real-time SSE streaming</span>
+                            <span class="highlight-item"><i class="bi bi-search"></i> pgvector semantic search</span>
+                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> Serverless (Vercel + Neon)</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">pgvector</span>
+                            <span class="tech-tag">Groq</span>
+                            <span class="tech-tag">Gemini</span>
+                            <span class="tech-tag">Vercel</span>
+                            <span class="tech-tag">Neon</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://github.com/gavksingh/campaign-intelligence-assistant" class="cyber-btn"
+                                target="_blank">GitHub</a>
+                            <a href="https://campaign-intelligence-assistant.vercel.app" class="cyber-btn secondary"
+                                target="_blank" style="margin-left: 10px;">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- X-Voice Project -->
                 <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-mic"></i>
                     </div>
                     <div class="project-info">
+                        <div class="project-tag featured">FEATURED</div>
                         <h3>X-Voice - Voice Analytics AI</h3>
                         <p style="color: var(--text-secondary);">Deep learning system for predicting accent, age, and
                             gender from voice data using pi-whisper and LoRA fine-tuning. Real-time speech analysis with
                             high accuracy.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-soundwave"></i> Real-time speech analysis</span>
+                            <span class="highlight-item"><i class="bi bi-gpu-card"></i> LoRA fine-tuning</span>
+                            <span class="highlight-item"><i class="bi bi-translate"></i> Accent prediction</span>
+                            <span class="highlight-item"><i class="bi bi-person-lines-fill"></i> Age & gender detection</span>
+                        </div>
                         <div class="mt-3">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Pi-whisper</span>
@@ -3250,7 +3530,7 @@
                             <span class="tech-tag">Speech Analysis</span>
                         </div>
                         <div class="mt-3">
-                            <a href="https://xvoice.xlabub.com/" class="cyber-btn" target="_blank">View Project</a>
+                            <a href="https://xvoice.xlabub.com/" class="cyber-btn" target="_blank">Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -3261,11 +3541,18 @@
                         <i class="bi bi-heart-pulse-fill"></i>
                     </div>
                     <div class="project-info">
+                        <div class="project-tag">RESEARCH</div>
                         <h3>AutoRSR - Speech Disorder Detection</h3>
                         <p style="color: var(--text-secondary);">AI-powered system for early detection of speech
                             disorders in children using advanced machine learning.
                             Determines whether a child requires Speech-Language Pathologist (SLP) attention with high
                             accuracy.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-activity"></i> Early disorder detection</span>
+                            <span class="highlight-item"><i class="bi bi-clipboard2-pulse"></i> SLP screening</span>
+                            <span class="highlight-item"><i class="bi bi-bullseye"></i> High accuracy ML</span>
+                            <span class="highlight-item"><i class="bi bi-hospital"></i> Healthcare AI</span>
+                        </div>
                         <div class="mt-3">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Machine Learning</span>
@@ -3274,7 +3561,7 @@
                             <span class="tech-tag">Healthcare</span>
                         </div>
                         <div class="mt-3">
-                            <a href="https://autorsr.xlabub.com/home" class="cyber-btn" target="_blank">View Project</a>
+                            <a href="https://autorsr.xlabub.com/home" class="cyber-btn" target="_blank">Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -3285,12 +3572,19 @@
                         <i class="bi bi-diagram-3"></i>
                     </div>
                     <div class="project-info">
+                        <div class="project-tag">AI AGENTS</div>
                         <h3>Agentic MCP Hub</h3>
                         <p style="color: var(--text-secondary);">
                             Enterprise-grade MCP server that gives AI agents a unified interface to Jira, Slack,
                             and SQL databases. Designed for secure, multi-step agentic workflows across enterprise
                             systems.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-plug"></i> Jira + Slack + SQL</span>
+                            <span class="highlight-item"><i class="bi bi-shield-lock"></i> Secure workflows</span>
+                            <span class="highlight-item"><i class="bi bi-building"></i> Enterprise-grade</span>
+                            <span class="highlight-item"><i class="bi bi-arrows-move"></i> Multi-step agents</span>
+                        </div>
                         <div class="mt-3">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">MCP</span>
@@ -3317,6 +3611,12 @@
                             Browser automation and content extraction MCP server that lets AI agents navigate,
                             click, and extract structured data from the web using Playwright-powered workflows.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-cursor-fill"></i> Browser automation</span>
+                            <span class="highlight-item"><i class="bi bi-file-earmark-code"></i> Structured extraction</span>
+                            <span class="highlight-item"><i class="bi bi-play-circle"></i> Playwright-powered</span>
+                            <span class="highlight-item"><i class="bi bi-globe"></i> Web agent workflows</span>
+                        </div>
                         <div class="mt-3">
                             <span class="tech-tag">TypeScript</span>
                             <span class="tech-tag">MCP</span>
@@ -3342,6 +3642,12 @@
                         <p style="color: var(--text-secondary);">Advanced AI tool for web automation and data extraction
                             using Playwright, LangChain, and RAG technology. Automates complex web workflows with
                             intelligent decision-making capabilities.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-robot"></i> AI decision-making</span>
+                            <span class="highlight-item"><i class="bi bi-database-gear"></i> RAG retrieval</span>
+                            <span class="highlight-item"><i class="bi bi-arrow-repeat"></i> Complex workflows</span>
+                            <span class="highlight-item"><i class="bi bi-box-arrow-in-down"></i> Data extraction</span>
+                        </div>
                         <div class="mt-3">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Playwright</span>
@@ -3350,105 +3656,7 @@
                             <span class="tech-tag">AI Agents</span>
                         </div>
                         <div class="mt-3">
-                            <a href="https://github.com/gavksingh/WebAuto-Dash" class="cyber-btn" target="_blank">View
-                                Project</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Migrate Mate Project -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-arrow-left-right"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Migrate Mate</h3>
-                        <p style="color: var(--text-secondary);">Advanced subscription cancellation flow with A/B
-                            testing,
-                            deterministic user assignment, and comprehensive data analytics. Features secure database
-                            operations
-                            and enhanced UX for customer retention strategies.</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">A/B Testing</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://github.com/gavksingh/mm-cancel-flow-task-gaurav" class="cyber-btn"
-                                target="_blank">GitHub</a>
-                            <a href="https://drive.google.com/file/d/194tNmC7gX2Kx6C0qI5MDJLmIJNpMcqN9/view"
-                                class="cyber-btn secondary" target="_blank" style="margin-left: 10px;">Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI ChatBot Project -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-chat-dots"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>AI ChatBot</h3>
-                        <p style="color: var(--text-secondary);">Multilingual programming assistance chatbot with secure
-                            Firebase Authentication and real-time responses</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Groq API</span>
-                            <span class="tech-tag">Vercel</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://ai-chatbot-one-azure.vercel.app/" class="cyber-btn" target="_blank">View
-                                Project</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SmokeFreeTeen Project -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-heart-pulse"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>SmokeFreeTeen - Health Chatbot</h3>
-                        <p style="color: var(--text-secondary);">Cross-platform chatbot for adolescent e-cigarette
-                            cessation support with OpenAI API integration and multi-language support.</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://github.com/gavksingh/SmokeFreeTeen" class="cyber-btn" target="_blank">View
-                                Project</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Face Recognition System -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-person-check"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Face Recognition System</h3>
-                        <p style="color: var(--text-secondary);">ML-based attendance system using computer vision and
-                            Python OpenCV</p>
-                        <div class="mt-3">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">ML</span>
-                            <span class="tech-tag">Haar Cascade</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://github.com/gavksingh/Face_Recognition_Attendance_System" class="cyber-btn"
-                                target="_blank">View Project</a>
+                            <a href="https://github.com/gavksingh/WebAuto-Dash" class="cyber-btn" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -3458,7 +3666,7 @@
     </section>
 
     <!-- Open Source Contributions Section -->
-    <section class="section opensource-section" id="opensource">
+    <section class="section opensource-section section-animate" id="opensource">
         <div class="container fade-in">
             <div class="section-title">
                 <div class="os-section-badge">
@@ -3586,7 +3794,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="section" id="skills">
+    <section class="section section-animate" id="skills">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="SKILLS">SKILLS</h2>
@@ -3649,17 +3857,6 @@
                     <div class="skill-name">AWS Cloud</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="82">
-                    <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64">
-                            <circle class="ring-bg" cx="32" cy="32" r="26" />
-                            <circle class="ring-fill" cx="32" cy="32" r="26" />
-                        </svg>
-                        <i class="skill-ring-icon bi bi-box-seam"></i>
-                    </div>
-                    <div class="skill-name">Docker / K8s</div>
-                    <div class="skill-level">Intermediate</div>
-                </div>
                 <div class="skill-item card-reveal" data-ring="88">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
@@ -3679,30 +3876,8 @@
                         </svg>
                         <i class="skill-ring-icon bi bi-filetype-tsx"></i>
                     </div>
-                    <div class="skill-name">TypeScript</div>
+                    <div class="skill-name">React / Next.js</div>
                     <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item card-reveal" data-ring="85">
-                    <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64">
-                            <circle class="ring-bg" cx="32" cy="32" r="26" />
-                            <circle class="ring-fill" cx="32" cy="32" r="26" />
-                        </svg>
-                        <i class="skill-ring-icon bi bi-window"></i>
-                    </div>
-                    <div class="skill-name">React</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item card-reveal" data-ring="80">
-                    <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64">
-                            <circle class="ring-bg" cx="32" cy="32" r="26" />
-                            <circle class="ring-fill" cx="32" cy="32" r="26" />
-                        </svg>
-                        <i class="skill-ring-icon bi bi-gear-wide-connected"></i>
-                    </div>
-                    <div class="skill-name">DevOps</div>
-                    <div class="skill-level">Intermediate</div>
                 </div>
                 <div class="skill-item card-reveal" data-ring="85">
                     <div class="skill-ring-wrap">
@@ -3712,18 +3887,7 @@
                         </svg>
                         <i class="skill-ring-icon bi bi-database-fill"></i>
                     </div>
-                    <div class="skill-name">Database</div>
-                    <div class="skill-level">Advanced</div>
-                </div>
-                <div class="skill-item card-reveal" data-ring="88">
-                    <div class="skill-ring-wrap">
-                        <svg viewBox="0 0 64 64">
-                            <circle class="ring-bg" cx="32" cy="32" r="26" />
-                            <circle class="ring-fill" cx="32" cy="32" r="26" />
-                        </svg>
-                        <i class="skill-ring-icon bi bi-layers-fill"></i>
-                    </div>
-                    <div class="skill-name">Full Stack</div>
+                    <div class="skill-name">PostgreSQL / SQL</div>
                     <div class="skill-level">Advanced</div>
                 </div>
             </div>
@@ -3731,7 +3895,7 @@
     </section>
 
     <!-- Resume Section -->
-    <section class="section" id="resume">
+    <section class="section section-animate" id="resume">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="RESUME">RESUME</h2>
@@ -3835,14 +3999,41 @@
     </section>
 
     <!-- Blogs Section -->
-    <section class="section blogs-section" id="blogs">
+    <section class="section blogs-section section-animate" id="blogs">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="BLOGS &amp; POSTS">BLOGS &amp; POSTS</h2>
                 <p style="color: var(--text-secondary);">Technical insights and knowledge sharing</p>
             </div>
+            <div class="scroll-row-wrapper">
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll right"><i class="bi bi-chevron-right"></i></button>
             <div class="blogs-grid">
                 <!-- LinkedIn Posts (no featured image) -->
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/" target="_blank"
+                        style="text-decoration: none;">
+                        <div class="post-card-header">
+                            <i class="bi bi-bar-chart-line post-card-icon"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">LangGraph</span>
+                                <span class="blog-tag">AdTech</span>
+                                <span class="blog-tag">RAG</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>&bull;</span>
+                                <span>Build in Public</span>
+                            </div>
+                            <h3>Campaign Intelligence Assistant: AI Analytics for AdTech</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
                         style="text-decoration: none;">
@@ -3993,6 +4184,7 @@
                     </a>
                 </div>
             </div>
+            </div><!-- /scroll-row-wrapper -->
 
             <div class="text-center mt-4">
                 <a href="https://www.linkedin.com/in/gavksingh/recent-activity/all/" target="_blank"
@@ -4004,13 +4196,34 @@
     </section>
 
     <!-- Tutorials Section -->
-    <section class="section tutorials-section" id="tutorials">
+    <section class="section tutorials-section section-animate" id="tutorials">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="TUTORIALS">TUTORIALS</h2>
                 <p style="color: var(--text-secondary);">Educational content from WorkCode & Gaurav YouTube channel</p>
             </div>
+            <div class="scroll-row-wrapper">
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),-340)" aria-label="Scroll left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),340)" aria-label="Scroll right"><i class="bi bi-chevron-right"></i></button>
             <div class="tutorials-grid">
+                <div class="tutorial-card card-reveal">
+                    <a href="https://youtu.be/phdImo3Wa-k" target="_blank" style="text-decoration: none;">
+                        <div class="tutorial-img">
+                            <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
+                                loading="lazy" decoding="async" onerror="this.style.display='none'">
+                        </div>
+                        <div class="tutorial-info">
+                            <div class="channel-info">
+                                <i class="bi bi-youtube"></i>
+                                <span>WorkCode & Gaurav</span>
+                            </div>
+                            <h3>Cloud Computing & Web Hosting</h3>
+                            <p style="color: var(--text-secondary);">In this video, I have talked about Cloud Computing
+                                fundamentals and Web Hosting concepts.</p>
+                        </div>
+                    </a>
+                </div>
+
                 <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
@@ -4049,24 +4262,6 @@
                 </div>
 
                 <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/phdImo3Wa-k" target="_blank" style="text-decoration: none;">
-                        <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="tutorial-info">
-                            <div class="channel-info">
-                                <i class="bi bi-youtube"></i>
-                                <span>WorkCode & Gaurav</span>
-                            </div>
-                            <h3>Cloud Computing & Web Hosting</h3>
-                            <p style="color: var(--text-secondary);">In this video, I have talked about Cloud Computing
-                                fundamentals and Web Hosting concepts.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="tutorial-card card-reveal">
                     <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" style="text-decoration: none;">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial" loading="lazy"
@@ -4084,6 +4279,7 @@
                     </a>
                 </div>
             </div>
+            </div><!-- /scroll-row-wrapper -->
 
             <div class="text-center mt-4">
                 <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank" class="cyber-btn">
@@ -4094,7 +4290,7 @@
     </section>
 
     <!-- Terminal Section -->
-    <section class="section terminal-section" id="terminal">
+    <section class="section terminal-section section-animate" id="terminal">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="TERMINAL">TERMINAL</h2>
@@ -4115,7 +4311,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
+    <section class="section contact-section section-animate" id="contact">
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="CONNECT">CONNECT</h2>
@@ -4259,12 +4455,27 @@
 
             // ── Loading screen: dismiss immediately on load, CSS handles the fade ─
             window.addEventListener('load', () => {
+                window.scrollTo(0, 0);
+                if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
                 const loader = document.querySelector('.loader-wrapper');
                 if (loader) {
                     loader.style.opacity = '0';
                     setTimeout(() => { loader.style.display = 'none'; }, 500);
                 }
             });
+
+            // ── Scroll row helper (arrow buttons) ────────────────────────────────
+            // Uses transform to slide cards since overflow is hidden (no scroll trap)
+            window.scrollRow = function (container, delta) {
+                if (!container) return;
+                if (!container._scrollPos) container._scrollPos = 0;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                container._scrollPos = Math.max(0, Math.min(maxScroll, container._scrollPos + delta));
+                const cards = container.children;
+                for (let i = 0; i < cards.length; i++) {
+                    cards[i].style.transform = 'translateX(' + (-container._scrollPos) + 'px)';
+                }
+            };
 
             // ── CTA periodic hint pulse (blue → red, repeats every 14s) ─────────
             function startCTAHint() {
@@ -4686,6 +4897,18 @@
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
             document.querySelectorAll('.card-reveal').forEach(el => cardObserver.observe(el));
+
+            // ── Section scroll-in animations ────────────────────────────────────
+            const sectionAnimObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        sectionAnimObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+            document.querySelectorAll('.section-animate').forEach(el => sectionAnimObserver.observe(el));
 
             // ── Skill ring animation ──────────────────────────────────────────────
             const CIRCUMFERENCE = 2 * Math.PI * 26; // r=26 → ~163.4
