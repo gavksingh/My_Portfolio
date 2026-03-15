@@ -9,6 +9,16 @@
     <meta content="Software Developer Portfolio with Cyberpunk Design" name="description">
     <meta content="developer, portfolio, cyberpunk, software engineer" name="keywords">
 
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Gaurav Singh | Cyberpunk Developer Portfolio">
+    <meta property="og:description" content="Software Developer Portfolio with Cyberpunk Design">
+    <meta property="og:image" content="assets/img/hero-bg5.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gaurav Singh | Cyberpunk Developer Portfolio">
+    <meta name="twitter:description" content="Software Developer Portfolio with Cyberpunk Design">
+    <meta name="twitter:image" content="assets/img/hero-bg5.jpg">
+
     <!-- Favicons -->
     <link href="assets/img/favicon6.png" rel="icon">
     <link href="assets/img/apple-touch-icon2.png" rel="apple-touch-icon">
@@ -16,6 +26,7 @@
     <!-- Cyberpunk Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -27,7 +38,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -42,6 +53,9 @@
             --text-secondary: #888888;
             --grid-color: rgba(0, 255, 255, 0.1);
             --glow-shadow: 0 0 20px;
+            --carousel-scroll-delta: 340px;
+            --section-padding: 60px;
+            --card-border-radius: 10px;
         }
 
         html {
@@ -625,6 +639,24 @@
             }
         }
 
+        /* Hero scroll indicator */
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            animation: scroll-bounce 2s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: 5;
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+            50% { transform: translateX(-50%) translateY(12px); opacity: 1; }
+        }
+
         /* Cyber Buttons */
         .cyber-btn {
             padding: 15px 40px;
@@ -1103,8 +1135,8 @@
 
         .project-card:hover {
             border-color: var(--neon-pink);
-            transform: translateY(-10px);
-            box-shadow: var(--glow-shadow) rgba(255, 0, 128, 0.3);
+            transform: perspective(800px) rotateY(2deg) translateY(-8px);
+            box-shadow: 0 0 30px var(--neon-cyan), 0 0 60px rgba(0, 255, 255, 0.3);
         }
 
         .project-img {
@@ -1204,7 +1236,15 @@
 
         .scroll-row-wrapper > .blogs-grid,
         .scroll-row-wrapper > .tutorials-grid {
-            overflow: hidden;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .scroll-row-wrapper > .blogs-grid::-webkit-scrollbar,
+        .scroll-row-wrapper > .tutorials-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .scroll-arrow {
@@ -1317,6 +1357,17 @@
 
         .terminal-prompt {
             color: var(--neon-pink);
+        }
+
+        .terminal-body .terminal-line:last-child::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background: var(--neon-cyan);
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
         }
 
         /* Contact Section */
@@ -1492,8 +1543,11 @@
             display: flex;
             gap: 1.5rem;
             margin: 2rem 0;
-            overflow: hidden;
             padding-bottom: 1rem;
+        }
+
+        .tutorials-grid > * {
+            scroll-snap-align: start;
         }
 
         .tutorial-card {
@@ -1616,13 +1670,11 @@
             display: flex;
             gap: 1.5rem;
             margin: 2rem 0;
-            overflow: hidden;
             padding-bottom: 1rem;
         }
 
-        .blogs-grid .blog-card,
-        .tutorials-grid .tutorial-card {
-            transition: transform 0.4s ease;
+        .blogs-grid > * {
+            scroll-snap-align: start;
         }
 
         .blog-card {
@@ -2349,7 +2401,9 @@
             height: 2px;
             background: var(--neon-cyan);
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+                        opacity 0.25s ease,
+                        background 0.3s ease;
         }
 
         .mobile-nav-btn.open span:nth-child(1) {
@@ -2520,6 +2574,20 @@
             background: rgba(255, 0, 128, 0.08);
         }
 
+        .back-to-top-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .back-to-top i {
+            position: relative;
+            z-index: 1;
+        }
+
         /* will-change hints for animated elements */
         .cyber-grid,
         .floating-card,
@@ -2639,6 +2707,15 @@
             display: none;
         }
 
+        /* Phase 2.2: Staggered skill ring entrance */
+        .skill-item.card-reveal {
+            transition-delay: calc(var(--i, 0) * 0.1s);
+        }
+
+        .skill-item.card-reveal.revealed {
+            transition-delay: calc(var(--i, 0) * 0.1s);
+        }
+
         /* Neon glow section dividers */
         .section+.section {
             border-top: 1px solid rgba(0, 255, 255, 0.12);
@@ -2755,8 +2832,8 @@
             box-shadow: 0 0 12px rgba(0, 255, 255, 0.6),
                 inset 0 3px 6px rgba(255, 255, 255, 0.35),
                 inset 0 -3px 4px rgba(0, 0, 0, 0.4);
-            /* pulses 2× first, starts 3.2s, ends 5.2s */
-            animation: pill-pulse-blue 1.0s ease-in-out 3.2s 2 both;
+            /* pulses 1× first, starts 3.2s */
+            animation: pill-pulse-blue 1.0s ease-in-out 3.2s 1 both;
         }
 
         .red-3d {
@@ -2766,7 +2843,7 @@
                 inset 0 3px 6px rgba(255, 255, 255, 0.3),
                 inset 0 -3px 4px rgba(0, 0, 0, 0.4);
             /* pulses 1× after blue, starts 5.2s, ends 6.2s */
-            animation: pill-pulse-red 1.0s ease-in-out 5.2s 1 both;
+            animation: pill-pulse-red 1.0s ease-in-out 4.4s 1 both;
         }
 
         @keyframes pill-pulse-blue {
@@ -2928,6 +3005,15 @@
             animation: cta-pulse-red 0.9s ease-in-out 1 !important;
         }
 
+        .pill-blink {
+            animation: pill-blink-glow 0.9s ease-in-out 1;
+        }
+
+        @keyframes pill-blink-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); filter: brightness(1.6); }
+        }
+
         @keyframes cta-pulse-blue {
 
             0%,
@@ -3080,6 +3166,43 @@
             text-decoration: none;
             display: block;
             position: relative;
+            will-change: transform, background;
+        }
+
+        .os-pr-card.os-issue-card {
+            border-left-color: var(--neon-yellow);
+        }
+
+        .os-pr-card.os-issue-card:hover {
+            background: rgba(255, 255, 0, 0.06);
+            border-left-color: var(--neon-cyan);
+        }
+
+        /* Collapsible PR list */
+        .os-pr-card.os-pr-hidden {
+            display: none;
+        }
+
+        .os-pr-card.os-pr-hidden.os-pr-expanded {
+            display: block;
+        }
+
+        .os-toggle-btn {
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            padding: 6px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 0.5rem;
+        }
+
+        .os-toggle-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
         }
 
         .os-pr-card:hover {
@@ -3173,15 +3296,170 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ── Theme toggle button ── */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+        }
+
+        /* ── Clean / Light theme overrides ── */
+        [data-theme="clean"] {
+            --dark-bg: #f5f5f7;
+            --dark-surface: #ffffff;
+            --dark-card: #f0f0f2;
+            --text-primary: #1a1a2e;
+            --text-secondary: #555555;
+            --neon-cyan: #0077b6;
+            --neon-pink: #c9184a;
+            --neon-yellow: #b5851a;
+            --neon-green: #2d6a4f;
+            --grid-color: rgba(0, 119, 182, 0.06);
+        }
+
+        [data-theme="clean"] body {
+            cursor: auto;
+        }
+
+        [data-theme="clean"] .cursor-dot,
+        [data-theme="clean"] .cursor-outline {
+            display: none !important;
+        }
+
+        [data-theme="clean"] .cyber-grid {
+            opacity: 0.03;
+        }
+
+        [data-theme="clean"] .glitch::before,
+        [data-theme="clean"] .glitch::after {
+            display: none;
+        }
+
+        [data-theme="clean"] .nav-menu {
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 119, 182, 0.15);
+        }
+
+        [data-theme="clean"] .terminal {
+            background: #1a1a2e;
+        }
+
+        [data-theme="clean"] .theme-toggle {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #0077b6;
+            color: #0077b6;
+        }
+
+        [data-theme="clean"] .theme-toggle i::before {
+            content: "\F497";
+        }
+
+        [data-theme="clean"] .mobile-nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="clean"] .mobile-nav-drawer {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        [data-theme="clean"] .back-to-top {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="clean"] .loader-wrapper {
+            background: #f5f5f7;
+        }
+
+        /* ── Utility classes (consolidating inline styles) ── */
+        .text-cyan { color: var(--neon-cyan); }
+        .text-pink { color: var(--neon-pink); }
+        .text-yellow { color: var(--neon-yellow); }
+        .text-green { color: var(--neon-green); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-primary-body { color: var(--text-primary); }
+        .font-orbitron { font-family: 'Orbitron', monospace; }
+        .no-decoration { text-decoration: none; }
+        .tech-tag-sm { font-size: 0.7rem; padding: 3px 8px; }
+        .contact-icon { font-size: 2.5rem; color: var(--neon-cyan); }
+        .experience-box {
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 3px solid var(--neon-cyan);
+        }
+        .info-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.04);
+            border: 1px solid rgba(0, 255, 0, 0.15);
+            border-radius: 6px;
+        }
+
+        /* ── Focus-visible styles (Phase 4.1) ── */
+        :focus-visible {
+            outline: 2px solid var(--neon-cyan);
+            outline-offset: 3px;
+        }
+
+        .nav-item:focus-visible,
+        .mobile-nav-item:focus-visible {
+            outline: 2px solid var(--neon-cyan);
+            outline-offset: 2px;
+            border-radius: 15px;
+        }
+
+        .cyber-btn:focus-visible {
+            outline: 2px solid var(--neon-pink);
+            outline-offset: 4px;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--neon-cyan);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility: respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .cursor-dot, .cursor-outline { display: none; }
+            body { cursor: auto; }
+        }
+
+        /* Hide custom cursor on touch devices */
+        @media (pointer: coarse) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Hidden audio element for typing sound -->
-    <audio id="typing-audio" preload="auto" autoplay loop muted playsinline volume="0.3">
-        <source src="assets/audio/typing-sound.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- Matrix pill-choice overlay -->
     <div id="pill-choose-overlay" aria-hidden="true">
         <canvas id="pill-rain-canvas"></canvas>
@@ -3238,8 +3516,14 @@
         <a class="mobile-nav-item" href="#contact"><i class="bi bi-envelope-fill"></i><span>Contact</span></a>
     </nav>
 
-    <!-- Back to top -->
+    <!-- Back to top with scroll progress ring -->
     <a class="back-to-top" id="back-to-top" href="#home" aria-label="Back to top">
+        <svg class="back-to-top-ring" viewBox="0 0 46 46">
+            <circle cx="23" cy="23" r="20" fill="none" stroke="rgba(0,255,255,0.15)" stroke-width="2"/>
+            <circle id="btt-progress" cx="23" cy="23" r="20" fill="none" stroke="var(--neon-cyan)" stroke-width="2"
+                stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
+                style="transform: rotate(-90deg); transform-origin: center;"/>
+        </svg>
         <i class="bi bi-chevron-up"></i>
     </a>
 
@@ -3258,44 +3542,49 @@
     <div class="cursor-outline"></div>
 
     <!-- IMPROVED NAVIGATION WITH ICONS -->
-    <nav class="nav-menu">
-        <div class="nav-item active">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+        <i class="bi bi-sun-fill"></i>
+    </button>
+
+    <nav class="nav-menu" aria-label="Main navigation">
+        <div class="nav-item active" tabindex="0" role="link" aria-label="Home">
             <i class="nav-icon bi bi-house-fill active"></i>
             <span class="nav-text">HOME</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="About">
             <i class="nav-icon bi bi-person-fill"></i>
             <span class="nav-text">ABOUT</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Projects">
             <i class="nav-icon bi bi-folder-fill"></i>
             <span class="nav-text">PROJECTS</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Skills">
             <i class="nav-icon bi bi-code-slash"></i>
             <span class="nav-text">SKILLS</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Resume">
             <i class="nav-icon bi bi-file-earmark-text"></i>
             <span class="nav-text">RESUME</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Tutorials">
             <i class="nav-icon bi bi-play-circle-fill"></i>
             <span class="nav-text">TUTORIALS</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Blogs and Posts">
             <i class="nav-icon bi bi-journal-text"></i>
             <span class="nav-text">BLOGS & POSTS</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Open Source">
             <i class="nav-icon bi bi-git"></i>
             <span class="nav-text">OPEN SOURCE</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Terminal">
             <i class="nav-icon bi bi-terminal-fill"></i>
             <span class="nav-text">TERMINAL</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" tabindex="0" role="link" aria-label="Contact">
             <i class="nav-icon bi bi-envelope-fill"></i>
             <span class="nav-text">CONTACT</span>
         </div>
@@ -3324,6 +3613,9 @@
                                 target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
                             <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank"
                                 rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://thepromptacademy.com/gavksingh" title="AI Projects"
+                                aria-label="AI Projects" target="_blank" rel="noopener noreferrer"><i
+                                    class="bi bi-person-badge"></i></a>
                             <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube"
                                 aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i
                                     class="bi bi-youtube"></i></a>
@@ -3366,6 +3658,10 @@
                     </div>
                 </div>
             </div>
+            <!-- Hero scroll indicator -->
+            <div class="hero-scroll-indicator">
+                <i class="bi bi-chevron-double-down"></i>
+            </div>
         </div>
     </section>
 
@@ -3386,6 +3682,9 @@
                                 target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
                             <a href="https://github.com/gavksingh" title="GitHub" aria-label="GitHub" target="_blank"
                                 rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://thepromptacademy.com/gavksingh" title="AI Projects"
+                                aria-label="AI Projects" target="_blank" rel="noopener noreferrer"><i
+                                    class="bi bi-person-badge"></i></a>
                             <a href="https://www.youtube.com/@workcodeandgaurav/featured" title="YouTube"
                                 aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i
                                     class="bi bi-youtube"></i></a>
@@ -3402,20 +3701,20 @@
                         <p
                             style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
                             <strong>Software Engineer</strong> with <strong>3+ years</strong> of experience building
-                            production <strong style="color: var(--neon-cyan);">AI Agent Systems</strong> and
+                            production <strong class="text-cyan">AI Agent Systems</strong> and
                             scalable <strong>Distributed Services</strong>. Currently working as an <strong
-                                style="color: var(--neon-cyan);">AI Software Engineer</strong> at
+                                class="text-cyan">AI Software Engineer</strong> at
                             <strong>University at Buffalo</strong>, focusing on <strong
-                                style="color: var(--neon-cyan);">Multi-Agent Orchestration</strong>, <strong
-                                style="color: var(--neon-cyan);">Semantic Search</strong>, and
+                                class="text-cyan">Multi-Agent Orchestration</strong>, <strong
+                                class="text-cyan">Semantic Search</strong>, and
                             reliable distributed services.
                         </p>
                         <p
                             style="color: var(--text-primary); font-size: 1.0rem; line-height: 1.8; margin-bottom: 1rem;">
                             I build <strong>end-to-end AI systems</strong>: <strong
-                                style="color: var(--neon-cyan);">MCP-based Agents</strong> with <strong
-                                style="color: var(--neon-cyan);">LangGraph/LangChain</strong>, <strong
-                                style="color: var(--neon-cyan);">RAG Pipelines</strong>,
+                                class="text-cyan">MCP-based Agents</strong> with <strong
+                                class="text-cyan">LangGraph/LangChain</strong>, <strong
+                                class="text-cyan">RAG Pipelines</strong>,
                             and full-stack platforms like <strong>AutoRSR</strong> and <strong>X-Voice</strong> that
                             combine <strong>low-latency</strong> user
                             experiences with <strong>production-grade reliability</strong>.
@@ -3423,34 +3722,34 @@
                         <p
                             style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
                             My experience spans <strong>event-driven microservices</strong>, <strong
-                                style="color: var(--neon-cyan);">Kafka-based Data Pipelines</strong> processing
+                                class="text-cyan">Kafka-based Data Pipelines</strong> processing
                             hundreds of thousands of daily events, and <strong>cloud-native deployments</strong> on
-                            <strong style="color: var(--neon-cyan);">AWS</strong> and <strong
-                                style="color: var(--neon-cyan);">Azure</strong>
+                            <strong class="text-cyan">AWS</strong> and <strong
+                                class="text-cyan">Azure</strong>
                             with strong <strong>observability</strong> and <strong
-                                style="color: var(--neon-cyan);">CI/CD</strong>.
+                                class="text-cyan">CI/CD</strong>.
                         </p>
                         <p
                             style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
-                            <strong style="color: var(--neon-yellow);">Core Stack:</strong> <strong>Python</strong>,
+                            <strong class="text-yellow">Core Stack:</strong> <strong>Python</strong>,
                             <strong>TypeScript</strong>, <strong>Java</strong>, <strong>C#</strong>, <strong
-                                style="color: var(--neon-cyan);">LangGraph</strong>, <strong
-                                style="color: var(--neon-cyan);">LangChain</strong>, <strong
-                                style="color: var(--neon-cyan);">RAG</strong>, <strong>React</strong>,
+                                class="text-cyan">LangGraph</strong>, <strong
+                                class="text-cyan">LangChain</strong>, <strong
+                                class="text-cyan">RAG</strong>, <strong>React</strong>,
                             <strong>Next.js</strong>,
                             <strong>Spring Boot</strong>, <strong>.NET</strong>, <strong
-                                style="color: var(--neon-cyan);">Kafka</strong>, <strong>PostgreSQL</strong>,
-                            <strong>Redis</strong>, <strong style="color: var(--neon-cyan);">Docker</strong>, <strong
-                                style="color: var(--neon-cyan);">Kubernetes</strong>.
+                                class="text-cyan">Kafka</strong>, <strong>PostgreSQL</strong>,
+                            <strong>Redis</strong>, <strong class="text-cyan">Docker</strong>, <strong
+                                class="text-cyan">Kubernetes</strong>.
                         </p>
                         <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8;">
-                            <strong style="color: var(--neon-yellow);">MS in Computer Science</strong> from University
+                            <strong class="text-yellow">MS in Computer Science</strong> from University
                             at Buffalo (<strong>3.9 GPA</strong>), with certifications across
-                            <strong style="color: var(--neon-cyan);">AWS</strong>, <strong
-                                style="color: var(--neon-cyan);">Azure AI</strong>, and <strong
-                                style="color: var(--neon-cyan);">GCP</strong>. Open to <strong>Software
-                                Engineer</strong>, <strong style="color: var(--neon-cyan);">AI/ML Engineer</strong>, and
-                            <strong style="color: var(--neon-cyan);">Applied AI Engineer</strong>
+                            <strong class="text-cyan">AWS</strong>, <strong
+                                class="text-cyan">Azure AI</strong>, and <strong
+                                class="text-cyan">GCP</strong>. Open to <strong>Software
+                                Engineer</strong>, <strong class="text-cyan">AI/ML Engineer</strong>, and
+                            <strong class="text-cyan">Applied AI Engineer</strong>
                             roles.
                         </p>
                     </div>
@@ -3464,7 +3763,7 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="PROJECTS">PROJECTS</h2>
-                <p style="color: var(--text-secondary);">Innovative solutions and cutting-edge implementations</p>
+                <p class="text-secondary">Innovative solutions and cutting-edge implementations</p>
             </div>
             <div class="projects-grid">
 
@@ -3476,7 +3775,7 @@
                     <div class="project-info">
                         <div class="project-tag featured">FEATURED</div>
                         <h3>WeatherWise Agent</h3>
-                        <p style="color: var(--text-secondary);">AI-powered weather assistant built with LangGraph and
+                        <p class="text-secondary">AI-powered weather assistant built with LangGraph and
                             MCP (Model Context Protocol). Natural language queries for real-time weather, forecasts,
                             air quality, and alerts. Deployed on GCP using Vertex AI with Dockerized microservices
                             and network isolation.</p>
@@ -3513,7 +3812,7 @@
                     <div class="project-info">
                         <div class="project-tag featured">FEATURED</div>
                         <h3>Campaign Intelligence Assistant</h3>
-                        <p style="color: var(--text-secondary);">AI-powered campaign analytics tool for adtech teams.
+                        <p class="text-secondary">AI-powered campaign analytics tool for adtech teams.
                             Natural language chat interface that queries campaign databases, generates LCI attribution
                             reports, compares campaigns, and recommends audience segments.</p>
                         <div class="project-highlights">
@@ -3550,7 +3849,7 @@
                     <div class="project-info">
                         <div class="project-tag featured">FEATURED</div>
                         <h3>X-Voice - Voice Analytics AI</h3>
-                        <p style="color: var(--text-secondary);">Deep learning system for predicting accent, age, and
+                        <p class="text-secondary">Deep learning system for predicting accent, age, and
                             gender from voice data using pi-whisper and LoRA fine-tuning. Real-time speech analysis with
                             high accuracy.</p>
                         <div class="project-highlights">
@@ -3580,7 +3879,7 @@
                     <div class="project-info">
                         <div class="project-tag">RESEARCH</div>
                         <h3>AutoRSR - Speech Disorder Detection</h3>
-                        <p style="color: var(--text-secondary);">AI-powered system for early detection of speech
+                        <p class="text-secondary">AI-powered system for early detection of speech
                             disorders in children using advanced machine learning.
                             Determines whether a child requires Speech-Language Pathologist (SLP) attention with high
                             accuracy.</p>
@@ -3611,7 +3910,7 @@
                     <div class="project-info">
                         <div class="project-tag">AI AGENTS</div>
                         <h3>Agentic MCP Hub</h3>
-                        <p style="color: var(--text-secondary);">
+                        <p class="text-secondary">
                             Enterprise-grade MCP server that gives AI agents a unified interface to Jira, Slack,
                             and SQL databases. Designed for secure, multi-step agentic workflows across enterprise
                             systems.
@@ -3644,7 +3943,7 @@
                     </div>
                     <div class="project-info">
                         <h3>AutoFlow MCP</h3>
-                        <p style="color: var(--text-secondary);">
+                        <p class="text-secondary">
                             Browser automation and content extraction MCP server that lets AI agents navigate,
                             click, and extract structured data from the web using Playwright-powered workflows.
                         </p>
@@ -3683,7 +3982,7 @@
                     ACTIVELY CONTRIBUTING IN 2026
                 </div>
                 <h2 class="glitch" data-text="OPEN_SOURCE">OPEN_SOURCE</h2>
-                <p style="color: var(--text-secondary);">Real-world contributions to production open source projects</p>
+                <p class="text-secondary">Real-world contributions to production open source projects</p>
             </div>
 
             <div class="os-repos-grid">
@@ -3700,14 +3999,14 @@
                         </div>
                     </div>
                     <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> 20k+ Stars</span>
+                        <span><i class="bi bi-star-fill"></i> 39k+ Stars</span>
                         <span><i class="bi bi-diagram-2"></i> Python</span>
-                        <span><i class="bi bi-git"></i> 3 PRs</span>
+                        <span><i class="bi bi-git"></i> 5 PRs</span>
                     </div>
                     <div class="os-prs-list">
                         <p class="os-prs-label">Pull Requests</p>
 
-                        <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/22132" target="_blank"
+                        <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/21417" target="_blank"
                             rel="noopener noreferrer">
                             <div class="os-pr-title">fix(mcp): Strip stale mcp-session-id to prevent 400 errors across
                                 proxy workers</div>
@@ -3729,7 +4028,7 @@
                             </div>
                         </a>
 
-                        <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/21417" target="_blank"
+                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22132" target="_blank"
                             rel="noopener noreferrer">
                             <div class="os-pr-title">fix(streaming): prevent Vertex AI / Anthropic content truncation
                                 when finish_reason races content</div>
@@ -3739,6 +4038,28 @@
                                 <span class="os-pr-date">Feb 25, 2026</span>
                             </div>
                         </a>
+
+                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22516" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(proxy): add periodic MCP server DB sync for cross-pod consistency</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">MCP</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                <span class="os-pr-date">Mar 1, 2026</span>
+                            </div>
+                        </a>
+
+                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22703" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(proxy): ProxyException.__str__() returns empty string - all error logs are blank</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Logging</span>
+                                <span class="os-pr-date">Mar 3, 2026</span>
+                            </div>
+                        </a>
+
+                        <button class="os-toggle-btn" onclick="toggleOSPRs(this)">Show all 5 contributions ▾</button>
 
                         <div class="mt-3">
                             <a href="https://github.com/BerriAI/litellm" class="cyber-btn" target="_blank"
@@ -3777,9 +4098,9 @@
                         </a>
 
                         <div
-                            style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,255,0,0.04); border: 1px solid rgba(0,255,0,0.15); border-radius: 6px;">
+                            class="info-box">
                             <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                                <i class="bi bi-info-circle" style="color: var(--neon-green);"></i>&nbsp;
+                                <i class="bi bi-info-circle text-green"></i>&nbsp;
                                 Implemented full session replay &amp; analytics backend — capturing MCP tool call
                                 sequences, token usage, latency, and session timelines for production AI agents.
                             </p>
@@ -3787,6 +4108,62 @@
 
                         <div class="mt-3">
                             <a href="https://github.com/shinzo-labs/shinzo" class="cyber-btn" target="_blank"
+                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- aden-hive / hive -->
+                <div class="os-repo-card card-reveal">
+                    <div class="os-repo-header">
+                        <i class="os-repo-icon bi bi-cpu-fill"></i>
+                        <div class="os-repo-meta">
+                            <h3>aden-hive / hive</h3>
+                            <p>Open-source AI agent framework with parallel execution, memory management, and
+                                composable workflows for building production-grade autonomous agents.</p>
+                        </div>
+                    </div>
+                    <div class="os-repo-stats">
+                        <span><i class="bi bi-star-fill"></i> Growing</span>
+                        <span><i class="bi bi-diagram-2"></i> Python</span>
+                        <span><i class="bi bi-git"></i> 1 PR · 1 Issue</span>
+                    </div>
+                    <div class="os-prs-list">
+                        <p class="os-prs-label">Contributions</p>
+
+                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/5710" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(executor): enforce branch timeout and memory conflict strategy
+                                in parallel execution</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">AsyncIO</span>
+                                <span class="os-pr-date">Mar 3, 2026</span>
+                            </div>
+                        </a>
+
+                        <a class="os-pr-card os-issue-card" href="https://github.com/aden-hive/hive/issues/5736" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title"><i class="bi bi-lightbulb" style="color: var(--neon-yellow); margin-right: 6px;"></i>[Feature]: emit GOAL_ACHIEVED event on terminal-node success</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">EventBus</span>
+                                <span class="os-pr-date">Mar 3, 2026</span>
+                            </div>
+                        </a>
+
+                        <div
+                            class="info-box">
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                                <i class="bi bi-info-circle text-green"></i>&nbsp;
+                                Wired unused <code>branch_timeout_seconds</code> and <code>memory_conflict_strategy</code>
+                                configs into the parallel execution path — added timeout enforcement via
+                                <code>asyncio.wait_for</code> and per-fanout memory conflict detection with 6 new tests.
+                            </p>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="https://github.com/aden-hive/hive" class="cyber-btn" target="_blank"
                                 rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
                         </div>
                     </div>
@@ -3807,11 +4184,11 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="SKILLS">SKILLS</h2>
-                <p style="color: var(--text-secondary);">Technology stack and expertise</p>
+                <p class="text-secondary">Technology stack and expertise</p>
             </div>
             <div class="skill-matrix">
                 <!-- AI/ML first -->
-                <div class="skill-item card-reveal" data-ring="90">
+                <div class="skill-item card-reveal" data-ring="90" style="--i: 0">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3822,7 +4199,7 @@
                     <div class="skill-name">AI / ML</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="95">
+                <div class="skill-item card-reveal" data-ring="95" style="--i: 1">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3833,7 +4210,7 @@
                     <div class="skill-name">Java</div>
                     <div class="skill-level">Expert</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="95">
+                <div class="skill-item card-reveal" data-ring="95" style="--i: 2">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3844,7 +4221,7 @@
                     <div class="skill-name">Python</div>
                     <div class="skill-level">Expert</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="85">
+                <div class="skill-item card-reveal" data-ring="85" style="--i: 3">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3855,7 +4232,7 @@
                     <div class="skill-name">LangChain / Agents</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="85">
+                <div class="skill-item card-reveal" data-ring="85" style="--i: 4">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3866,7 +4243,7 @@
                     <div class="skill-name">AWS Cloud</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="88">
+                <div class="skill-item card-reveal" data-ring="88" style="--i: 5">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3877,7 +4254,7 @@
                     <div class="skill-name">Spring Boot</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="85">
+                <div class="skill-item card-reveal" data-ring="85" style="--i: 6">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3888,7 +4265,7 @@
                     <div class="skill-name">React / Next.js</div>
                     <div class="skill-level">Advanced</div>
                 </div>
-                <div class="skill-item card-reveal" data-ring="85">
+                <div class="skill-item card-reveal" data-ring="85" style="--i: 7">
                     <div class="skill-ring-wrap">
                         <svg viewBox="0 0 64 64">
                             <circle class="ring-bg" cx="32" cy="32" r="26" />
@@ -3916,12 +4293,12 @@
                         <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Education</h3>
 
                         <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-pink);">
-                            <h4 style="color: var(--neon-yellow);">MS in Computer Science & Engineering
+                            <h4 class="text-yellow">MS in Computer Science & Engineering
                             </h4>
-                            <h5 style="color: var(--neon-cyan);">Dec 2025</h5>
-                            <p style="color: var(--text-secondary);"><em>University at Buffalo - SUNY, New York,
+                            <h5 class="text-cyan">Dec 2025</h5>
+                            <p class="text-secondary"><em>University at Buffalo - SUNY, New York,
                                     USA</em></p>
-                            <p style="color: var(--neon-green);">GPA: 3.9/4.0</p>
+                            <p class="text-green">GPA: 3.9/4.0</p>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <strong>Coursework:</strong> Distributed Systems, Operating Systems, Deep Learning,
                                 AI/ML, Algorithms & Analysis, Cloud Computing
@@ -3936,16 +4313,16 @@
                         <h3 style="color: var(--neon-pink); font-family: 'Orbitron', monospace;">Professional Experience
                         </h3>
 
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">AI Software Engineer</h4>
-                            <h5 style="color: var(--neon-cyan);">Jan 2026 - Present</h5>
-                            <p style="color: var(--text-secondary);"><em>University at Buffalo, United States</em></p>
+                        <div class="experience-box">
+                            <h4 class="text-yellow">AI Software Engineer</h4>
+                            <h5 class="text-cyan">Jan 2026 - Present</h5>
+                            <p class="text-secondary"><em>University at Buffalo, United States</em></p>
                         </div>
 
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Research Assistant</h4>
-                            <h5 style="color: var(--neon-cyan);">Nov 2024 - Dec 2025</h5>
-                            <p style="color: var(--text-secondary);"><em>The Research Foundation for SUNY, United
+                        <div class="experience-box">
+                            <h4 class="text-yellow">Research Assistant</h4>
+                            <h5 class="text-cyan">Nov 2024 - Dec 2025</h5>
+                            <p class="text-secondary"><em>The Research Foundation for SUNY, United
                                     States</em></p>
                             <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
                                 <li>Assisted in the AutoRSR project to early-detect speech disorders in children using
@@ -3962,10 +4339,10 @@
                         </div>
 
                         <!-- National AI Institute internship — temporarily hidden
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
-                            <h5 style="color: var(--neon-cyan);">May 2025 - Aug 2025</h5>
-                            <p style="color: var(--text-secondary);"><em>National AI Institute, University at Buffalo,
+                        <div class="experience-box">
+                            <h4 class="text-yellow">Software Engineer Intern</h4>
+                            <h5 class="text-cyan">May 2025 - Aug 2025</h5>
+                            <p class="text-secondary"><em>National AI Institute, University at Buffalo,
                                     NY, USA</em></p>
                             <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
                                 <li>Designed scalable AI workflows using C++, Python, React.js, Node.js for LLM
@@ -3978,10 +4355,10 @@
                         </div>
                         -->
 
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer Intern</h4>
-                            <h5 style="color: var(--neon-cyan);">Jun 2024 - Aug 2024</h5>
-                            <p style="color: var(--text-secondary);"><em>Muni Health, USA</em></p>
+                        <div class="experience-box">
+                            <h4 class="text-yellow">Software Engineer Intern</h4>
+                            <h5 class="text-cyan">Jun 2024 - Aug 2024</h5>
+                            <p class="text-secondary"><em>Muni Health, USA</em></p>
                             <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
                                 <li>Integrated RAG-based AI chatbot into HIPAA-compliant MERN stack messaging system
                                 </li>
@@ -3990,16 +4367,16 @@
                             </ul> -->
                         </div>
 
-                        <div style="margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--neon-cyan);">
-                            <h4 style="color: var(--neon-yellow);">Software Engineer</h4>
-                            <h5 style="color: var(--neon-cyan);">Feb 2022 - Jun 2024</h5>
-                            <p style="color: var(--text-secondary);"><em>TCS</em></p>
-                            <!-- <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
-                                <li>Engineered enterprise e-Form systems using Java, Spring Boot, MySQL</li>
-                                <li>Optimized backend performance reducing response times by 35%</li>
-                                <li>Developed high-performance REST APIs with 93% test coverage</li>
-                                <li>Integrated Apache Kafka for microservices messaging</li>
-                            </ul> -->
+                        <div class="experience-box">
+                            <h4 class="text-yellow">Software Engineer</h4>
+                            <h5 class="text-cyan">Feb 2022 - Jun 2024</h5>
+                            <p class="text-secondary"><em>TCS</em></p>
+                        </div>
+
+                        <div class="experience-box">
+                            <h4 class="text-yellow">Software Engineer</h4>
+                            <h5 class="text-cyan">Apr 2020 - Dec 2021</h5>
+                            <p class="text-secondary"><em>Netcore Solutions, India</em></p>
                         </div>
                     </div>
                 </div>
@@ -4012,16 +4389,16 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="BLOGS &amp; POSTS">BLOGS &amp; POSTS</h2>
-                <p style="color: var(--text-secondary);">Technical insights and knowledge sharing</p>
+                <p class="text-secondary">Technical insights and knowledge sharing</p>
             </div>
             <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll right"><i class="bi bi-chevron-right"></i></button>
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll blogs left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll blogs right"><i class="bi bi-chevron-right"></i></button>
             <div class="blogs-grid">
                 <!-- LinkedIn Posts (no featured image) -->
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/" target="_blank"
-                        style="text-decoration: none;">
+                        class="no-decoration">
                         <div class="post-card-header">
                             <i class="bi bi-bar-chart-line post-card-icon"></i>
                         </div>
@@ -4045,7 +4422,7 @@
 
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
-                        style="text-decoration: none;">
+                        class="no-decoration">
                         <div class="post-card-header">
                             <i class="bi bi-robot post-card-icon"></i>
                         </div>
@@ -4069,7 +4446,7 @@
 
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
-                        target="_blank" style="text-decoration: none;">
+                        target="_blank" class="no-decoration">
                         <div class="post-card-header"
                             style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
                             <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
@@ -4094,10 +4471,10 @@
 
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
-                        target="_blank" style="text-decoration: none;">
+                        target="_blank" class="no-decoration">
                         <div class="post-card-header"
                             style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
-                            <i class="bi bi-graph-up-arrow post-card-icon" style="color: var(--neon-green);"></i>
+                            <i class="bi bi-graph-up-arrow post-card-icon text-green"></i>
                         </div>
                         <div class="blog-info">
                             <div class="blog-tags">
@@ -4119,7 +4496,7 @@
 
                 <div class="blog-card post-card card-reveal">
                     <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
-                        target="_blank" style="text-decoration: none;">
+                        target="_blank" class="no-decoration">
                         <div class="post-card-header"
                             style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
                             <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
@@ -4145,7 +4522,7 @@
                 <!-- LinkedIn Articles -->
                 <div class="blog-card card-reveal">
                     <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
-                        target="_blank" style="text-decoration: none;">
+                        target="_blank" class="no-decoration">
                         <div class="blog-img">
                             <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy" decoding="async"
                                 onerror="this.style.display='none'">
@@ -4170,7 +4547,7 @@
 
                 <div class="blog-card card-reveal">
                     <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
-                        target="_blank" style="text-decoration: none;">
+                        target="_blank" class="no-decoration">
                         <div class="blog-img">
                             <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy" decoding="async"
                                 onerror="this.style.display='none'">
@@ -4209,14 +4586,14 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="TUTORIALS">TUTORIALS</h2>
-                <p style="color: var(--text-secondary);">Educational content from WorkCode & Gaurav YouTube channel</p>
+                <p class="text-secondary">Educational content from WorkCode & Gaurav YouTube channel</p>
             </div>
             <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),-340)" aria-label="Scroll left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),340)" aria-label="Scroll right"><i class="bi bi-chevron-right"></i></button>
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),-340)" aria-label="Scroll tutorials left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),340)" aria-label="Scroll tutorials right"><i class="bi bi-chevron-right"></i></button>
             <div class="tutorials-grid">
                 <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/phdImo3Wa-k" target="_blank" style="text-decoration: none;">
+                    <a href="https://youtu.be/phdImo3Wa-k" target="_blank" class="no-decoration">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
                                 loading="lazy" decoding="async" onerror="this.style.display='none'">
@@ -4227,14 +4604,14 @@
                                 <span>WorkCode & Gaurav</span>
                             </div>
                             <h3>Cloud Computing & Web Hosting</h3>
-                            <p style="color: var(--text-secondary);">In this video, I have talked about Cloud Computing
+                            <p class="text-secondary">In this video, I have talked about Cloud Computing
                                 fundamentals and Web Hosting concepts.</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" style="text-decoration: none;">
+                    <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" class="no-decoration">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial1.png" alt="Data Structure Tutorial"
                                 loading="lazy" decoding="async" onerror="this.style.display='none'">
@@ -4245,7 +4622,7 @@
                                 <span>WorkCode & Gaurav</span>
                             </div>
                             <h3>Data Structure & Algorithm</h3>
-                            <p style="color: var(--text-secondary);">In this video, I have talked about Data
+                            <p class="text-secondary">In this video, I have talked about Data
                                 Structure/Algorithm concepts and implementation techniques.</p>
                         </div>
                     </a>
@@ -4253,7 +4630,7 @@
 
                 <div class="tutorial-card card-reveal">
                     <a href="https://www.youtube.com/watch?v=1LVRUNSEWGk" target="_blank"
-                        style="text-decoration: none;">
+                        class="no-decoration">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm" loading="lazy"
                                 decoding="async" onerror="this.style.display='none'">
@@ -4264,14 +4641,14 @@
                                 <span>WorkCode & Gaurav</span>
                             </div>
                             <h3>Boyer Moore's Voting Algorithm</h3>
-                            <p style="color: var(--text-secondary);">In this video, I have talked about Boyer Moore's
+                            <p class="text-secondary">In this video, I have talked about Boyer Moore's
                                 Voting Algorithm to find the Majority Element in a given array.</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" style="text-decoration: none;">
+                    <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" class="no-decoration">
                         <div class="tutorial-img">
                             <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial" loading="lazy"
                                 decoding="async" onerror="this.style.display='none'">
@@ -4282,7 +4659,7 @@
                                 <span>WorkCode & Gaurav</span>
                             </div>
                             <h3>How to Write TOEFL Essays</h3>
-                            <p style="color: var(--text-secondary);">In this video, I have talked about effective
+                            <p class="text-secondary">In this video, I have talked about effective
                                 strategies and techniques for writing TOEFL essays.</p>
                         </div>
                     </a>
@@ -4324,27 +4701,27 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2 class="glitch" data-text="CONNECT">CONNECT</h2>
-                <p style="color: var(--text-secondary);">Let's discuss your next project or just say hello!</p>
+                <p class="text-secondary">Let's discuss your next project or just say hello!</p>
             </div>
 
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon"><i class="bi bi-geo-alt-fill"
-                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                            class="contact-icon"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Location</h3>
-                    <p style="color: var(--text-secondary);">Buffalo, New York, USA</p>
+                    <p class="text-secondary">Buffalo, New York, USA</p>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon"><i class="bi bi-envelope-fill"
-                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                            class="contact-icon"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Email</h3>
-                    <p style="color: var(--text-secondary);">ksingh.gav@gmail.com</p>
+                    <p class="text-secondary">ksingh.gav@gmail.com</p>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon"><i class="bi bi-clock-fill"
-                            style="font-size:2.5rem;color:var(--neon-cyan);"></i></div>
+                            class="contact-icon"></i></div>
                     <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">Response</h3>
-                    <p style="color: var(--text-secondary);">Within 24 hours</p>
+                    <p class="text-secondary">Within 24 hours</p>
                 </div>
             </div>
 
@@ -4412,6 +4789,9 @@
                                 aria-label="LinkedIn" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
                             <a href="https://github.com/gavksingh" target="_blank" title="GitHub" aria-label="GitHub"
                                 rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                            <a href="https://thepromptacademy.com/gavksingh" target="_blank"
+                                title="AI Projects" aria-label="AI Projects" rel="noopener noreferrer"><i
+                                    class="bi bi-person-badge"></i></a>
                             <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank"
                                 title="YouTube" aria-label="YouTube" rel="noopener noreferrer"><i
                                     class="bi bi-youtube"></i></a>
@@ -4474,16 +4854,10 @@
             });
 
             // ── Scroll row helper (arrow buttons) ────────────────────────────────
-            // Uses transform to slide cards since overflow is hidden (no scroll trap)
+            // Uses native scrollBy with smooth behavior (scroll-snap handles alignment)
             window.scrollRow = function (container, delta) {
                 if (!container) return;
-                if (!container._scrollPos) container._scrollPos = 0;
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                container._scrollPos = Math.max(0, Math.min(maxScroll, container._scrollPos + delta));
-                const cards = container.children;
-                for (let i = 0; i < cards.length; i++) {
-                    cards[i].style.transform = 'translateX(' + (-container._scrollPos) + 'px)';
-                }
+                container.scrollBy({ left: delta, behavior: 'smooth' });
             };
 
             // ── CTA periodic hint pulse (blue → red, repeats every 14s) ─────────
@@ -4493,14 +4867,22 @@
                 if (!blueBtn || !redBtn) return;
 
                 function runCycle() {
+                    const bluePill = blueBtn.querySelector('.pill-icon');
+                    const redPill = redBtn.querySelector('.pill-icon');
                     // Blue pulses first (1× 0.9s = 0.9s)
                     blueBtn.classList.add('cta-hint-blue');
+                    if (bluePill) bluePill.classList.add('pill-blink');
                     setTimeout(() => {
                         blueBtn.classList.remove('cta-hint-blue');
+                        if (bluePill) bluePill.classList.remove('pill-blink');
                         // Red pulses after a short gap (1× 0.9s = 0.9s)
                         setTimeout(() => {
                             redBtn.classList.add('cta-hint-red');
-                            setTimeout(() => redBtn.classList.remove('cta-hint-red'), 900);
+                            if (redPill) redPill.classList.add('pill-blink');
+                            setTimeout(() => {
+                                redBtn.classList.remove('cta-hint-red');
+                                if (redPill) redPill.classList.remove('pill-blink');
+                            }, 900);
                         }, 300);
                     }, 900);
                 }
@@ -4536,6 +4918,29 @@
                 }
                 drawRain();
             }
+
+            // ── Matrix rain resize handler ─────────────────────────────────────
+            let rainResizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(rainResizeTimer);
+                rainResizeTimer = setTimeout(() => {
+                    if (rainCanvas) {
+                        rainCanvas.width = window.innerWidth;
+                        rainCanvas.height = window.innerHeight;
+                        const cols = Math.floor(rainCanvas.width / 16);
+                        drops = Array(cols).fill(1);
+                    }
+                }, 250);
+            });
+
+            // ── OS section toggle collapsed PRs ────────────────────────────────
+            window.toggleOSPRs = function(btn) {
+                const card = btn.closest('.os-prs-list');
+                const hidden = card.querySelectorAll('.os-pr-hidden');
+                const expanded = hidden[0]?.classList.contains('os-pr-expanded');
+                hidden.forEach(el => el.classList.toggle('os-pr-expanded'));
+                btn.textContent = expanded ? 'Show all ' + (hidden.length + 2) + ' contributions ▾' : 'Show less ▴';
+            };
 
             // ── Pill overlay lifecycle ────────────────────────────────────────────
             const pillOverlay2 = document.getElementById('pill-choose-overlay');
@@ -4824,19 +5229,26 @@
             const mobileLinks = document.querySelectorAll('.mobile-nav-item');
             const backToTop = document.getElementById('back-to-top');
             const scrollProgress = document.getElementById('scroll-progress');
+            const bttProgress = document.getElementById('btt-progress');
+            const bttCircumference = 2 * Math.PI * 20; // r=20
             let scrollRAF = false;
 
             function onScroll() {
+                const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+
                 // Scroll progress bar
                 if (scrollProgress) {
-                    const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
                     scrollProgress.style.width = pct + '%';
                 }
 
-                // Back-to-top visibility
+                // Back-to-top visibility + progress ring
                 if (backToTop) {
                     backToTop.classList.toggle('visible', window.scrollY > 300);
+                }
+                if (bttProgress) {
+                    const offset = bttCircumference - (pct / 100) * bttCircumference;
+                    bttProgress.style.strokeDashoffset = offset;
                 }
 
                 // Active section tracking for desktop nav
@@ -4944,10 +5356,14 @@
                 });
             });
 
-            // Desktop nav clicks
+            // Desktop nav clicks + keyboard support
             navItems.forEach((item, i) => {
-                item.addEventListener('click', () => {
+                function navigate() {
                     if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth' });
+                }
+                item.addEventListener('click', navigate);
+                item.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(); }
                 });
             });
 
@@ -5053,6 +5469,26 @@
                 contactForm.querySelectorAll('.form-control').forEach(input => {
                     input.addEventListener('input', function () { this.style.color = 'var(--text-primary)'; });
                     input.addEventListener('focus', function () { this.style.color = 'var(--text-primary)'; });
+                });
+            }
+
+            // ── Theme toggle (clean/cyberpunk) ────────────────────────────────
+            const themeToggle = document.getElementById('theme-toggle');
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'clean') {
+                document.documentElement.setAttribute('data-theme', 'clean');
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function () {
+                    const isClean = document.documentElement.getAttribute('data-theme') === 'clean';
+                    if (isClean) {
+                        document.documentElement.removeAttribute('data-theme');
+                        localStorage.removeItem('portfolio-theme');
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'clean');
+                        localStorage.setItem('portfolio-theme', 'clean');
+                    }
                 });
             }
 
