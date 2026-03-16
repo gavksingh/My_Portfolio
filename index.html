@@ -3178,6 +3178,29 @@
             border-left-color: var(--neon-cyan);
         }
 
+        .os-pr-origin-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .os-pr-origin-badge.identified {
+            background: rgba(0, 255, 255, 0.12);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 255, 255, 0.25);
+        }
+
+        .os-pr-origin-badge.merged {
+            background: rgba(0, 255, 65, 0.12);
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 65, 0.25);
+        }
+
         /* Collapsible PR list */
         .os-pr-card.os-pr-hidden {
             display: none;
@@ -4068,6 +4091,66 @@
                     </div>
                 </div>
 
+                <!-- aden-hive / hive -->
+                <div class="os-repo-card card-reveal">
+                    <div class="os-repo-header">
+                        <i class="os-repo-icon bi bi-cpu-fill"></i>
+                        <div class="os-repo-meta">
+                            <h3>aden-hive / hive</h3>
+                            <p>Open-source AI agent framework with parallel execution, memory management, and
+                                composable workflows for building production-grade autonomous agents.</p>
+                        </div>
+                    </div>
+                    <div class="os-repo-stats">
+                        <span><i class="bi bi-star-fill"></i> Growing</span>
+                        <span><i class="bi bi-diagram-2"></i> Python</span>
+                        <span><i class="bi bi-git"></i> 2 PRs Merged · 1 Issue Filed</span>
+                    </div>
+                    <div class="os-prs-list">
+                        <p class="os-prs-label">Pull Requests</p>
+
+                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/6504" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(executor): enforce branch timeout and memory conflict strategy
+                                in parallel execution
+                                <span class="os-pr-origin-badge identified">Bug Found &amp; Fixed</span>
+                                <span class="os-pr-origin-badge merged">Merged</span></div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">AsyncIO</span>
+                                <span class="os-pr-date">Mar 3, 2026</span>
+                            </div>
+                        </a>
+
+                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/5736" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">feat(events): emit GOAL_ACHIEVED event on terminal-node success
+                                <span class="os-pr-origin-badge identified">Feature Proposed &amp; Built</span>
+                                <span class="os-pr-origin-badge merged">Merged</span></div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">EventBus</span>
+                                <span class="os-pr-date">Mar 3, 2026</span>
+                            </div>
+                        </a>
+
+                        <div
+                            class="info-box">
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                                <i class="bi bi-info-circle text-green"></i>&nbsp;
+                                Wired unused <code>branch_timeout_seconds</code> and <code>memory_conflict_strategy</code>
+                                configs into the parallel execution path with 6 new tests. Also filed a feature
+                                request for GOAL_ACHIEVED event emission and implemented the solution in a separate PR.
+                            </p>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="https://github.com/aden-hive/hive" class="cyber-btn" target="_blank"
+                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Shinzo Labs / Shinzo -->
                 <div class="os-repo-card card-reveal">
                     <div class="os-repo-header">
@@ -4108,62 +4191,6 @@
 
                         <div class="mt-3">
                             <a href="https://github.com/shinzo-labs/shinzo" class="cyber-btn" target="_blank"
-                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- aden-hive / hive -->
-                <div class="os-repo-card card-reveal">
-                    <div class="os-repo-header">
-                        <i class="os-repo-icon bi bi-cpu-fill"></i>
-                        <div class="os-repo-meta">
-                            <h3>aden-hive / hive</h3>
-                            <p>Open-source AI agent framework with parallel execution, memory management, and
-                                composable workflows for building production-grade autonomous agents.</p>
-                        </div>
-                    </div>
-                    <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> Growing</span>
-                        <span><i class="bi bi-diagram-2"></i> Python</span>
-                        <span><i class="bi bi-git"></i> 1 PR · 1 Issue</span>
-                    </div>
-                    <div class="os-prs-list">
-                        <p class="os-prs-label">Contributions</p>
-
-                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/5710" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(executor): enforce branch timeout and memory conflict strategy
-                                in parallel execution</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">AsyncIO</span>
-                                <span class="os-pr-date">Mar 3, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card os-issue-card" href="https://github.com/aden-hive/hive/issues/5736" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title"><i class="bi bi-lightbulb" style="color: var(--neon-yellow); margin-right: 6px;"></i>[Feature]: emit GOAL_ACHIEVED event on terminal-node success</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">EventBus</span>
-                                <span class="os-pr-date">Mar 3, 2026</span>
-                            </div>
-                        </a>
-
-                        <div
-                            class="info-box">
-                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                                <i class="bi bi-info-circle text-green"></i>&nbsp;
-                                Wired unused <code>branch_timeout_seconds</code> and <code>memory_conflict_strategy</code>
-                                configs into the parallel execution path — added timeout enforcement via
-                                <code>asyncio.wait_for</code> and per-fanout memory conflict detection with 6 new tests.
-                            </p>
-                        </div>
-
-                        <div class="mt-3">
-                            <a href="https://github.com/aden-hive/hive" class="cyber-btn" target="_blank"
                                 rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
                         </div>
                     </div>
