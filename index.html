@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MFMC8F5MT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7MFMC8F5MT');
+    </script>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -1235,15 +1243,15 @@
         }
 
         .scroll-row-wrapper > .blogs-grid,
-        .scroll-row-wrapper > .tutorials-grid {
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+        .scroll-row-wrapper > .tutorials-grid,
+        .scroll-row-wrapper > .os-repos-grid {
+            overflow-x: hidden;
             scrollbar-width: none;
         }
 
         .scroll-row-wrapper > .blogs-grid::-webkit-scrollbar,
-        .scroll-row-wrapper > .tutorials-grid::-webkit-scrollbar {
+        .scroll-row-wrapper > .tutorials-grid::-webkit-scrollbar,
+        .scroll-row-wrapper > .os-repos-grid::-webkit-scrollbar {
             display: none;
         }
 
@@ -3088,10 +3096,10 @@
         }
 
         .os-repos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            display: flex;
             gap: 2rem;
             margin: 2rem 0;
+            padding-bottom: 1rem;
         }
 
         .os-repo-card {
@@ -3102,6 +3110,9 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: none;
+            min-width: calc((100% - 4rem) / 3);
+            max-width: calc((100% - 4rem) / 3);
+            flex-shrink: 0;
         }
 
         .os-repo-card::before {
@@ -3360,7 +3371,11 @@
 
         @media (max-width: 768px) {
             .os-repos-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .os-repo-card {
+                min-width: 85vw;
+                max-width: 85vw;
             }
         }
 
@@ -3574,11 +3589,11 @@
         <a class="mobile-nav-item active" href="#home"><i class="bi bi-house-fill"></i><span>Home</span></a>
         <a class="mobile-nav-item" href="#about"><i class="bi bi-person-fill"></i><span>About</span></a>
         <a class="mobile-nav-item" href="#projects"><i class="bi bi-folder-fill"></i><span>Projects</span></a>
+        <a class="mobile-nav-item" href="#opensource"><i class="bi bi-git"></i><span>Open Source</span></a>
+        <a class="mobile-nav-item" href="#blogs"><i class="bi bi-journal-text"></i><span>Blogs</span></a>
         <a class="mobile-nav-item" href="#skills"><i class="bi bi-code-slash"></i><span>Skills</span></a>
         <a class="mobile-nav-item" href="#resume"><i class="bi bi-file-earmark-text"></i><span>Resume</span></a>
         <a class="mobile-nav-item" href="#tutorials"><i class="bi bi-play-circle-fill"></i><span>Tutorials</span></a>
-        <a class="mobile-nav-item" href="#blogs"><i class="bi bi-journal-text"></i><span>Blogs</span></a>
-        <a class="mobile-nav-item" href="#opensource"><i class="bi bi-git"></i><span>Open Source</span></a>
         <a class="mobile-nav-item" href="#terminal"><i class="bi bi-terminal-fill"></i><span>Terminal</span></a>
         <a class="mobile-nav-item" href="#contact"><i class="bi bi-envelope-fill"></i><span>Contact</span></a>
     </nav>
@@ -3627,6 +3642,14 @@
             <i class="nav-icon bi bi-folder-fill"></i>
             <span class="nav-text">PROJECTS</span>
         </div>
+        <div class="nav-item" tabindex="0" role="link" aria-label="Open Source">
+            <i class="nav-icon bi bi-git"></i>
+            <span class="nav-text">OPEN SOURCE</span>
+        </div>
+        <div class="nav-item" tabindex="0" role="link" aria-label="Blogs and Posts">
+            <i class="nav-icon bi bi-journal-text"></i>
+            <span class="nav-text">BLOGS & POSTS</span>
+        </div>
         <div class="nav-item" tabindex="0" role="link" aria-label="Skills">
             <i class="nav-icon bi bi-code-slash"></i>
             <span class="nav-text">SKILLS</span>
@@ -3638,14 +3661,6 @@
         <div class="nav-item" tabindex="0" role="link" aria-label="Tutorials">
             <i class="nav-icon bi bi-play-circle-fill"></i>
             <span class="nav-text">TUTORIALS</span>
-        </div>
-        <div class="nav-item" tabindex="0" role="link" aria-label="Blogs and Posts">
-            <i class="nav-icon bi bi-journal-text"></i>
-            <span class="nav-text">BLOGS & POSTS</span>
-        </div>
-        <div class="nav-item" tabindex="0" role="link" aria-label="Open Source">
-            <i class="nav-icon bi bi-git"></i>
-            <span class="nav-text">OPEN SOURCE</span>
         </div>
         <div class="nav-item" tabindex="0" role="link" aria-label="Terminal">
             <i class="nav-icon bi bi-terminal-fill"></i>
@@ -4052,7 +4067,65 @@
                 <p class="text-secondary">Real-world contributions to production open source projects</p>
             </div>
 
+            <div class="scroll-row-wrapper">
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),-340)" aria-label="Scroll repos left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),340)" aria-label="Scroll repos right"><i class="bi bi-chevron-right"></i></button>
             <div class="os-repos-grid">
+
+                <!-- awslabs / agent-squad -->
+                <div class="os-repo-card card-reveal">
+                    <div class="os-repo-header">
+                        <i class="os-repo-icon bi bi-robot"></i>
+                        <div class="os-repo-meta">
+                            <h3>awslabs / agent-squad</h3>
+                            <p>Flexible and powerful framework for managing multiple AI agents and handling complex
+                                conversations</p>
+                        </div>
+                    </div>
+                    <div class="os-repo-stats">
+                        <span><i class="bi bi-star-fill"></i> 7.5k+ Stars</span>
+                        <span><i class="bi bi-diagram-2"></i> Python</span>
+                        <span><i class="bi bi-git"></i> 3 PRs</span>
+                    </div>
+                    <div class="os-prs-list">
+                        <p class="os-prs-label">Pull Requests</p>
+
+                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/452" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(supervisor): Fix SupervisorAgent crash when agent response is a dict</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Supervisor</span>
+                                <span class="os-pr-date">Mar 17, 2026</span>
+                            </div>
+                        </a>
+
+                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/451" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">feat(agents): Add GeminiAgent for Google Gemini model support</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Gemini</span>
+                                <span class="os-pr-date">Mar 17, 2026</span>
+                            </div>
+                        </a>
+
+                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/450" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="os-pr-title">fix(chain): Fix ChainAgent raising raw string instead of Exception object</div>
+                            <div class="os-pr-footer">
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">ChainAgent</span>
+                                <span class="os-pr-date">Mar 17, 2026</span>
+                            </div>
+                        </a>
+
+                        <div class="mt-3">
+                            <a href="https://github.com/awslabs/agent-squad" class="cyber-btn" target="_blank"
+                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- BerriAI / LiteLLM -->
                 <div class="os-repo-card card-reveal">
@@ -4241,10 +4314,233 @@
                 </div>
 
             </div>
+            </div>
 
             <div class="os-cta">
                 <a href="https://github.com/gavksingh" class="cyber-btn" target="_blank" rel="noopener noreferrer">
                     <i class="bi bi-github"></i>&nbsp; View GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section class="section blogs-section section-animate" id="blogs">
+        <div class="container fade-in">
+            <div class="section-title">
+                <h2 class="glitch" data-text="BLOGS &amp; POSTS">BLOGS &amp; POSTS</h2>
+                <p class="text-secondary">Technical insights and knowledge sharing</p>
+            </div>
+            <div class="scroll-row-wrapper">
+                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll blogs left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll blogs right"><i class="bi bi-chevron-right"></i></button>
+            <div class="blogs-grid">
+                <!-- LinkedIn Posts (no featured image) -->
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7439823387083902976/" target="_blank"
+                        class="no-decoration">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(255,153,0,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                            <i class="bi bi-amazon post-card-icon" style="color: #ff9900;"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">AWS</span>
+                                <span class="blog-tag">Open Source</span>
+                                <span class="blog-tag">AI Agents</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>&bull;</span>
+                                <span>Open Source</span>
+                            </div>
+                            <h3>From an AWS Session to Shipping 3 PRs to awslabs/agent-squad</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/" target="_blank"
+                        class="no-decoration">
+                        <div class="post-card-header">
+                            <i class="bi bi-bar-chart-line post-card-icon"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">LangGraph</span>
+                                <span class="blog-tag">AdTech</span>
+                                <span class="blog-tag">RAG</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>&bull;</span>
+                                <span>Build in Public</span>
+                            </div>
+                            <h3>Campaign Intelligence Assistant: AI Analytics for AdTech</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
+                        class="no-decoration">
+                        <div class="post-card-header">
+                            <i class="bi bi-robot post-card-icon"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">MCP</span>
+                                <span class="blog-tag">AI Agents</span>
+                                <span class="blog-tag">TypeScript</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>Build in Public</span>
+                            </div>
+                            <h3>AutoFlow MCP: Giving Your AI Browser Superpowers</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
+                        target="_blank" class="no-decoration">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                            <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Observability</span>
+                                <span class="blog-tag">Open Source</span>
+                                <span class="blog-tag">MCP</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>AI Agents</span>
+                            </div>
+                            <h3>Observability Tools for AI Agents: Debugging the Black Box</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
+                        target="_blank" class="no-decoration">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
+                            <i class="bi bi-graph-up-arrow post-card-icon text-green"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">AI Agents</span>
+                                <span class="blog-tag">LLMOps</span>
+                                <span class="blog-tag">PostgreSQL</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>Lessons Learned</span>
+                            </div>
+                            <h3>Building Observability for AI Agents: 3 Hurdles &amp; Fixes</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card post-card card-reveal">
+                    <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
+                        target="_blank" class="no-decoration">
+                        <div class="post-card-header"
+                            style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
+                            <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Backend</span>
+                                <span class="blog-tag">MCP</span>
+                                <span class="blog-tag">Architecture</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Post</span>
+                                <span>•</span>
+                                <span>System Design</span>
+                            </div>
+                            <h3>I Stopped Writing Glue Code &amp; Started Building Infrastructure</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- LinkedIn Articles -->
+                <div class="blog-card card-reveal">
+                    <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
+                        target="_blank" class="no-decoration">
+                        <div class="blog-img">
+                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy" decoding="async"
+                                onerror="this.style.display='none'">
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Cloud</span>
+                                <span class="blog-tag">Technology</span>
+                                <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Article</span>
+                                <span>•</span>
+                                <span>Technology</span>
+                            </div>
+                            <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="blog-card card-reveal">
+                    <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
+                        target="_blank" class="no-decoration">
+                        <div class="blog-img">
+                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy" decoding="async"
+                                onerror="this.style.display='none'">
+                        </div>
+                        <div class="blog-info">
+                            <div class="blog-tags">
+                                <span class="blog-tag">DevOps</span>
+                                <span class="blog-tag">Kubernetes</span>
+                                <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
+                            </div>
+                            <div class="blog-meta">
+                                <i class="bi bi-linkedin"></i>
+                                <span>LinkedIn Article</span>
+                                <span>•</span>
+                                <span>DevOps</span>
+                            </div>
+                            <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
+                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div><!-- /scroll-row-wrapper -->
+
+            <div class="text-center mt-4">
+                <a href="https://www.linkedin.com/in/gavksingh/recent-activity/all/" target="_blank"
+                    rel="noopener noreferrer" class="cyber-btn">
+                    <i class="bi bi-linkedin"></i> View All on LinkedIn
                 </a>
             </div>
         </div>
@@ -4451,203 +4747,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blogs Section -->
-    <section class="section blogs-section section-animate" id="blogs">
-        <div class="container fade-in">
-            <div class="section-title">
-                <h2 class="glitch" data-text="BLOGS &amp; POSTS">BLOGS &amp; POSTS</h2>
-                <p class="text-secondary">Technical insights and knowledge sharing</p>
-            </div>
-            <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll blogs left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll blogs right"><i class="bi bi-chevron-right"></i></button>
-            <div class="blogs-grid">
-                <!-- LinkedIn Posts (no featured image) -->
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/" target="_blank"
-                        class="no-decoration">
-                        <div class="post-card-header">
-                            <i class="bi bi-bar-chart-line post-card-icon"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">LangGraph</span>
-                                <span class="blog-tag">AdTech</span>
-                                <span class="blog-tag">RAG</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>&bull;</span>
-                                <span>Build in Public</span>
-                            </div>
-                            <h3>Campaign Intelligence Assistant: AI Analytics for AdTech</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
-                        class="no-decoration">
-                        <div class="post-card-header">
-                            <i class="bi bi-robot post-card-icon"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">MCP</span>
-                                <span class="blog-tag">AI Agents</span>
-                                <span class="blog-tag">TypeScript</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>Build in Public</span>
-                            </div>
-                            <h3>AutoFlow MCP: Giving Your AI Browser Superpowers</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
-                            <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Observability</span>
-                                <span class="blog-tag">Open Source</span>
-                                <span class="blog-tag">MCP</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>AI Agents</span>
-                            </div>
-                            <h3>Observability Tools for AI Agents: Debugging the Black Box</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
-                            <i class="bi bi-graph-up-arrow post-card-icon text-green"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">AI Agents</span>
-                                <span class="blog-tag">LLMOps</span>
-                                <span class="blog-tag">PostgreSQL</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>Lessons Learned</span>
-                            </div>
-                            <h3>Building Observability for AI Agents: 3 Hurdles &amp; Fixes</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
-                            <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Backend</span>
-                                <span class="blog-tag">MCP</span>
-                                <span class="blog-tag">Architecture</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>System Design</span>
-                            </div>
-                            <h3>I Stopped Writing Glue Code &amp; Started Building Infrastructure</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- LinkedIn Articles -->
-                <div class="blog-card card-reveal">
-                    <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
-                        target="_blank" class="no-decoration">
-                        <div class="blog-img">
-                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy" decoding="async"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Cloud</span>
-                                <span class="blog-tag">Technology</span>
-                                <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>Technology</span>
-                            </div>
-                            <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="blog-card card-reveal">
-                    <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
-                        target="_blank" class="no-decoration">
-                        <div class="blog-img">
-                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy" decoding="async"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">DevOps</span>
-                                <span class="blog-tag">Kubernetes</span>
-                                <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
-                            </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>DevOps</span>
-                            </div>
-                            <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            </div><!-- /scroll-row-wrapper -->
-
-            <div class="text-center mt-4">
-                <a href="https://www.linkedin.com/in/gavksingh/recent-activity/all/" target="_blank"
-                    rel="noopener noreferrer" class="cyber-btn">
-                    <i class="bi bi-linkedin"></i> View All on LinkedIn
-                </a>
             </div>
         </div>
     </section>
@@ -4935,8 +5034,11 @@
             // Uses native scrollBy with smooth behavior (scroll-snap handles alignment)
             window.scrollRow = function (container, delta) {
                 if (!container) return;
-                container.scrollBy({ left: delta, behavior: 'smooth' });
+                var card = container.firstElementChild;
+                var step = card ? card.offsetWidth + parseFloat(getComputedStyle(container).gap || 0) : Math.abs(delta);
+                container.scrollBy({ left: delta > 0 ? step : -step, behavior: 'smooth' });
             };
+
 
             // ── CTA periodic hint pulse (blue → red, repeats every 14s) ─────────
             function startCTAHint() {
