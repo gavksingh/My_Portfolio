@@ -1025,6 +1025,31 @@
             margin-bottom: 1rem;
         }
 
+        .projects-title-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            cursor: none;
+        }
+
+        .projects-title-link:hover .glitch {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255, 0, 128, 0.3);
+        }
+
+        .projects-title-icon {
+            font-size: 0.45em;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .projects-title-link:hover .projects-title-icon {
+            opacity: 1;
+            transform: translate(3px, -3px);
+        }
+
         /* Skills Section */
         .skill-matrix {
             display: grid;
@@ -3847,12 +3872,17 @@
     <section class="section section-animate" id="projects">
         <div class="container fade-in">
             <div class="section-title">
-                <h2 class="glitch" data-text="PROJECTS">PROJECTS</h2>
+                <h2>
+                    <a href="https://github.com/gavksingh" target="_blank" rel="noopener noreferrer" class="projects-title-link">
+                        <span class="glitch" data-text="PROJECTS">PROJECTS</span>
+                        <i class="bi bi-box-arrow-up-right projects-title-icon"></i>
+                    </a>
+                </h2>
                 <p class="text-secondary">Innovative solutions and cutting-edge implementations</p>
             </div>
             <div class="projects-grid">
 
-                <!-- WeatherWise Agent -->
+                <!-- 1. WeatherWise Agent -->
                 <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-cloud-sun"></i>
@@ -3889,7 +3919,44 @@
                     </div>
                 </div>
 
-                <!-- Campaign Intelligence Assistant -->
+                <!-- 2. Clinical QA Intelligence (NEW) -->
+                <div class="project-card card-reveal">
+                    <div class="project-img">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag featured">FEATURED</div>
+                        <h3>Clinical QA Intelligence</h3>
+                        <p class="text-secondary">AI-powered clinical question-answering system that synthesizes
+                            evidence from ClinicalTrials.gov and PubMed. Delivers cited, confidence-scored answers
+                            to medical questions using Google Gemini for intelligent query routing and response
+                            generation.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-journal-medical"></i> Multi-source evidence synthesis</span>
+                            <span class="highlight-item"><i class="bi bi-blockquote-left"></i> Inline citations</span>
+                            <span class="highlight-item"><i class="bi bi-speedometer2"></i> Confidence scoring</span>
+                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> GCP Cloud Run deployed</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Google Gemini</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">GCP</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://github.com/gavksingh/Clinical-QA-System" class="cyber-btn"
+                                target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://clinical-qa-frontend-ybn6xfzrsa-uc.a.run.app"
+                                class="cyber-btn secondary" target="_blank" rel="noopener noreferrer" style="margin-left: 10px;">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Campaign Intelligence Assistant -->
                 <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-bar-chart-line"></i>
@@ -3926,68 +3993,7 @@
                     </div>
                 </div>
 
-                <!-- X-Voice Project -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-mic"></i>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag featured">FEATURED</div>
-                        <h3>X-Voice - Voice Analytics AI</h3>
-                        <p class="text-secondary">Deep learning system for predicting accent, age, and
-                            gender from voice data using pi-whisper and LoRA fine-tuning. Real-time speech analysis with
-                            high accuracy.</p>
-                        <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-soundwave"></i> Real-time speech analysis</span>
-                            <span class="highlight-item"><i class="bi bi-gpu-card"></i> LoRA fine-tuning</span>
-                            <span class="highlight-item"><i class="bi bi-translate"></i> Accent prediction</span>
-                            <span class="highlight-item"><i class="bi bi-person-lines-fill"></i> Age & gender detection</span>
-                        </div>
-                        <div class="mt-3">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pi-whisper</span>
-                            <span class="tech-tag">LoRA</span>
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Speech Analysis</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://xvoice.xlabub.com/" class="cyber-btn" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AutoRSR Project -->
-                <div class="project-card card-reveal">
-                    <div class="project-img">
-                        <i class="bi bi-heart-pulse-fill"></i>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag">RESEARCH</div>
-                        <h3>AutoRSR - Speech Disorder Detection</h3>
-                        <p class="text-secondary">AI-powered system for early detection of speech
-                            disorders in children using advanced machine learning.
-                            Determines whether a child requires Speech-Language Pathologist (SLP) attention with high
-                            accuracy.</p>
-                        <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-activity"></i> Early disorder detection</span>
-                            <span class="highlight-item"><i class="bi bi-clipboard2-pulse"></i> SLP screening</span>
-                            <span class="highlight-item"><i class="bi bi-bullseye"></i> High accuracy ML</span>
-                            <span class="highlight-item"><i class="bi bi-hospital"></i> Healthcare AI</span>
-                        </div>
-                        <div class="mt-3">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Speech Analysis</span>
-                            <span class="tech-tag">AI Detection</span>
-                            <span class="tech-tag">Healthcare</span>
-                        </div>
-                        <div class="mt-3">
-                            <a href="https://autorsr.xlabub.com/home" class="cyber-btn" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Agentic MCP Hub -->
+                <!-- 4. Agentic MCP Hub -->
                 <div class="project-card card-reveal">
                     <div class="project-img">
                         <i class="bi bi-diagram-3"></i>
@@ -4021,38 +4027,66 @@
                     </div>
                 </div>
 
-                <!-- AutoFlow MCP -->
+                <!-- 5. X-Voice Project -->
                 <div class="project-card card-reveal">
                     <div class="project-img">
-                        <i class="bi bi-arrow-repeat"></i>
+                        <i class="bi bi-mic"></i>
                     </div>
                     <div class="project-info">
-                        <h3>AutoFlow MCP</h3>
-                        <p class="text-secondary">
-                            Browser automation and content extraction MCP server that lets AI agents navigate,
-                            click, and extract structured data from the web using Playwright-powered workflows.
-                        </p>
+                        <div class="project-tag featured">FEATURED</div>
+                        <h3>X-Voice - Voice Analytics AI</h3>
+                        <p class="text-secondary">Deep learning system for predicting accent, age, and
+                            gender from voice data using pi-whisper and LoRA fine-tuning. Real-time speech analysis with
+                            high accuracy.</p>
                         <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-cursor-fill"></i> Browser automation</span>
-                            <span class="highlight-item"><i class="bi bi-file-earmark-code"></i> Structured extraction</span>
-                            <span class="highlight-item"><i class="bi bi-play-circle"></i> Playwright-powered</span>
-                            <span class="highlight-item"><i class="bi bi-globe"></i> Web agent workflows</span>
+                            <span class="highlight-item"><i class="bi bi-soundwave"></i> Real-time speech analysis</span>
+                            <span class="highlight-item"><i class="bi bi-gpu-card"></i> LoRA fine-tuning</span>
+                            <span class="highlight-item"><i class="bi bi-translate"></i> Accent prediction</span>
+                            <span class="highlight-item"><i class="bi bi-person-lines-fill"></i> Age & gender detection</span>
                         </div>
                         <div class="mt-3">
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">MCP</span>
-                            <span class="tech-tag">Playwright</span>
-                            <span class="tech-tag">Automation</span>
-                            <span class="tech-tag">Web Agents</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pi-whisper</span>
+                            <span class="tech-tag">LoRA</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Speech Analysis</span>
                         </div>
                         <div class="mt-3">
-                            <a href="https://github.com/gavksingh/AutoFlow-MCP" class="cyber-btn" target="_blank">
-                                GitHub
-                            </a>
+                            <a href="https://xvoice.xlabub.com/" class="cyber-btn" target="_blank">Live Demo</a>
                         </div>
                     </div>
                 </div>
 
+                <!-- 6. AutoRSR Project -->
+                <div class="project-card card-reveal">
+                    <div class="project-img">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag">RESEARCH</div>
+                        <h3>AutoRSR - Speech Disorder Detection</h3>
+                        <p class="text-secondary">AI-powered system for early detection of speech
+                            disorders in children using advanced machine learning.
+                            Determines whether a child requires Speech-Language Pathologist (SLP) attention with high
+                            accuracy.</p>
+                        <div class="project-highlights">
+                            <span class="highlight-item"><i class="bi bi-activity"></i> Early disorder detection</span>
+                            <span class="highlight-item"><i class="bi bi-clipboard2-pulse"></i> SLP screening</span>
+                            <span class="highlight-item"><i class="bi bi-bullseye"></i> High accuracy ML</span>
+                            <span class="highlight-item"><i class="bi bi-hospital"></i> Healthcare AI</span>
+                        </div>
+                        <div class="mt-3">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Speech Analysis</span>
+                            <span class="tech-tag">AI Detection</span>
+                            <span class="tech-tag">Healthcare</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="https://autorsr.xlabub.com/home" class="cyber-btn" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
