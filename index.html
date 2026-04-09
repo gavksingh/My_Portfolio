@@ -5,21 +5,24 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MFMC8F5MT"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7MFMC8F5MT');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7MFMC8F5MT');
     </script>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Gaurav Singh | AI Engineer</title>
-    <meta content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more." name="description">
+    <meta
+        content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more."
+        name="description">
     <meta content="ai engineer, machine learning, portfolio, software engineer, cyberpunk" name="keywords">
 
     <!-- Open Graph / Social -->
     <meta property="og:title" content="Gaurav Singh | AI Engineer Portfolio">
-    <meta property="og:description" content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more.">
+    <meta property="og:description"
+        content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more.">
     <meta property="og:image" content="https://gavksingh.github.io/My_Portfolio/assets/img/hero-bg5.jpg">
     <meta property="og:image:width" content="1802">
     <meta property="og:image:height" content="901">
@@ -27,7 +30,8 @@
     <meta property="og:url" content="https://gavksingh.github.io/My_Portfolio/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gaurav Singh | AI Engineer Portfolio">
-    <meta name="twitter:description" content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more.">
+    <meta name="twitter:description"
+        content="AI Engineer building intelligent systems with ML, Cloud & Full-Stack expertise. Explore projects, open-source contributions, and more.">
     <meta name="twitter:image" content="https://gavksingh.github.io/My_Portfolio/assets/img/hero-bg5.jpg">
 
     <!-- Favicons -->
@@ -547,14 +551,19 @@
             position: relative;
             overflow: hidden;
             background: radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 50%, rgba(255, 0, 128, 0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 80% 50%, rgba(255, 0, 128, 0.06) 0%, transparent 50%);
             background-size: 200% 200%;
             animation: hero-gradient-shift 12s ease-in-out infinite alternate;
         }
 
         @keyframes hero-gradient-shift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero-section::before {
@@ -664,8 +673,17 @@
         }
 
         @keyframes scroll-bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
-            50% { transform: translateX(-50%) translateY(12px); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(12px);
+                opacity: 1;
+            }
         }
 
         /* Cyber Buttons */
@@ -1146,8 +1164,8 @@
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        border-color 0.3s ease,
-                        box-shadow 0.3s ease;
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
             position: relative;
             cursor: none;
         }
@@ -1270,16 +1288,16 @@
             overflow: visible;
         }
 
-        .scroll-row-wrapper > .blogs-grid,
-        .scroll-row-wrapper > .tutorials-grid,
-        .scroll-row-wrapper > .os-repos-grid {
+        .scroll-row-wrapper>.blogs-grid,
+        .scroll-row-wrapper>.tutorials-grid,
+        .scroll-row-wrapper>.os-repos-grid {
             overflow-x: hidden;
             scrollbar-width: none;
         }
 
-        .scroll-row-wrapper > .blogs-grid::-webkit-scrollbar,
-        .scroll-row-wrapper > .tutorials-grid::-webkit-scrollbar,
-        .scroll-row-wrapper > .os-repos-grid::-webkit-scrollbar {
+        .scroll-row-wrapper>.blogs-grid::-webkit-scrollbar,
+        .scroll-row-wrapper>.tutorials-grid::-webkit-scrollbar,
+        .scroll-row-wrapper>.os-repos-grid::-webkit-scrollbar {
             display: none;
         }
 
@@ -1626,7 +1644,7 @@
             padding-bottom: 1rem;
         }
 
-        .tutorials-grid > * {
+        .tutorials-grid>* {
             scroll-snap-align: start;
         }
 
@@ -1741,6 +1759,196 @@
             margin-bottom: 1rem;
         }
 
+        /* Newsletter Banner */
+        .newsletter-banner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 2rem 2.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.06) 0%, rgba(255, 0, 128, 0.06) 50%, rgba(0, 255, 0, 0.04) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: none;
+            transition: all 0.4s ease;
+        }
+
+        .newsletter-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.08) 50%, transparent 100%);
+            animation: newsletter-shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes newsletter-shimmer {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(100%);
+            }
+        }
+
+        .newsletter-banner:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), 0 0 60px rgba(0, 255, 255, 0.05);
+        }
+
+        .newsletter-cover {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-banner:hover .newsletter-cover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .newsletter-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .newsletter-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: var(--neon-pink);
+            color: var(--dark-bg);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 0 12px rgba(255, 0, 128, 0.4);
+        }
+
+        .newsletter-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.6rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .newsletter-desc {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-stats {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .newsletter-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 0.95rem;
+            color: var(--neon-green);
+            letter-spacing: 0.05em;
+        }
+
+        .newsletter-stat i {
+            font-size: 1rem;
+        }
+
+        .newsletter-subscribe-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .newsletter-subscribe-btn:hover {
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .newsletter-subscribe-btn i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .newsletter-subscribe-btn:hover i {
+            transform: translateX(3px);
+        }
+
+        .newsletter-banner,
+        .newsletter-banner:hover,
+        .newsletter-banner:focus,
+        .newsletter-banner:active,
+        .newsletter-banner:visited {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .newsletter-cover {
+                width: 140px;
+                height: 140px;
+            }
+
+            .newsletter-stats {
+                justify-content: center;
+            }
+
+            .newsletter-title {
+                font-size: 1.3rem;
+            }
+        }
+
         /* Blogs Section */
         .blogs-section {
             background: linear-gradient(135deg, rgba(0, 255, 0, 0.03) 0%, transparent 50%);
@@ -1753,7 +1961,7 @@
             padding-bottom: 1rem;
         }
 
-        .blogs-grid > * {
+        .blogs-grid>* {
             scroll-snap-align: start;
         }
 
@@ -2482,8 +2690,8 @@
             background: var(--neon-cyan);
             border-radius: 2px;
             transition: transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
-                        opacity 0.25s ease,
-                        background 0.3s ease;
+                opacity 0.25s ease,
+                background 0.3s ease;
         }
 
         .mobile-nav-btn.open span:nth-child(1) {
@@ -3090,8 +3298,16 @@
         }
 
         @keyframes pill-blink-glow {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.25); filter: brightness(1.6); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+                filter: brightness(1.6);
+            }
         }
 
         @keyframes cta-pulse-blue {
@@ -3401,6 +3617,7 @@
             .os-repos-grid {
                 gap: 1rem;
             }
+
             .os-repo-card {
                 min-width: 85vw;
                 max-width: 85vw;
@@ -3503,21 +3720,54 @@
         }
 
         /* ── Utility classes (consolidating inline styles) ── */
-        .text-cyan { color: var(--neon-cyan); }
-        .text-pink { color: var(--neon-pink); }
-        .text-yellow { color: var(--neon-yellow); }
-        .text-green { color: var(--neon-green); }
-        .text-secondary { color: var(--text-secondary); }
-        .text-primary-body { color: var(--text-primary); }
-        .font-orbitron { font-family: 'Orbitron', monospace; }
-        .no-decoration { text-decoration: none; }
-        .tech-tag-sm { font-size: 0.7rem; padding: 3px 8px; }
-        .contact-icon { font-size: 2.5rem; color: var(--neon-cyan); }
+        .text-cyan {
+            color: var(--neon-cyan);
+        }
+
+        .text-pink {
+            color: var(--neon-pink);
+        }
+
+        .text-yellow {
+            color: var(--neon-yellow);
+        }
+
+        .text-green {
+            color: var(--neon-green);
+        }
+
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .text-primary-body {
+            color: var(--text-primary);
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+
+        .no-decoration {
+            text-decoration: none;
+        }
+
+        .tech-tag-sm {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--neon-cyan);
+        }
+
         .experience-box {
             margin: 2rem 0;
             padding: 1rem;
             border-left: 3px solid var(--neon-cyan);
         }
+
         .info-box {
             margin-top: 1.5rem;
             padding: 1rem;
@@ -3551,20 +3801,36 @@
 
         /* Accessibility: respect reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-            .cursor-dot, .cursor-outline { display: none; }
-            body { cursor: auto; }
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+
+            body {
+                cursor: auto;
+            }
         }
 
         /* Hide custom cursor on touch devices */
         @media (pointer: coarse) {
-            body { cursor: auto; }
-            .cursor-dot, .cursor-outline { display: none !important; }
+            body {
+                cursor: auto;
+            }
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -3629,10 +3895,10 @@
     <!-- Back to top with scroll progress ring -->
     <a class="back-to-top" id="back-to-top" href="#home" aria-label="Back to top">
         <svg class="back-to-top-ring" viewBox="0 0 46 46">
-            <circle cx="23" cy="23" r="20" fill="none" stroke="rgba(0,255,255,0.15)" stroke-width="2"/>
+            <circle cx="23" cy="23" r="20" fill="none" stroke="rgba(0,255,255,0.15)" stroke-width="2" />
             <circle id="btt-progress" cx="23" cy="23" r="20" fill="none" stroke="var(--neon-cyan)" stroke-width="2"
                 stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
-                style="transform: rotate(-90deg); transform-origin: center;"/>
+                style="transform: rotate(-90deg); transform-origin: center;" />
         </svg>
         <i class="bi bi-chevron-up"></i>
     </a>
@@ -3810,20 +4076,18 @@
                         </h3>
                         <p
                             style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
-                            <strong>Software Engineer</strong> with <strong>3+ years</strong> of experience building
+                            <strong>Software Engineer</strong> with <strong>4+ years</strong> of experience building
                             production <strong class="text-cyan">AI Agent Systems</strong> and
                             scalable <strong>Distributed Services</strong>. Currently working as an <strong
                                 class="text-cyan">AI Software Engineer</strong> at
-                            <strong>University at Buffalo</strong>, focusing on <strong
-                                class="text-cyan">Multi-Agent Orchestration</strong>, <strong
-                                class="text-cyan">Semantic Search</strong>, and
+                            <strong>University at Buffalo</strong>, focusing on <strong class="text-cyan">Multi-Agent
+                                Orchestration</strong>, <strong class="text-cyan">Semantic Search</strong>, and
                             reliable distributed services.
                         </p>
                         <p
                             style="color: var(--text-primary); font-size: 1.0rem; line-height: 1.8; margin-bottom: 1rem;">
-                            I build <strong>end-to-end AI systems</strong>: <strong
-                                class="text-cyan">MCP-based Agents</strong> with <strong
-                                class="text-cyan">LangGraph/LangChain</strong>, <strong
+                            I build <strong>end-to-end AI systems</strong>: <strong class="text-cyan">MCP-based
+                                Agents</strong> with <strong class="text-cyan">LangGraph/LangChain</strong>, <strong
                                 class="text-cyan">RAG Pipelines</strong>,
                             and full-stack platforms like <strong>AutoRSR</strong> and <strong>X-Voice</strong> that
                             combine <strong>low-latency</strong> user
@@ -3834,18 +4098,15 @@
                             My experience spans <strong>event-driven microservices</strong>, <strong
                                 class="text-cyan">Kafka-based Data Pipelines</strong> processing
                             hundreds of thousands of daily events, and <strong>cloud-native deployments</strong> on
-                            <strong class="text-cyan">AWS</strong> and <strong
-                                class="text-cyan">Azure</strong>
-                            with strong <strong>observability</strong> and <strong
-                                class="text-cyan">CI/CD</strong>.
+                            <strong class="text-cyan">AWS</strong> and <strong class="text-cyan">Azure</strong>
+                            with strong <strong>observability</strong> and <strong class="text-cyan">CI/CD</strong>.
                         </p>
                         <p
                             style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;">
                             <strong class="text-yellow">Core Stack:</strong> <strong>Python</strong>,
                             <strong>TypeScript</strong>, <strong>Java</strong>, <strong>C#</strong>, <strong
-                                class="text-cyan">LangGraph</strong>, <strong
-                                class="text-cyan">LangChain</strong>, <strong
-                                class="text-cyan">RAG</strong>, <strong>React</strong>,
+                                class="text-cyan">LangGraph</strong>, <strong class="text-cyan">LangChain</strong>,
+                            <strong class="text-cyan">RAG</strong>, <strong>React</strong>,
                             <strong>Next.js</strong>,
                             <strong>Spring Boot</strong>, <strong>.NET</strong>, <strong
                                 class="text-cyan">Kafka</strong>, <strong>PostgreSQL</strong>,
@@ -3855,9 +4116,8 @@
                         <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.8;">
                             <strong class="text-yellow">MS in Computer Science</strong> from University
                             at Buffalo (<strong>3.9 GPA</strong>), with certifications across
-                            <strong class="text-cyan">AWS</strong>, <strong
-                                class="text-cyan">Azure AI</strong>, and <strong
-                                class="text-cyan">GCP</strong>. Open to <strong>Software
+                            <strong class="text-cyan">AWS</strong>, <strong class="text-cyan">Azure AI</strong>, and
+                            <strong class="text-cyan">GCP</strong>. Open to <strong>Software
                                 Engineer</strong>, <strong class="text-cyan">AI/ML Engineer</strong>, and
                             <strong class="text-cyan">Applied AI Engineer</strong>
                             roles.
@@ -3865,6 +4125,25 @@
                     </div>
                 </div>
             </div>
+            <!-- Newsletter Banner -->
+            <a href="https://www.linkedin.com/newsletters/the-inference-7447359576854822912/" target="_blank"
+                rel="noopener noreferrer" class="newsletter-banner">
+                <div class="newsletter-cover">
+                    <img src="assets/the-inference-cover.jpg" alt="The Inference Newsletter Cover">
+                </div>
+                <div class="newsletter-content">
+                    <div class="newsletter-label"><i class="bi bi-megaphone-fill"></i> Newsletter</div>
+                    <h3 class="newsletter-title">The Inference</h3>
+                    <p class="newsletter-desc">Connecting the dots between what's shipping and what's next. AI, full
+                        stack, and the tech moves you should know about.</p>
+                    <div class="newsletter-stats">
+                        <span class="newsletter-stat"><i class="bi bi-people-fill"></i> 4K+ Subscribers</span>
+                        <span class="newsletter-stat"><i class="bi bi-calendar-check"></i> Weekly</span>
+                        <span class="newsletter-stat"><i class="bi bi-linkedin"></i> LinkedIn</span>
+                    </div>
+                    <span class="newsletter-subscribe-btn">Subscribe <i class="bi bi-arrow-right"></i></span>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -3873,7 +4152,8 @@
         <div class="container fade-in">
             <div class="section-title">
                 <h2>
-                    <a href="https://github.com/gavksingh" target="_blank" rel="noopener noreferrer" class="projects-title-link">
+                    <a href="https://github.com/gavksingh" target="_blank" rel="noopener noreferrer"
+                        class="projects-title-link">
                         <span class="glitch" data-text="PROJECTS">PROJECTS</span>
                         <i class="bi bi-box-arrow-up-right projects-title-icon"></i>
                     </a>
@@ -3895,9 +4175,11 @@
                             air quality, and alerts. Deployed on GCP using Vertex AI with Dockerized microservices
                             and network isolation.</p>
                         <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-diagram-3"></i> LangGraph + MCP architecture</span>
+                            <span class="highlight-item"><i class="bi bi-diagram-3"></i> LangGraph + MCP
+                                architecture</span>
                             <span class="highlight-item"><i class="bi bi-broadcast"></i> SSE streaming responses</span>
-                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> GCP / Vertex AI deployed</span>
+                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> GCP / Vertex AI
+                                deployed</span>
                             <span class="highlight-item"><i class="bi bi-box-seam"></i> Docker microservices</span>
                         </div>
                         <div class="mt-3">
@@ -3932,7 +4214,8 @@
                             to medical questions using Google Gemini for intelligent query routing and response
                             generation.</p>
                         <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-journal-medical"></i> Multi-source evidence synthesis</span>
+                            <span class="highlight-item"><i class="bi bi-journal-medical"></i> Multi-source evidence
+                                synthesis</span>
                             <span class="highlight-item"><i class="bi bi-blockquote-left"></i> Inline citations</span>
                             <span class="highlight-item"><i class="bi bi-speedometer2"></i> Confidence scoring</span>
                             <span class="highlight-item"><i class="bi bi-cloud-check"></i> GCP Cloud Run deployed</span>
@@ -3948,10 +4231,10 @@
                             <span class="tech-tag">GCP</span>
                         </div>
                         <div class="mt-3">
-                            <a href="https://github.com/gavksingh/Clinical-QA-System" class="cyber-btn"
-                                target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="https://clinical-qa-frontend-ybn6xfzrsa-uc.a.run.app"
-                                class="cyber-btn secondary" target="_blank" rel="noopener noreferrer" style="margin-left: 10px;">Live Demo</a>
+                            <a href="https://github.com/gavksingh/Clinical-QA-System" class="cyber-btn" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                            <a href="https://clinical-qa-frontend-ybn6xfzrsa-uc.a.run.app" class="cyber-btn secondary"
+                                target="_blank" rel="noopener noreferrer" style="margin-left: 10px;">Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -3968,10 +4251,12 @@
                             Natural language chat interface that queries campaign databases, generates LCI attribution
                             reports, compares campaigns, and recommends audience segments.</p>
                         <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-diagram-3"></i> LangGraph agent w/ 5 tools</span>
+                            <span class="highlight-item"><i class="bi bi-diagram-3"></i> LangGraph agent w/ 5
+                                tools</span>
                             <span class="highlight-item"><i class="bi bi-broadcast"></i> Real-time SSE streaming</span>
                             <span class="highlight-item"><i class="bi bi-search"></i> pgvector semantic search</span>
-                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> Serverless (Vercel + Neon)</span>
+                            <span class="highlight-item"><i class="bi bi-cloud-check"></i> Serverless (Vercel +
+                                Neon)</span>
                         </div>
                         <div class="mt-3">
                             <span class="tech-tag">FastAPI</span>
@@ -4039,10 +4324,12 @@
                             gender from voice data using pi-whisper and LoRA fine-tuning. Real-time speech analysis with
                             high accuracy.</p>
                         <div class="project-highlights">
-                            <span class="highlight-item"><i class="bi bi-soundwave"></i> Real-time speech analysis</span>
+                            <span class="highlight-item"><i class="bi bi-soundwave"></i> Real-time speech
+                                analysis</span>
                             <span class="highlight-item"><i class="bi bi-gpu-card"></i> LoRA fine-tuning</span>
                             <span class="highlight-item"><i class="bi bi-translate"></i> Accent prediction</span>
-                            <span class="highlight-item"><i class="bi bi-person-lines-fill"></i> Age & gender detection</span>
+                            <span class="highlight-item"><i class="bi bi-person-lines-fill"></i> Age & gender
+                                detection</span>
                         </div>
                         <div class="mt-3">
                             <span class="tech-tag">Python</span>
@@ -4105,252 +4392,270 @@
             </div>
 
             <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),-340)" aria-label="Scroll repos left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),340)" aria-label="Scroll repos right"><i class="bi bi-chevron-right"></i></button>
-            <div class="os-repos-grid">
+                <button class="scroll-arrow scroll-left"
+                    onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),-340)"
+                    aria-label="Scroll repos left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right"
+                    onclick="scrollRow(this.parentElement.querySelector('.os-repos-grid'),340)"
+                    aria-label="Scroll repos right"><i class="bi bi-chevron-right"></i></button>
+                <div class="os-repos-grid">
 
-                <!-- awslabs / agent-squad -->
-                <div class="os-repo-card card-reveal">
-                    <div class="os-repo-header">
-                        <i class="os-repo-icon bi bi-robot"></i>
-                        <div class="os-repo-meta">
-                            <h3>awslabs / agent-squad</h3>
-                            <p>Flexible and powerful framework for managing multiple AI agents and handling complex
-                                conversations</p>
+                    <!-- awslabs / agent-squad -->
+                    <div class="os-repo-card card-reveal">
+                        <div class="os-repo-header">
+                            <i class="os-repo-icon bi bi-robot"></i>
+                            <div class="os-repo-meta">
+                                <h3>awslabs / agent-squad</h3>
+                                <p>Flexible and powerful framework for managing multiple AI agents and handling complex
+                                    conversations</p>
+                            </div>
+                        </div>
+                        <div class="os-repo-stats">
+                            <span><i class="bi bi-star-fill"></i> 7.5k+ Stars</span>
+                            <span><i class="bi bi-diagram-2"></i> Python</span>
+                            <span><i class="bi bi-git"></i> 3 PRs</span>
+                        </div>
+                        <div class="os-prs-list">
+                            <p class="os-prs-label">Pull Requests</p>
+
+                            <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/452" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(supervisor): Fix SupervisorAgent crash when agent response
+                                    is a dict</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Supervisor</span>
+                                    <span class="os-pr-date">Mar 17, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/451" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">feat(agents): Add GeminiAgent for Google Gemini model support
+                                </div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Gemini</span>
+                                    <span class="os-pr-date">Mar 17, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/450" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(chain): Fix ChainAgent raising raw string instead of
+                                    Exception object</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">ChainAgent</span>
+                                    <span class="os-pr-date">Mar 17, 2026</span>
+                                </div>
+                            </a>
+
+                            <div class="mt-3">
+                                <a href="https://github.com/awslabs/agent-squad" class="cyber-btn" target="_blank"
+                                    rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> 7.5k+ Stars</span>
-                        <span><i class="bi bi-diagram-2"></i> Python</span>
-                        <span><i class="bi bi-git"></i> 3 PRs</span>
-                    </div>
-                    <div class="os-prs-list">
-                        <p class="os-prs-label">Pull Requests</p>
 
-                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/452" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(supervisor): Fix SupervisorAgent crash when agent response is a dict</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Supervisor</span>
-                                <span class="os-pr-date">Mar 17, 2026</span>
+                    <!-- BerriAI / LiteLLM -->
+                    <div class="os-repo-card card-reveal">
+                        <div class="os-repo-header">
+                            <i class="os-repo-icon bi bi-diagram-3-fill"></i>
+                            <div class="os-repo-meta">
+                                <h3>BerriAI / LiteLLM</h3>
+                                <p>100 LLM APIs in one OpenAI-compatible interface — Python proxy, load balancing, spend
+                                    tracking &amp; observability. One of the most starred Python AI infra projects on
+                                    GitHub.</p>
                             </div>
-                        </a>
+                        </div>
+                        <div class="os-repo-stats">
+                            <span><i class="bi bi-star-fill"></i> 39k+ Stars</span>
+                            <span><i class="bi bi-diagram-2"></i> Python</span>
+                            <span><i class="bi bi-git"></i> 5 PRs</span>
+                        </div>
+                        <div class="os-prs-list">
+                            <p class="os-prs-label">Pull Requests</p>
 
-                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/451" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">feat(agents): Add GeminiAgent for Google Gemini model support</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Gemini</span>
-                                <span class="os-pr-date">Mar 17, 2026</span>
+                            <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/21417" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(mcp): Strip stale mcp-session-id to prevent 400 errors
+                                    across
+                                    proxy workers</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">MCP</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                    <span class="os-pr-date">Feb 17, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/22106" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(proxy): honor MAX_STRING_LENGTH_PROMPT_IN_DB from config
+                                    env
+                                    vars</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Config</span>
+                                    <span class="os-pr-date">Feb 25, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22132"
+                                target="_blank" rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(streaming): prevent Vertex AI / Anthropic content
+                                    truncation
+                                    when finish_reason races content</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Streaming</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Vertex AI</span>
+                                    <span class="os-pr-date">Feb 25, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22516"
+                                target="_blank" rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(proxy): add periodic MCP server DB sync for cross-pod
+                                    consistency</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">MCP</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                    <span class="os-pr-date">Mar 1, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22703"
+                                target="_blank" rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(proxy): ProxyException.__str__() returns empty string - all
+                                    error logs are blank</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Logging</span>
+                                    <span class="os-pr-date">Mar 3, 2026</span>
+                                </div>
+                            </a>
+
+                            <button class="os-toggle-btn" onclick="toggleOSPRs(this)">Show all 5 contributions
+                                ▾</button>
+
+                            <div class="mt-3">
+                                <a href="https://github.com/BerriAI/litellm" class="cyber-btn" target="_blank"
+                                    rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
                             </div>
-                        </a>
-
-                        <a class="os-pr-card" href="https://github.com/awslabs/agent-squad/pull/450" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(chain): Fix ChainAgent raising raw string instead of Exception object</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">ChainAgent</span>
-                                <span class="os-pr-date">Mar 17, 2026</span>
-                            </div>
-                        </a>
-
-                        <div class="mt-3">
-                            <a href="https://github.com/awslabs/agent-squad" class="cyber-btn" target="_blank"
-                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
                         </div>
                     </div>
+
+                    <!-- aden-hive / hive -->
+                    <div class="os-repo-card card-reveal">
+                        <div class="os-repo-header">
+                            <i class="os-repo-icon bi bi-cpu-fill"></i>
+                            <div class="os-repo-meta">
+                                <h3>aden-hive / hive</h3>
+                                <p>Open-source AI agent framework with parallel execution, memory management, and
+                                    composable workflows for building production-grade autonomous agents.</p>
+                            </div>
+                        </div>
+                        <div class="os-repo-stats">
+                            <span><i class="bi bi-star-fill"></i> Growing</span>
+                            <span><i class="bi bi-diagram-2"></i> Python</span>
+                            <span><i class="bi bi-git"></i> 2 PRs Merged · 1 Issue Filed</span>
+                        </div>
+                        <div class="os-prs-list">
+                            <p class="os-prs-label">Pull Requests</p>
+
+                            <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/6504" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">fix(executor): enforce branch timeout and memory conflict
+                                    strategy
+                                    in parallel execution
+                                    <span class="os-pr-origin-badge identified">Bug Found &amp; Fixed</span>
+                                    <span class="os-pr-origin-badge merged">Merged</span>
+                                </div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">AsyncIO</span>
+                                    <span class="os-pr-date">Mar 3, 2026</span>
+                                </div>
+                            </a>
+
+                            <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/5736" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">feat(events): emit GOAL_ACHIEVED event on terminal-node success
+                                    <span class="os-pr-origin-badge identified">Feature Proposed &amp; Built</span>
+                                    <span class="os-pr-origin-badge merged">Merged</span>
+                                </div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">EventBus</span>
+                                    <span class="os-pr-date">Mar 3, 2026</span>
+                                </div>
+                            </a>
+
+                            <div class="info-box">
+                                <p
+                                    style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                                    <i class="bi bi-info-circle text-green"></i>&nbsp;
+                                    Wired unused <code>branch_timeout_seconds</code> and
+                                    <code>memory_conflict_strategy</code>
+                                    configs into the parallel execution path with 6 new tests. Also filed a feature
+                                    request for GOAL_ACHIEVED event emission and implemented the solution in a separate
+                                    PR.
+                                </p>
+                            </div>
+
+                            <div class="mt-3">
+                                <a href="https://github.com/aden-hive/hive" class="cyber-btn" target="_blank"
+                                    rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shinzo Labs / Shinzo -->
+                    <div class="os-repo-card card-reveal">
+                        <div class="os-repo-header">
+                            <i class="os-repo-icon bi bi-eye-fill"></i>
+                            <div class="os-repo-meta">
+                                <h3>shinzo-labs / shinzo</h3>
+                                <p>Complete observability platform for AI agents and MCP servers. Improve AI deployment
+                                    outcomes, identify inference inefficiencies, and gain insights into real agent usage
+                                    patterns.</p>
+                            </div>
+                        </div>
+                        <div class="os-repo-stats">
+                            <span><i class="bi bi-star-fill"></i> Growing</span>
+                            <span><i class="bi bi-diagram-2"></i> TypeScript</span>
+                            <span><i class="bi bi-git"></i> 1 PR</span>
+                        </div>
+                        <div class="os-prs-list">
+                            <p class="os-prs-label">Pull Requests</p>
+
+                            <a class="os-pr-card" href="https://github.com/shinzo-labs/shinzo/pull/79" target="_blank"
+                                rel="noopener noreferrer">
+                                <div class="os-pr-title">Session Replay &amp; Analytics Feature</div>
+                                <div class="os-pr-footer">
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">TypeScript</span>
+                                    <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Analytics</span>
+                                    <span class="os-pr-date">Feb 14, 2026</span>
+                                </div>
+                            </a>
+
+                            <div class="info-box">
+                                <p
+                                    style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                                    <i class="bi bi-info-circle text-green"></i>&nbsp;
+                                    Implemented full session replay &amp; analytics backend — capturing MCP tool call
+                                    sequences, token usage, latency, and session timelines for production AI agents.
+                                </p>
+                            </div>
+
+                            <div class="mt-3">
+                                <a href="https://github.com/shinzo-labs/shinzo" class="cyber-btn" target="_blank"
+                                    rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <!-- BerriAI / LiteLLM -->
-                <div class="os-repo-card card-reveal">
-                    <div class="os-repo-header">
-                        <i class="os-repo-icon bi bi-diagram-3-fill"></i>
-                        <div class="os-repo-meta">
-                            <h3>BerriAI / LiteLLM</h3>
-                            <p>100 LLM APIs in one OpenAI-compatible interface — Python proxy, load balancing, spend
-                                tracking &amp; observability. One of the most starred Python AI infra projects on
-                                GitHub.</p>
-                        </div>
-                    </div>
-                    <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> 39k+ Stars</span>
-                        <span><i class="bi bi-diagram-2"></i> Python</span>
-                        <span><i class="bi bi-git"></i> 5 PRs</span>
-                    </div>
-                    <div class="os-prs-list">
-                        <p class="os-prs-label">Pull Requests</p>
-
-                        <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/21417" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(mcp): Strip stale mcp-session-id to prevent 400 errors across
-                                proxy workers</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">MCP</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
-                                <span class="os-pr-date">Feb 17, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card" href="https://github.com/BerriAI/litellm/pull/22106" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(proxy): honor MAX_STRING_LENGTH_PROMPT_IN_DB from config env
-                                vars</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Config</span>
-                                <span class="os-pr-date">Feb 25, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22132" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(streaming): prevent Vertex AI / Anthropic content truncation
-                                when finish_reason races content</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Streaming</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Vertex AI</span>
-                                <span class="os-pr-date">Feb 25, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22516" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(proxy): add periodic MCP server DB sync for cross-pod consistency</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">MCP</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
-                                <span class="os-pr-date">Mar 1, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card os-pr-hidden" href="https://github.com/BerriAI/litellm/pull/22703" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(proxy): ProxyException.__str__() returns empty string - all error logs are blank</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Proxy</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Logging</span>
-                                <span class="os-pr-date">Mar 3, 2026</span>
-                            </div>
-                        </a>
-
-                        <button class="os-toggle-btn" onclick="toggleOSPRs(this)">Show all 5 contributions ▾</button>
-
-                        <div class="mt-3">
-                            <a href="https://github.com/BerriAI/litellm" class="cyber-btn" target="_blank"
-                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- aden-hive / hive -->
-                <div class="os-repo-card card-reveal">
-                    <div class="os-repo-header">
-                        <i class="os-repo-icon bi bi-cpu-fill"></i>
-                        <div class="os-repo-meta">
-                            <h3>aden-hive / hive</h3>
-                            <p>Open-source AI agent framework with parallel execution, memory management, and
-                                composable workflows for building production-grade autonomous agents.</p>
-                        </div>
-                    </div>
-                    <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> Growing</span>
-                        <span><i class="bi bi-diagram-2"></i> Python</span>
-                        <span><i class="bi bi-git"></i> 2 PRs Merged · 1 Issue Filed</span>
-                    </div>
-                    <div class="os-prs-list">
-                        <p class="os-prs-label">Pull Requests</p>
-
-                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/6504" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">fix(executor): enforce branch timeout and memory conflict strategy
-                                in parallel execution
-                                <span class="os-pr-origin-badge identified">Bug Found &amp; Fixed</span>
-                                <span class="os-pr-origin-badge merged">Merged</span></div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">AsyncIO</span>
-                                <span class="os-pr-date">Mar 3, 2026</span>
-                            </div>
-                        </a>
-
-                        <a class="os-pr-card" href="https://github.com/aden-hive/hive/pull/5736" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">feat(events): emit GOAL_ACHIEVED event on terminal-node success
-                                <span class="os-pr-origin-badge identified">Feature Proposed &amp; Built</span>
-                                <span class="os-pr-origin-badge merged">Merged</span></div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Python</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">EventBus</span>
-                                <span class="os-pr-date">Mar 3, 2026</span>
-                            </div>
-                        </a>
-
-                        <div
-                            class="info-box">
-                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                                <i class="bi bi-info-circle text-green"></i>&nbsp;
-                                Wired unused <code>branch_timeout_seconds</code> and <code>memory_conflict_strategy</code>
-                                configs into the parallel execution path with 6 new tests. Also filed a feature
-                                request for GOAL_ACHIEVED event emission and implemented the solution in a separate PR.
-                            </p>
-                        </div>
-
-                        <div class="mt-3">
-                            <a href="https://github.com/aden-hive/hive" class="cyber-btn" target="_blank"
-                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shinzo Labs / Shinzo -->
-                <div class="os-repo-card card-reveal">
-                    <div class="os-repo-header">
-                        <i class="os-repo-icon bi bi-eye-fill"></i>
-                        <div class="os-repo-meta">
-                            <h3>shinzo-labs / shinzo</h3>
-                            <p>Complete observability platform for AI agents and MCP servers. Improve AI deployment
-                                outcomes, identify inference inefficiencies, and gain insights into real agent usage
-                                patterns.</p>
-                        </div>
-                    </div>
-                    <div class="os-repo-stats">
-                        <span><i class="bi bi-star-fill"></i> Growing</span>
-                        <span><i class="bi bi-diagram-2"></i> TypeScript</span>
-                        <span><i class="bi bi-git"></i> 1 PR</span>
-                    </div>
-                    <div class="os-prs-list">
-                        <p class="os-prs-label">Pull Requests</p>
-
-                        <a class="os-pr-card" href="https://github.com/shinzo-labs/shinzo/pull/79" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="os-pr-title">Session Replay &amp; Analytics Feature</div>
-                            <div class="os-pr-footer">
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">TypeScript</span>
-                                <span class="tech-tag" style="font-size:0.7rem;padding:3px 8px;">Analytics</span>
-                                <span class="os-pr-date">Feb 14, 2026</span>
-                            </div>
-                        </a>
-
-                        <div
-                            class="info-box">
-                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                                <i class="bi bi-info-circle text-green"></i>&nbsp;
-                                Implemented full session replay &amp; analytics backend — capturing MCP tool call
-                                sequences, token usage, latency, and session timelines for production AI agents.
-                            </p>
-                        </div>
-
-                        <div class="mt-3">
-                            <a href="https://github.com/shinzo-labs/shinzo" class="cyber-btn" target="_blank"
-                                rel="noopener noreferrer" style="font-size:0.85rem;padding:10px 22px;">View Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             </div>
 
             <div class="os-cta">
@@ -4369,209 +4674,213 @@
                 <p class="text-secondary">Technical insights and knowledge sharing</p>
             </div>
             <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)" aria-label="Scroll blogs left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)" aria-label="Scroll blogs right"><i class="bi bi-chevron-right"></i></button>
-            <div class="blogs-grid">
-                <!-- LinkedIn Posts (no featured image) -->
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7439823387083902976/" target="_blank"
-                        class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(255,153,0,0.15) 0%, rgba(0,255,255,0.1) 100%);">
-                            <i class="bi bi-amazon post-card-icon" style="color: #ff9900;"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">AWS</span>
-                                <span class="blog-tag">Open Source</span>
-                                <span class="blog-tag">AI Agents</span>
+                <button class="scroll-arrow scroll-left"
+                    onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),-340)"
+                    aria-label="Scroll blogs left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right"
+                    onclick="scrollRow(this.parentElement.querySelector('.blogs-grid'),340)"
+                    aria-label="Scroll blogs right"><i class="bi bi-chevron-right"></i></button>
+                <div class="blogs-grid">
+                    <!-- LinkedIn Posts (no featured image) -->
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7439823387083902976/"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header"
+                                style="background: linear-gradient(135deg, rgba(255,153,0,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                                <i class="bi bi-amazon post-card-icon" style="color: #ff9900;"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>&bull;</span>
-                                <span>Open Source</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">AWS</span>
+                                    <span class="blog-tag">Open Source</span>
+                                    <span class="blog-tag">AI Agents</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>&bull;</span>
+                                    <span>Open Source</span>
+                                </div>
+                                <h3>From an AWS Session to Shipping 3 PRs to awslabs/agent-squad</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>From an AWS Session to Shipping 3 PRs to awslabs/agent-squad</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/" target="_blank"
-                        class="no-decoration">
-                        <div class="post-card-header">
-                            <i class="bi bi-bar-chart-line post-card-icon"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">LangGraph</span>
-                                <span class="blog-tag">AdTech</span>
-                                <span class="blog-tag">RAG</span>
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7435494096695234560/"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header">
+                                <i class="bi bi-bar-chart-line post-card-icon"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>&bull;</span>
-                                <span>Build in Public</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">LangGraph</span>
+                                    <span class="blog-tag">AdTech</span>
+                                    <span class="blog-tag">RAG</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>&bull;</span>
+                                    <span>Build in Public</span>
+                                </div>
+                                <h3>Campaign Intelligence Assistant: AI Analytics for AdTech</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>Campaign Intelligence Assistant: AI Analytics for AdTech</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/" target="_blank"
-                        class="no-decoration">
-                        <div class="post-card-header">
-                            <i class="bi bi-robot post-card-icon"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">MCP</span>
-                                <span class="blog-tag">AI Agents</span>
-                                <span class="blog-tag">TypeScript</span>
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420932756081254400/"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header">
+                                <i class="bi bi-robot post-card-icon"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>Build in Public</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">MCP</span>
+                                    <span class="blog-tag">AI Agents</span>
+                                    <span class="blog-tag">TypeScript</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>•</span>
+                                    <span>Build in Public</span>
+                                </div>
+                                <h3>AutoFlow MCP: Giving Your AI Browser Superpowers</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>AutoFlow MCP: Giving Your AI Browser Superpowers</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
-                            <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Observability</span>
-                                <span class="blog-tag">Open Source</span>
-                                <span class="blog-tag">MCP</span>
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/posts/gavksingh_opensource-aiagents-observability-activity-7428555942599806976-Chq-"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header"
+                                style="background: linear-gradient(135deg, rgba(255,0,128,0.15) 0%, rgba(0,255,255,0.1) 100%);">
+                                <i class="bi bi-eye post-card-icon" style="color: var(--neon-pink);"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>AI Agents</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Observability</span>
+                                    <span class="blog-tag">Open Source</span>
+                                    <span class="blog-tag">MCP</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>•</span>
+                                    <span>AI Agents</span>
+                                </div>
+                                <h3>Observability Tools for AI Agents: Debugging the Black Box</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>Observability Tools for AI Agents: Debugging the Black Box</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
-                            <i class="bi bi-graph-up-arrow post-card-icon text-green"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">AI Agents</span>
-                                <span class="blog-tag">LLMOps</span>
-                                <span class="blog-tag">PostgreSQL</span>
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/posts/gavksingh_aiagents-llmops-softwareengineering-activity-7429197602367225856-2I7V"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header"
+                                style="background: linear-gradient(135deg, rgba(0,255,128,0.12) 0%, rgba(0,255,255,0.08) 100%);">
+                                <i class="bi bi-graph-up-arrow post-card-icon text-green"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>Lessons Learned</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">AI Agents</span>
+                                    <span class="blog-tag">LLMOps</span>
+                                    <span class="blog-tag">PostgreSQL</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>•</span>
+                                    <span>Lessons Learned</span>
+                                </div>
+                                <h3>Building Observability for AI Agents: 3 Hurdles &amp; Fixes</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>Building Observability for AI Agents: 3 Hurdles &amp; Fixes</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card post-card card-reveal">
-                    <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
-                        target="_blank" class="no-decoration">
-                        <div class="post-card-header"
-                            style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
-                            <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Backend</span>
-                                <span class="blog-tag">MCP</span>
-                                <span class="blog-tag">Architecture</span>
+                    <div class="blog-card post-card card-reveal">
+                        <a href="https://www.linkedin.com/posts/gavksingh_backendengineering-ai-mcp-activity-7430014578287157248-vdc8"
+                            target="_blank" class="no-decoration">
+                            <div class="post-card-header"
+                                style="background: linear-gradient(135deg, rgba(255,200,0,0.1) 0%, rgba(0,255,255,0.08) 100%);">
+                                <i class="bi bi-diagram-3 post-card-icon" style="color: #ffd700;"></i>
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Post</span>
-                                <span>•</span>
-                                <span>System Design</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Backend</span>
+                                    <span class="blog-tag">MCP</span>
+                                    <span class="blog-tag">Architecture</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Post</span>
+                                    <span>•</span>
+                                    <span>System Design</span>
+                                </div>
+                                <h3>I Stopped Writing Glue Code &amp; Started Building Infrastructure</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
                             </div>
-                            <h3>I Stopped Writing Glue Code &amp; Started Building Infrastructure</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-box-arrow-up-right"></i> See Post</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <!-- LinkedIn Articles -->
-                <div class="blog-card card-reveal">
-                    <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
-                        target="_blank" class="no-decoration">
-                        <div class="blog-img">
-                            <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy" decoding="async"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">Cloud</span>
-                                <span class="blog-tag">Technology</span>
-                                <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+                    <!-- LinkedIn Articles -->
+                    <div class="blog-card card-reveal">
+                        <a href="https://www.linkedin.com/pulse/cloud-computing-revolutionizing-digital-landscape-gaurav-singh"
+                            target="_blank" class="no-decoration">
+                            <div class="blog-img">
+                                <img src="assets/img/blog2.png" alt="Cloud Computing Blog" loading="lazy"
+                                    decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>Technology</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Cloud</span>
+                                    <span class="blog-tag">Technology</span>
+                                    <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Article</span>
+                                    <span>•</span>
+                                    <span>Technology</span>
+                                </div>
+                                <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
                             </div>
-                            <h3>Cloud Computing: Revolutionizing the Digital Landscape</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div class="blog-card card-reveal">
-                    <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
-                        target="_blank" class="no-decoration">
-                        <div class="blog-img">
-                            <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy" decoding="async"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <div class="blog-info">
-                            <div class="blog-tags">
-                                <span class="blog-tag">DevOps</span>
-                                <span class="blog-tag">Kubernetes</span>
-                                <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
+                    <div class="blog-card card-reveal">
+                        <a href="https://www.linkedin.com/pulse/kubernetes-config-externalization-comprehensive-tutorial-gaurav-singh"
+                            target="_blank" class="no-decoration">
+                            <div class="blog-img">
+                                <img src="assets/img/blog3.jpeg" alt="Kubernetes Tutorial" loading="lazy"
+                                    decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <div class="blog-meta">
-                                <i class="bi bi-linkedin"></i>
-                                <span>LinkedIn Article</span>
-                                <span>•</span>
-                                <span>DevOps</span>
+                            <div class="blog-info">
+                                <div class="blog-tags">
+                                    <span class="blog-tag">DevOps</span>
+                                    <span class="blog-tag">Kubernetes</span>
+                                    <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
+                                </div>
+                                <div class="blog-meta">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Article</span>
+                                    <span>•</span>
+                                    <span>DevOps</span>
+                                </div>
+                                <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
+                                <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
                             </div>
-                            <h3>Kubernetes Config Externalization: A Comprehensive Tutorial</h3>
-                            <span class="blog-cta-btn"><i class="bi bi-book"></i> Read Article</span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
             </div><!-- /scroll-row-wrapper -->
 
             <div class="text-center mt-4">
@@ -4796,82 +5105,85 @@
                 <p class="text-secondary">Educational content from WorkCode & Gaurav YouTube channel</p>
             </div>
             <div class="scroll-row-wrapper">
-                <button class="scroll-arrow scroll-left" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),-340)" aria-label="Scroll tutorials left"><i class="bi bi-chevron-left"></i></button>
-                <button class="scroll-arrow scroll-right" onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),340)" aria-label="Scroll tutorials right"><i class="bi bi-chevron-right"></i></button>
-            <div class="tutorials-grid">
-                <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/phdImo3Wa-k" target="_blank" class="no-decoration">
-                        <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="tutorial-info">
-                            <div class="channel-info">
-                                <i class="bi bi-youtube"></i>
-                                <span>WorkCode & Gaurav</span>
+                <button class="scroll-arrow scroll-left"
+                    onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),-340)"
+                    aria-label="Scroll tutorials left"><i class="bi bi-chevron-left"></i></button>
+                <button class="scroll-arrow scroll-right"
+                    onclick="scrollRow(this.parentElement.querySelector('.tutorials-grid'),340)"
+                    aria-label="Scroll tutorials right"><i class="bi bi-chevron-right"></i></button>
+                <div class="tutorials-grid">
+                    <div class="tutorial-card card-reveal">
+                        <a href="https://youtu.be/phdImo3Wa-k" target="_blank" class="no-decoration">
+                            <div class="tutorial-img">
+                                <img src="assets/img/testimonials/tutorial3.png" alt="Cloud Computing Tutorial"
+                                    loading="lazy" decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <h3>Cloud Computing & Web Hosting</h3>
-                            <p class="text-secondary">In this video, I have talked about Cloud Computing
-                                fundamentals and Web Hosting concepts.</p>
-                        </div>
-                    </a>
-                </div>
+                            <div class="tutorial-info">
+                                <div class="channel-info">
+                                    <i class="bi bi-youtube"></i>
+                                    <span>WorkCode & Gaurav</span>
+                                </div>
+                                <h3>Cloud Computing & Web Hosting</h3>
+                                <p class="text-secondary">In this video, I have talked about Cloud Computing
+                                    fundamentals and Web Hosting concepts.</p>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" class="no-decoration">
-                        <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial1.png" alt="Data Structure Tutorial"
-                                loading="lazy" decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="tutorial-info">
-                            <div class="channel-info">
-                                <i class="bi bi-youtube"></i>
-                                <span>WorkCode & Gaurav</span>
+                    <div class="tutorial-card card-reveal">
+                        <a href="https://youtu.be/RU8h6lHlJFE" target="_blank" class="no-decoration">
+                            <div class="tutorial-img">
+                                <img src="assets/img/testimonials/tutorial1.png" alt="Data Structure Tutorial"
+                                    loading="lazy" decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <h3>Data Structure & Algorithm</h3>
-                            <p class="text-secondary">In this video, I have talked about Data
-                                Structure/Algorithm concepts and implementation techniques.</p>
-                        </div>
-                    </a>
-                </div>
+                            <div class="tutorial-info">
+                                <div class="channel-info">
+                                    <i class="bi bi-youtube"></i>
+                                    <span>WorkCode & Gaurav</span>
+                                </div>
+                                <h3>Data Structure & Algorithm</h3>
+                                <p class="text-secondary">In this video, I have talked about Data
+                                    Structure/Algorithm concepts and implementation techniques.</p>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="tutorial-card card-reveal">
-                    <a href="https://www.youtube.com/watch?v=1LVRUNSEWGk" target="_blank"
-                        class="no-decoration">
-                        <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm" loading="lazy"
-                                decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="tutorial-info">
-                            <div class="channel-info">
-                                <i class="bi bi-youtube"></i>
-                                <span>WorkCode & Gaurav</span>
+                    <div class="tutorial-card card-reveal">
+                        <a href="https://www.youtube.com/watch?v=1LVRUNSEWGk" target="_blank" class="no-decoration">
+                            <div class="tutorial-img">
+                                <img src="assets/img/testimonials/tutorial-2.jpg" alt="Boyer Moore Algorithm"
+                                    loading="lazy" decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <h3>Boyer Moore's Voting Algorithm</h3>
-                            <p class="text-secondary">In this video, I have talked about Boyer Moore's
-                                Voting Algorithm to find the Majority Element in a given array.</p>
-                        </div>
-                    </a>
-                </div>
+                            <div class="tutorial-info">
+                                <div class="channel-info">
+                                    <i class="bi bi-youtube"></i>
+                                    <span>WorkCode & Gaurav</span>
+                                </div>
+                                <h3>Boyer Moore's Voting Algorithm</h3>
+                                <p class="text-secondary">In this video, I have talked about Boyer Moore's
+                                    Voting Algorithm to find the Majority Element in a given array.</p>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="tutorial-card card-reveal">
-                    <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" class="no-decoration">
-                        <div class="tutorial-img">
-                            <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial" loading="lazy"
-                                decoding="async" onerror="this.style.display='none'">
-                        </div>
-                        <div class="tutorial-info">
-                            <div class="channel-info">
-                                <i class="bi bi-youtube"></i>
-                                <span>WorkCode & Gaurav</span>
+                    <div class="tutorial-card card-reveal">
+                        <a href="https://youtu.be/IuUSCaADtnQ" target="_blank" class="no-decoration">
+                            <div class="tutorial-img">
+                                <img src="assets/img/testimonials/tutorial4.png" alt="TOEFL Essays Tutorial"
+                                    loading="lazy" decoding="async" onerror="this.style.display='none'">
                             </div>
-                            <h3>How to Write TOEFL Essays</h3>
-                            <p class="text-secondary">In this video, I have talked about effective
-                                strategies and techniques for writing TOEFL essays.</p>
-                        </div>
-                    </a>
+                            <div class="tutorial-info">
+                                <div class="channel-info">
+                                    <i class="bi bi-youtube"></i>
+                                    <span>WorkCode & Gaurav</span>
+                                </div>
+                                <h3>How to Write TOEFL Essays</h3>
+                                <p class="text-secondary">In this video, I have talked about effective
+                                    strategies and techniques for writing TOEFL essays.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
             </div><!-- /scroll-row-wrapper -->
 
             <div class="text-center mt-4">
@@ -4945,8 +5257,8 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email"
-                                required>
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="Enter your email" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -5003,8 +5315,8 @@
                                 aria-label="LinkedIn" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
                             <a href="https://github.com/gavksingh" target="_blank" title="GitHub" aria-label="GitHub"
                                 rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            <a href="https://thepromptacademy.com/gavksingh" target="_blank"
-                                title="AI Projects" aria-label="AI Projects" rel="noopener noreferrer"><i
+                            <a href="https://thepromptacademy.com/gavksingh" target="_blank" title="AI Projects"
+                                aria-label="AI Projects" rel="noopener noreferrer"><i
                                     class="bi bi-person-badge"></i></a>
                             <a href="https://www.youtube.com/@workcodeandgaurav/featured" target="_blank"
                                 title="YouTube" aria-label="YouTube" rel="noopener noreferrer"><i
@@ -5151,7 +5463,7 @@
             });
 
             // ── OS section toggle collapsed PRs ────────────────────────────────
-            window.toggleOSPRs = function(btn) {
+            window.toggleOSPRs = function (btn) {
                 const card = btn.closest('.os-prs-list');
                 const hidden = card.querySelectorAll('.os-pr-hidden');
                 const expanded = hidden[0]?.classList.contains('os-pr-expanded');
